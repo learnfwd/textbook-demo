@@ -1,0 +1,84 @@
++article("Notifications", 'Little dead thing that moves')
+  +section("Notifications")
+    :markdown
+      # The notification system (developers)
+
+      API:
+
+      ```javascript
+      App.trigger('notify', string[, options]);
+      ```
+
+      Available options are:
+
+      - `info`: string, some secondary information to display under the message title
+      - `icon`: a string of font-awesome classes (without the iniftial `fa` class)
+      - `sound`: path to an audio file
+      - `silent`: boolean. If true, will cause the notification to go straight to the backstage notification centre
+      - `url`: navigate a user to this URL when he clicks on the notification in the notification centre
+      - `autoHideDelay`: integer. Defaults to 3000; How much time notifications should appear in the upper right corner before they get dismissed
+      - `persistence`: boolean. Defaults to true; whether notifications should also appear in the notificarion centre
+      - `$anchor`: jQuery DOM element to which to attach
+
+      Some interactive examples:
+
+    .row
+      .col-sm-2
+        #say.btn.btn-default.btn-block Simple.
+      .col-sm-10
+        :markdown
+          ```javascript
+          // Simple.
+          App.trigger('notify', 'Hello!');
+          ```
+
+    .row
+      .col-sm-2
+        #aha.btn.btn-default.btn-block Star.
+      .col-sm-10
+        :markdown
+          ```javascript
+          // With external sound, not shown in the top right, and with URL.
+          App.trigger('notify', 'You earned a bonus star!', {
+            info: 'Well done, 10/10.',
+            icon: 'fa-star',
+            sound: 'http://buzz.jaysalvat.com/demo/sounds/win.mp3',
+            silent: true,
+            url: '01-backstage-02-notifications'
+          });
+          ```
+
+    .row
+      .col-sm-2
+        #bravo.btn.btn-default.btn-block Bravo!
+      .col-sm-10
+        :markdown
+          ```javascript
+          // With info, icon and sound.
+          App.trigger('notify', 'Bravo, bravo!', {
+            info: 'Te-ai descurcat excelent. Și ai făcut-o pe Miruna fericită',
+            icon: 'fa-play',
+            sound: 'audio/bravo_bravo.mp3'
+          });
+          ```
+
+    script.
+      $('#say').click(function (){
+        App.trigger('notify', 'Hello!');
+      });
+      $('#aha').click(function (){
+        App.trigger('notify', 'You earned a bonus star!', {
+          info: 'Well done, 10/10.',
+          icon: 'fa-star',
+          sound: 'http://buzz.jaysalvat.com/demo/sounds/win.mp3',
+          silent: true,
+          url: '01-backstage-02-notifications'
+        });
+      });
+      $('#bravo').click(function (){
+        App.trigger('notify', 'Bravo, bravo!', {
+          info: 'Te-ai descurcat excelent. Și ai făcut-o pe Miruna fericită',
+          icon: 'fa-play',
+          sound: 'audio/bravo_bravo.mp3'
+        });
+      });

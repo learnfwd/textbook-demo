@@ -1,0 +1,50 @@
++article('Connector', '')
+  +section('Connector')
+    .text
+      :markdown
+        ### Connector
+
+        This is a type of exercise where the elements must be connected in pairs according to rules decided by the textbook authors.
+
+        Elements can be arranged horizontally, vertically or freely. What is common is that each connectable element (source or destination) has a small disc *handle*. This small disc can be dragged from source to the destination or from destination to the source to make the connection.
+
+        The score is determined as the ratio between the number of correct connections and the total number of connections that need to be done. Bad connections decrease the score.
+
+
+    p Connect the arab numerals with their Roman version:
+    +connect-points({
+      name: 'help10-1',
+      orientation: 'horizontal',
+      connections: [
+        ['a1', 'r1'],
+        ['a5', 'r5'],
+        ['a9', 'r9'],
+      ]
+    })
+      .progress-box
+      .score-box
+      .row
+        //first group
+        .col-xs-5(data-group='arab')
+          .choice.pin-to
+            .connector(data-name='a1').pin-right
+            | 1
+          .choice.pin-to
+            .connector(data-name='a5').pin-right
+            | 5
+          .choice.pin-to
+            .connector(data-name='a9').pin-right
+            | 9
+        //space for the lines
+        .col-xs-2
+        //second group
+        .col-xs-5(data-group='roman')
+          .choice.pin-to
+            .connector(data-name='r9').pin-left
+            | IX
+          .choice.pin-to
+            .connector(data-name='r5').pin-left
+            | V
+          .choice.pin-to
+            .connector(data-name='r1').pin-left
+            | I

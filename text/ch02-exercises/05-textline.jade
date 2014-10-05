@@ -1,0 +1,42 @@
++article('Text Input', 'single and multiline text')
+  +section('Text Input')
+    .text
+      :markdown
+        **Text Input**
+
+        The *text line* is a kind of exercise that uses the keyboard. Often what the user inputs is checked and autmatically assesed, according to the expected results.
+
+        Try to fill in the text boxes below.
+
+    +exercise({name: 'help05-1'})
+      .progress-box
+      .score-box
+      .is-done-box
+
+      +textline({name: "help05-1-1", type: 'text', max: 40,
+        title: "ex. Tiberius Kirk",
+        regexp: /^\w+\s+\w+/,
+        pattern: /^\w+\s+\w+$/,
+        placeholder: 'Firstname Lastname',
+        })
+        p Enter your first name and last name: &nbsp;
+          .input
+
+      +textline({name: "help05-1-2", type: 'tel', max: 16,
+        title: "fill in with digits",
+        regexp: /^\+\d{8,16}$/,
+        pattern: /^\+\d{8,16}$/,
+        placeholder: '+44...',
+        })
+        p Please enter your phone number (include +prefix): &nbsp;
+          .input
+
+      .clearfix
+      +textline({name: "help05-1-3", type: 'multiline', max: 5000,
+        title: "Îndrăznește!",
+        regexp: /^[^.]{10,}\./,
+        rows: 7,
+        placeholder: '',
+        })
+        | Write any sentence here. Finish it with period.
+

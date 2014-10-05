@@ -1,0 +1,140 @@
++article("Exercises and the avatar")
+  +section("Exercises and the avatar")
+    :markdown
+      # Exercises and the avatar
+
+      The avatar is the icon integrated with the messging system. Exercises know by default to send
+      some messages to the avatar, and there is some built-in functionality for that.
+
+      Avatar has moods and can display messages. At the time of writing this, the moods the avatar
+      can have are: *angry*, *cheeky*, *happy*, *helpless*, *neutral*, *sad*, *smart*,
+      *smile*, *uneasy* and *wink*.
+
+      ## Default 'first time done messages'
+
+      In main.js, place the following line:
+
+      `window.firstTimeDoneMessages = ['Bravo, bravo!', 'Felicitări!', 'Excelent!']`
+
+
+      ## ignoreAvatar
+
+      +exercise sends 'done' event and 'done for the first time' event. If you don't want
+      the avatar to be notified by the exercise, place the `ignoreAvatar: true` property inside
+      the mixin parameters
+
+      **Sample code**
+
+      ```
+        .row
+          .col-xs-6.well
+            +exercise({name: 'with-avatar'})
+              +pickone(2, ['First', 'Second', 'Third'])
+                p Chose the second answer and watch the avatar being happy
+          .col-xs-6.well
+            +exercise({name: 'with-avatar', ignoreAvatar: true})
+              +pickone(2, ['First', 'Second', 'Third'])
+                p Chose the second answer and watch the avatar remaining indifferent
+      ```
+
+      **Rendered sample**
+
+    .row
+      .col-xs-6.well
+        +exercise({name: 'with-avatar'})
+          +pickone(2, ['First', 'Second', 'Third'])
+            p Chose the second answer and watch the avatar being happy
+      .col-xs-6.well
+        +exercise({name: 'without-avatar', ignoreAvatar: true})
+          +pickone(2, ['First', 'Second', 'Third'])
+            p Chose the second answer and watch the avatar remaining indifferent
+
+    :markdown
+      ## Avatar messages
+
+      If there is a `description` field in the exercise this description will be used
+      as the 'more information' (or 'info' field in the notification).
+
+      Don't be upset about their verbosity. It makes your non-developer colleagues life easier.
+      Too see how you can customize the avatar looks and behaviour, go to 'Backstage / Avatar'
+      documentation in this handbook.
+
+      You can show messages and change moods on the following events:
+
+      * the exercise is done for the first time
+        * **firstTimeDoneMessage** - what message should be displayed
+        * **firstTimeDoneMood** - what mood
+        * **firstTimeDoneInterval** - how much time (in seconds) the mood lasts
+
+      * the exercise is done (but not the first time in the session)
+        * **doneMessage** - what message should be displayed
+        * **doneMood** - what mood
+        * **doneInterval** - how much time (in seconds) the mood lasts
+
+      * the exercise score decreases (but not the first time in the session)
+        * **scoreDecreaseMessage** - what message should be displayed
+        * **scoreDecreaseMood** - what mood
+        * **scoreDecreaseInterval** - how much time (in seconds) the mood lasts
+
+      * the exercise score increases (but not the first time in the session)
+        * **scoreIncreaseMessage** - what message should be displayed
+        * **scoreIncreaseMood** - what mood
+        * **scoreIncreaseInterval** - how much time (in seconds) the mood lasts
+
+      Of course, you don't really need to overwrite all of the parameters above.
+      The defaults are pretty good and are already done for you.
+
+      Using the same rules, you can add sounds and icons. See the documentation
+      to get more info on how to use it.
+
+      **Sample code**
+
+      ```
+        .row.well
+          +exercise({
+            name: 'with-avatar',
+            description: 'The exercise with the avatar moods',
+            firstTimeDoneMessage: 'Second is not always bad, congrats!',
+            firstTimeDoneMood: 'cheeky',
+            firstTimeDoneSound: 'http://buzz.jaysalvat.com/demo/sounds/win.mp3',
+            firstTimeDoneIcon: 'fa-heart',
+            firstTimeDoneInterval: 1,
+            scoreIncreasedMood: 'smile',
+            doneMessage: 'Bravo, bravo!',
+            scoreDecreaseMessage: 'Băi!!',
+            scoreDecreaseMood: 'angry',
+            scoreDecreaseInterval: 5,
+            })
+
+            .col-xs-6
+              +pickone(2, ['First', 'Second', 'Third'])
+                p Chose the second answer and watch the avatar saying stuff
+            .col-xs-6
+              +pickone(2, ['First', 'Second', 'Third'])
+                p Chose the second answer again, to make the score 100%!!
+
+      ```
+
+      **Rendered sample**
+    .row.well
+      +exercise({
+        name: 'with-avatar',
+        description: 'The exercise with the avatar moods',
+        firstTimeDoneMessage: 'Second is not always bad, congrats!',
+        firstTimeDoneMood: 'cheeky',
+        firstTimeDoneSound: 'http://buzz.jaysalvat.com/demo/sounds/win.mp3',
+        firstTimeDoneIcon: 'fa-heart',
+        firstTimeDoneInterval: 1,
+        scoreIncreasedMood: 'smile',
+        doneMessage: 'Bravo, bravo!',
+        scoreDecreaseMessage: 'Băi!!',
+        scoreDecreaseMood: 'angry',
+        scoreDecreaseInterval: 5,
+        })
+
+        .col-xs-6
+          +pickone(2, ['First', 'Second', 'Third'])
+            p Chose the second answer and watch the avatar saying stuff
+        .col-xs-6
+          +pickone(2, ['First', 'Second', 'Third'])
+            p Chose the second answer again, to make the score 100%!!

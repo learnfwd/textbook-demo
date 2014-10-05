@@ -1,0 +1,23 @@
++article('The Drawing Pad')
+  +section('The Drawing Pad')
+    .text
+      :markdown
+        ### The Drawing Pad
+
+        This is a complex widget that allows student to draw freely or to annotate over an image, marking relevant areas.
+
+        This exercise can be found in more forms: simple drawing (or draft), writing practice or drawing over illustrations.
+
+        Each exercise has a toolbar with a few buttons:
+
+        * Pick drawing color
+        * Pick drawing mode (pencil for free drawing, line, rectangle, circle)
+        * Clear canvas
+        * Undo / Redo
+
+
+        The drawing cannot be really assessed by the computer so the score just reflects the absence / presence of anything drawn by the user.
+
+        Practice here (it is a very tall canvas, so you may want to scroll first):
+
+      +drawingpad({name: 'help04-1', primaryColor: '#F33'})

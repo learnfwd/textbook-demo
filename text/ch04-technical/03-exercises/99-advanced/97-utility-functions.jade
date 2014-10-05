@@ -1,0 +1,19 @@
++article("Utility functions")
+  +section("Functions")
+    :markdown
+      # Utility functions
+
+      In the process of creating the exercises a handful of utility functions were necessary
+
+
+      ### Added to String prototype
+
+      (Works on every string)
+
+
+      * `'  Știință și tehnică - Îndrumar '.toLowerCaseAndCleanupDiacritics();` 
+      returns "stiinta si tehnica - indrumar"
+      * `'  Știință și tehnică - Îndrumar '.compareIgnoringCase('știință și tehnică - îndrumare')` returns `false`
+      * `'  Știință și tehnică - Îndrumar '.compareIgnoringCase('știință și tehnică - îndrumar')` returns `true`
+      * `'  Știință și tehnică - Îndrumar '.compareIgnoringCase('stiinta și tehnică - Indrumar')` returns `false`
+      * `'  Știință și tehnică - Îndrumar '.compareIgnoringCaseAndDiacritics('stiinta și tehnică - Indrumar')` returns `true`
