@@ -1,1 +1,0 @@
-define([],function(){String.prototype.hashCode=function(){var char,hash=0;if(0===this.length)return hash;for(var i=0,len=this.length;len>i;i++)char=this.charCodeAt(i),hash=(hash<<5)-hash+char,hash&=hash;return Math.abs(hash)}});

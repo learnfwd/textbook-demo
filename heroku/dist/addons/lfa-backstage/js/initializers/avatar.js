@@ -1,1 +1,0 @@
-define(function(require,exports,module){var AvatarView=require("../views/avatar-view"),avatar=new AvatarView;$("#rightbar-toggle").empty().html(avatar.el),module.exports=avatar,window.App.on("avatar:mood",function(){$(".menu.unpinned").removeClass("unpinned")})});
