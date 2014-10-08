@@ -1,0 +1,1 @@
+define(function(){return function(locals){window.buf=[];return buf.push("<li><a"+jade.attr("href","#book/"+locals.url,!0,!1)+'><span class="title">'+jade.escape(null==(jade.interp=locals.title)?"":jade.interp)+'</span><span class="body">'+jade.escape(null==(jade.interp=locals.body.substring(0,50))?"":jade.interp)+"</span></a></li>"),buf.join("")}});
