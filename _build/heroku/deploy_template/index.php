@@ -1,1 +1,0 @@
-/Users/cdinu/Documents/Code/lfdemo/heroku/deploy_template/index.php
