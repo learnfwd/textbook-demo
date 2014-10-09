@@ -33,14 +33,18 @@
 
     +exercise({name: 'ex01'})
       .progress-box
-
+      
       h2 Short quiz:
 
-      +yesno({name: 'ex01yn01', answer: false})
-        p Paper textbooks are better for dyslexic children.
+      .col-md-9.col-xs-12
 
-      +yesno({name: 'ex01yn02', answer: true})
-        p Children usually prefer digital textbooks.
+        +yesno({name: 'ex01yn01', answer: false})
+          p Paper textbooks are better for dyslexic children.
 
-      +yesno({name: 'ex01yn03', answer: true})
-        p Paper and digital textbooks can be used together in learning.
+        +yesno({name: 'ex01yn02', answer: true})
+          p Children usually prefer digital textbooks.
+
+        +yesno({name: 'ex01yn03', answer: true})
+          p Paper and digital textbooks can be used together in learning.
+      .col-md-3.col-hidden-xs
+        +lightbox('img/rastel.jpg')
