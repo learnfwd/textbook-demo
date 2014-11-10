@@ -7,7 +7,9 @@
 
       This is a document explaining what *Learn Forward* is, what are its main features, how it can be used and what are possible next steps after you understand all of this.
 
-      Tee document itself is produced using the technologies presented.
+      The document itself is produced using only LFA technologies. We're eating our own food here :)
+      
+      Chapters one two and three are for users. Chapter 4 presents the tool, the concepts behnind it and how you can get to make your own textbook.
 
 
       ## Paper vs. Digital
@@ -63,14 +65,18 @@
 
     +exercise({name: 'ex01'})
       .progress-box
-
+      
       h2 Short quiz:
 
-      +yesno({name: 'ex01yn01', answer: false})
-        p Paper textbooks are better for dyslexic children.
+      .col-md-9.col-xs-12
 
-      +yesno({name: 'ex01yn02', answer: true})
-        p Children usually prefer digital textbooks.
+        +yesno({name: 'ex01yn01', answer: false})
+          p Paper textbooks are better for dyslexic children.
 
-      +yesno({name: 'ex01yn03', answer: true})
-        p Paper and digital textbooks can be used together in learning.
+        +yesno({name: 'ex01yn02', answer: true})
+          p Children usually prefer digital textbooks.
+
+        +yesno({name: 'ex01yn03', answer: true})
+          p Paper and digital textbooks can be used together in learning.
+      .col-md-3.col-hidden-xs
+        +lightbox('img/rastel.jpg')
