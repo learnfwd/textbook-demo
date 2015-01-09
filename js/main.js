@@ -3,6 +3,7 @@ define([
   '../addons/lfa-backstage/js/main',
   '../addons/lfa-classroom/js/main',
   '../addons/lfa-classroom/js/views/name-input',
+  '../addons/lfa-content-widgets/js/main'
 ], function(Exercises) {
   window.Exercises = Exercises;
   NameInput = arguments[3];
@@ -66,5 +67,7 @@ define([
         el: $('.cover-name-input'),
       });
     }
+
+    $('.progress .progress-bar').progressbar();
   });
 });

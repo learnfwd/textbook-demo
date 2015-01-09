@@ -7,3 +7,6 @@
 [submodule "addons/lfa-exercises"]
 	path = addons/lfa-exercises
 	url = git@github.com:learnfwd/lfa-addon-exercises.git
+[submodule "addons/lfa-content-widgets"]
+	path = addons/lfa-content-widgets
+	url = git@github.com:learnfwd/lfa-content-widgets.git

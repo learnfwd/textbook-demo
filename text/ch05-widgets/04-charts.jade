@@ -1,0 +1,164 @@
++article("Charts")
+  +section("Charts")
+    :markdown
+      #Charts
+  
+  
+  :markdown
+    The `charts` module has 2 components: `horizontal charts` and `vertical charts`, you cand use either / both of them according to your needs.
+    
+    ##Horizontal Charts
+    ---
+    
+    This chart type can be implemented by calling `+hchart(options)` mixin with a series of options like:
+    * `bars` - this is an __Array__ that tells the chart how many horizontal bars will be. Inside we have `JSON`s describing each bar by:
+      * `name` - simple __String__
+      * `data` - __Array__ containing both the `value` of the current bar and the `color` of the bar / segment for the previous value.
+        * `value` - __Number__
+        * `color` - __String__ that is inserted as is in the `background` CSS property of the previous value segment.
+      * `stacked` - __Boolean__ that tells the chart to show the bars described above on a single stacked bar, not individually.
+    * `legend` - __Array__. If you want to show a nice centered legend below the chart, use this property that accepts `JSON`s having:
+      * `name` - __String__. The name of the legent item.
+      * `color` - __String__, If you want to show a color box near the name stated above, complete this field. The value will go as is if the `backgound` CSS property of the current item.
+    * `step` - __Number__. Use this if you want to show the scale of the current chart and tell the mixin the step value.
+    * `maxSteps` - __Number__. If the scale of the given chart is different than `100`, use this field to specify the desired scale. The `bars` will be scaled accordingly.
+    * `height` - __String__. The height of the chart. Defaulted to `200px`.
+    * `width` - __String__. The width of chart bars. Defaulted to `40px`.
+    
+    ###Example
+  
+  +hchart({
+    bars: [
+      { 
+      name: 'Stacked',
+      data: [31, '#000', 20, '#888', 21, '#aaa', 19, '#000', 9, '#ddd'],
+      stacked: true
+      },
+      { 
+        name: 'Non Stacked Multi value',
+        data: [32, '#3f0', 10, '#3f8', 5, '#afa'],
+      },
+      { 
+        name: 'Non Stacked Single value',
+        data: [38, '#0f0']
+      }
+    ],
+    legend: [
+      {
+        name: 'Legend Item 1',
+        color: '#ddd'
+      },
+      {
+        name: 'Legenda Item 2',
+        color: '#afa'
+      },
+    ], 
+    step: 20,
+  })
+  
+  
+  :markdown
+    ####The code
+    ```
+    +hchart({
+      bars: [
+        { 
+        name: 'Stacked',
+        data: [31, '#000', 20, '#888', 21, '#aaa', 19, '#000', 9, '#ddd'],
+        stacked: true
+        },
+        { 
+          name: 'Non Stacked Multi value',
+          data: [32, '#3f0', 10, '#3f8', 5, '#afa'],
+        },
+        { 
+          name: 'Non Stacked Single value',
+          data: [38, '#0f0']
+        }
+      ],
+      legend: [
+        {
+          name: 'Legend Item 1',
+          color: '#ddd'
+        },
+        {
+          name: 'Legenda Item 2',
+          color: '#afa'
+        },
+      ], 
+      step: 20,
+    })
+    ```
+    
+    ##Vertical Charts
+    ---
+    
+    This chart type can be implemented by calling `+vchart(options)` mixin with a series of options like:
+    * `bars` - this is an __Array__ that tells the chart how many vertical bars will be. Inside we have `JSON`s describing each bar by:
+      * `name` - simple __String__
+      * `data` - __Array__ containing both the `value` of the current bar and the `color` of the bar / segment for the previous value.
+        * `value` - __Number__
+        * `color` - __String__ that is inserted as is in the `background` CSS property of the previous value segment.
+    * `legend` - __Array__. If you want to show a nice centered legend below the chart, use this property that accepts `JSON`s having:
+      * `name` - __String__. The name of the legent item.
+      * `color` - __String__, If you want to show a color box near the name stated above, complete this field. The value will go as is if the `backgound` CSS property of the current item.
+    * `step` - __Number__. Use this if you want to show the scale of the current chart and tell the mixin the step value.
+    * `maxSteps` - __Number__. If the scale of the given chart is different than `100`, use this field to specify the desired scale. The `bars` will be scaled accordingly.
+  
+      
+      ###Example
+        
+  +vchart({
+    bars: [
+      { 
+        name: 'Non Stacked Multi Value',
+        data: [25, '#000', 22, '#888', 21, '#aaa'],
+      },
+      { 
+        name: 'Non Stack Single Value',
+        data: [38, '#0f0'],
+      }
+    ],
+    legend: [
+      {
+        name: 'Legend Item 1',
+        color: '#ddd'
+      },
+      {
+        name: 'Legenda Item 2',
+        color: '#afa'
+      },
+    ], 
+    step: 25,
+    maxSteps: 125
+  })
+  
+  
+  :markdown
+    ####The Code
+    ```
+    +vchart({
+      bars: [
+        { 
+          name: 'Non Stacked Multi Value',
+          data: [25, '#000', 22, '#888', 21, '#aaa', 19, '#000', 9, '#ddd'],
+        },
+        { 
+          name: 'Non Stack Single Value',
+          data: [38, '#0f0'],
+        }
+      ],
+      legend: [
+        {
+          name: 'Legend Item 1',
+          color: '#ddd'
+        },
+        {
+          name: 'Legenda Item 2',
+          color: '#afa'
+        },
+      ], 
+      step: 25,
+      maxSteps: 125
+    })
+    ```
