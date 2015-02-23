@@ -3,8 +3,11 @@ define([
   '../addons/lfa-backstage/js/main',
   '../addons/lfa-classroom/js/main',
   '../addons/lfa-classroom/js/views/name-input',
-  '../addons/lfa-content-widgets/js/main'
+  '../addons/lfa-content-widgets/js/main',
 ], function(Exercises) {
+  // Add content editor module
+  //$.getScript('/dist/lfa-content-editor.js');
+
   window.Exercises = Exercises;
   NameInput = arguments[3];
 
@@ -59,7 +62,7 @@ define([
     var chapter = opts.chapter;
 
     if (nameInput) {
-      nameInput.remove();
+      nameInput.remove();/**/
     }
 
     if (chapter === 'ch00-cover-00-cover') {
