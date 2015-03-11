@@ -1,115 +1,230 @@
-+article("Advanced","Custom validation, scores, etc.")
-  +section("Intro")
-    :markdown
-      # Advanced operations
++title("Advanced")
++subtitle("Custom validation, scores, etc.")
+section
+  :markdown
+    # Advanced operations
 
-      There are some cases where you need to change how the score is computed, how
-      the exercise is rendered, and so on. 
+    There are some cases where you need to change how the score is computed, how
+    the exercise is rendered, and so on. 
 
-      Fortunately, you can totally do that. First read "Developer's Corner" below, then
-      "Customizing scores, rendering, etc." section.
+    Fortunately, you can totally do that. First read "Developer's Corner" below, then
+    "Customizing scores, rendering, etc." section.
 
-  +section("Developer's corner")
-    :markdown
-      ## Developer's corner
+section
+  :markdown
+    ## Developer's corner
 
-      ### Exercise lifecycle
+    ### Exercise lifecycle
 
-      Even if it's not directly needed to know all details about how exercises
-      are done technically, it is useful to understand some of therir concepts.
+    Even if it's not directly needed to know all details about how exercises
+    are done technically, it is useful to understand some of therir concepts.
 
-      Exercises are implemented as a combination of JavaScript and HTML code.
-      Before and after each exercise there are script tags that intitialize and
-      configure the exercises and their relationships. Each exercise type 
-      inherits from the `Exercise` (`+exercise`) class.
+    Exercises are implemented as a combination of JavaScript and HTML code.
+    Before and after each exercise there are script tags that intitialize and
+    configure the exercises and their relationships. Each exercise type 
+    inherits from the `Exercise` (`+exercise`) class.
 
-      The JavaScript part, `Exercise` class is a BackBone model. So it has all
-      the models functions, such as *intitialize*, *set* or *get*
+    The JavaScript part, `Exercise` class is a BackBone model. So it has all
+    the models functions, such as *intitialize*, *set* or *get*
 
-      Each exercise has a lifecycle that begins even before the page is displayed.
-      An exercise developer can hook before or after lifecycle events as needed
-      by creating methods on its Exercise inherited class.
+    Each exercise has a lifecycle that begins even before the page is displayed.
+    An exercise developer can hook before or after lifecycle events as needed
+    by creating methods on its Exercise inherited class.
 
-      First, an exercise *intitialize*s, before the page is rendered. The hook
-      is called `componentDidInitialize`, caled immediately before the base
-      intitialize method is finished. You have access to exercise parameters
-      and some of its data.
+    First, an exercise *intitialize*s, before the page is rendered. The hook
+    is called `componentDidInitialize`, caled immediately before the base
+    intitialize method is finished. You have access to exercise parameters
+    and some of its data.
 
-      When DOM is rendered, there is a callback on the exercise (done via *jQuery*)
-      This callback sets `isMounted` property to `true`, sets `$el` property to
-      point to the jQuery object of the exercise DOM element. After that it calls
-      your `componentDidMount` method (if it exists), and then it goes to the
-      rendering part.
+    When DOM is rendered, there is a callback on the exercise (done via *jQuery*)
+    This callback sets `isMounted` property to `true`, sets `$el` property to
+    point to the jQuery object of the exercise DOM element. After that it calls
+    your `componentDidMount` method (if it exists), and then it goes to the
+    rendering part.
 
-      `componentDidMount` can be used to put some logic and just before the component
-      is rendered using its current state.
+    `componentDidMount` can be used to put some logic and just before the component
+    is rendered using its current state.
 
-      *Rendering* is a process that updates the view of the component using its
-      internal state (stored via setters and getters). This option was chosen
-      in order to have the exercise state separated by its view so the view can
-      be changed or restored at any time. It also allows reactivity, since
-      rendering is redone automatically each time an attributes of the exercise
-      is changed via `set` method. There are three hooks available for you when
-      you write your own exercise type:
+    *Rendering* is a process that updates the view of the component using its
+    internal state (stored via setters and getters). This option was chosen
+    in order to have the exercise state separated by its view so the view can
+    be changed or restored at any time. It also allows reactivity, since
+    rendering is redone automatically each time an attributes of the exercise
+    is changed via `set` method. There are three hooks available for you when
+    you write your own exercise type:
 
-      * `componentWillUpdate()` called when 
-      * `render()`
-      * `componentDidUpdate()`
+    * `componentWillUpdate()` called when 
+    * `render()`
+    * `componentDidUpdate()`
 
-      There is no unmounting functionality, because it is not yet needed.
+    There is no unmounting functionality, because it is not yet needed.
 
-      Storage and retrieval of the component (exercise) attributes is done
-      automatically, without any intevention from your side. Stick to this
-      non-interventionist policy, because in the future there is more to
-      come (such as online sync).
+    Storage and retrieval of the component (exercise) attributes is done
+    automatically, without any intevention from your side. Stick to this
+    non-interventionist policy, because in the future there is more to
+    come (such as online sync).
 
-      There is another optional method, `onChildrenReady` that is called
-      once all the children are added to the exercise. Use it whenever
-      working with children is necessary.
+    There is another optional method, `onChildrenReady` that is called
+    once all the children are added to the exercise. Use it whenever
+    working with children is necessary.
 
-      *Scoring* is a feature specific to each exercise type, so it is your
-      responsibility to write a `score()` function that returns an integer
-      from 0 to 100 (0 is bad, 100 is perfect). There are no hard checks on
-      these limits, but you can mess up computations if you don't respect
-      this convention. So return a negative score or one greater
+    *Scoring* is a feature specific to each exercise type, so it is your
+    responsibility to write a `score()` function that returns an integer
+    from 0 to 100 (0 is bad, 100 is perfect). There are no hard checks on
+    these limits, but you can mess up computations if you don't respect
+    this convention. So return a negative score or one greater
 
-      **Useful Properties & Methods **
+    **Useful Properties & Methods **
 
-      * `isMounted` -- *true* if DOM has rendered, *false* otherwise
-      * `_score()` -- gets the score, also available as `this.get('score')`
-      * `value()` -- Value of the exercise should return what is the 
-        current selected or computed value. By default, the value
-        return is the state. Override if necessary (e.g. for pick-ones)
+    * `isMounted` -- *true* if DOM has rendered, *false* otherwise
+    * `_score()` -- gets the score, also available as `this.get('score')`
+    * `value()` -- Value of the exercise should return what is the 
+      current selected or computed value. By default, the value
+      return is the state. Override if necessary (e.g. for pick-ones)
+    
+
+    ### Helper API. `Exercises` class
+
+    There is also a helper class called 'Exercises'. It provides methods
+    to save and retrieve state, to manage the hierachical structure etc.
+    Therse are however not needed usually.
+
+    What you need to know is that there are some interesting methods
+    that can be used to get info about exercises:
+
+    * `Exercises` is a global variable (object), accessible everywhere
+    * Each exercise type registers its constructor as an attribute of this
+      object. (e.g. *Exercises.YesNo* and *Exercises.PickOne*)
+    * `Exercises.findIdByName(name)` finds the exercise id using its name
+    * `Exercises.getAttributesById(id)` or `getAttributesByName(name)` gets
+       an JS object with the attributes
+       of the exercise that has the id / namespecified as parameter
+    * `Exercises.clearLocalStorage()` clears local saved data for all exercises
+       useful when people want to transfer the instance to another person
+    * `Exercises.deleteStorageForId(id)` clears the data with the key 'ex_123456'
+       **ex_** prefix must be included in the id.
+
+section
+  :markdown
+    ## Exercises.current
+
+    Having understood the exercise lifecycle, you can use a special object, named
+    `Exercises.current` to change the internals of the exercise you're working on.
+
+  +exercise({name: 'ch99_sample1'})
+    .statement Write an word and a synonym for it
+
+
+    +textline({
+      name: 'ch99_sample1_word',
+      pattern: /\w+/,
+      regex: /\w+/,
+      placeholder: '(your word here)'
+    })
+      script.
+        var wordExercise = Exercises.current;
+
+
+    +textline({
+      name: 'ch99_sample1_synonym',
+      pattern: /\w+/,
+      regex: /\w+/,
+      placeholder: '(synonym for your word here)'
+    })
+      script.
+        var synonymExercise = Exercises.current;
+
+    .is-done-box
+    #plsWait Please enter a word in the first box and a synonym for it in the second
+
+
+    script.
+      var self = Exercises.current;
+      var $plsWait = $('#plsWait');
+
+
+      var refreshData = function() {
+        $plsWait.text('please wait...');
+        self.process = function (result) {
+          var response = result && result.response;
+          var synonyms = '';
+          _.each(response, function(meaning) {
+              synonyms += meaning.list.synonyms + '|';
+            });
+          synonyms = synonyms.toLocaleLowerCase();
+          self.synonyms = synonyms;
+          self.$el.find('script').last();
+
+          synonymExercise.$input.find('input').attr('title', synonyms.replace('|', ', '));
+          
+          self.render();
+        }
+
+        var s = document.createElement("script");
+        s.src = "http://thesaurus.altervista.org/service.php?word=" +
+           self.word +
+           "&language=en_US&output=json&key=3Xj2J0HlX7PzxwLKQH8U&callback=self.process";
+
+        self.$el.append(s);
+      } 
+
+      var checkSynonym = function() {
+        var word = wordExercise.value();
+        var syn = synonymExercise.value();
+
+        if (word && syn) {
+          word = word.toString().toLocaleLowerCase();
+          if(word.match(/^[a-z]+$/)){
+            if(word === self.word) {
+              self.render();
+            } else {
+              self.word = word;
+              refreshData();
+            }
+          } else {
+            $plsWait.text('please enter valid words (i.e. letters, no spaces)');
+          }
+        }
+        else {
+          $plsWait.text("C'mon, do your job, write something!");
+        }
+      };
+
+      self.render = function () {
+        var syn = synonymExercise.value();
+        if(!self.synonyms || !self.word || !syn) {
+          $plsWait.text("Write the word then the synonym, you know it.");
+          return;
+        } 
+
+        var synRegex = RegExp('\\b' + syn + '\\b', 'i');
+        
+        console.log(syn, self.synonyms, self.synonyms.match(synRegex));
+
+        if(self.synonyms.match(synRegex)) {
+            $plsWait.text("Congrats! " + syn + " is a synonym for " + self.word);
+            self.isDone = true;
+            self._score();
+          } else {
+            $plsWait.text("Woops! " + syn + " is not a synonym for " + self.word);
+            self.isDone = false;
+            self._score();
+          }
+      }
+
+      self.score = function () {
+        return self.isDone ? 100 : 0;
+      }
+
+      synonymExercise.on('change:state', checkSynonym);
+      checkSynonym();
       
+      $('#checkSynonym').click(checkSynonym);
+      
+  :markdown
+    #### Annotated source
 
-      ### Helper API. `Exercises` class
-
-      There is also a helper class called 'Exercises'. It provides methods
-      to save and retrieve state, to manage the hierachical structure etc.
-      Therse are however not needed usually.
-
-      What you need to know is that there are some interesting methods
-      that can be used to get info about exercises:
-
-      * `Exercises` is a global variable (object), accessible everywhere
-      * Each exercise type registers its constructor as an attribute of this
-        object. (e.g. *Exercises.YesNo* and *Exercises.PickOne*)
-      * `Exercises.findIdByName(name)` finds the exercise id using its name
-      * `Exercises.getAttributesById(id)` or `getAttributesByName(name)` gets
-         an JS object with the attributes
-         of the exercise that has the id / namespecified as parameter
-      * `Exercises.clearLocalStorage()` clears local saved data for all exercises
-         useful when people want to transfer the instance to another person
-      * `Exercises.deleteStorageForId(id)` clears the data with the key 'ex_123456'
-         **ex_** prefix must be included in the id.
-
-  +section("Customizing scores, rendering, etc.")
-    :markdown
-      ## Exercises.current
-
-      Having understood the exercise lifecycle, you can use a special object, named
-      `Exercises.current` to change the internals of the exercise you're working on.
-
+    ```
     +exercise({name: 'ch99_sample1'})
       .statement Write an word and a synonym for it
 
@@ -120,6 +235,10 @@
         regex: /\w+/,
         placeholder: '(your word here)'
       })
+        //- This is executed right after the Exercise is
+        //- created as an object. We keep a reference to 
+        //- the exercise in the wordExercise variable
+        //- to use later
         script.
           var wordExercise = Exercises.current;
 
@@ -131,34 +250,49 @@
         placeholder: '(synonym for your word here)'
       })
         script.
+          //- (same as above, but for the synonym)
           var synonymExercise = Exercises.current;
 
       .is-done-box
+      //- this div will be used for different announcements
       #plsWait Please enter a word in the first box and a synonym for it in the second
 
 
       script.
+        //- self is the 'ch99_sample1' <= +exercise
         var self = Exercises.current;
         var $plsWait = $('#plsWait');
 
+        //- function to refresh synonyms list
+        //- using a web service
 
         var refreshData = function() {
           $plsWait.text('please wait...');
+
+
+          // this is called back when the remote
+          // web service script is loaded
           self.process = function (result) {
             var response = result && result.response;
             var synonyms = '';
             _.each(response, function(meaning) {
                 synonyms += meaning.list.synonyms + '|';
               });
+          
             synonyms = synonyms.toLocaleLowerCase();
             self.synonyms = synonyms;
             self.$el.find('script').last();
+
+            //- when synonyms list is retrieved, we update
+            //- the tooltip for the synonyms list.
+            //- Yes, it works, try it!
 
             synonymExercise.$input.find('input').attr('title', synonyms.replace('|', ', '));
             
             self.render();
           }
 
+          //- web service. calls back self.process function above
           var s = document.createElement("script");
           s.src = "http://thesaurus.altervista.org/service.php?word=" +
              self.word +
@@ -174,6 +308,8 @@
           if (word && syn) {
             word = word.toString().toLocaleLowerCase();
             if(word.match(/^[a-z]+$/)){
+              //- Don't load new synonyms unless the source word is 
+              //- different.
               if(word === self.word) {
                 self.render();
               } else {
@@ -189,6 +325,12 @@
           }
         };
 
+        //- This override the render function for the exercise
+        //- No fuss about it, because +exercise does not have a
+        //- custom render function anyway.
+        //- If you need to override a +yesno, +pickone, etc.
+        //- try to have self.originalRender = self.render;
+        //- self.render = function {self.originalRender(); /* Your code here */}
         self.render = function () {
           var syn = synonymExercise.value();
           if(!self.synonyms || !self.word || !syn) {
@@ -203,269 +345,128 @@
           if(self.synonyms.match(synRegex)) {
               $plsWait.text("Congrats! " + syn + " is a synonym for " + self.word);
               self.isDone = true;
+              //- update the score, to reflect the success
               self._score();
             } else {
               $plsWait.text("Woops! " + syn + " is not a synonym for " + self.word);
+              //- or the failure
               self.isDone = false;
               self._score();
             }
         }
 
+        //- Override the score function
+        //- Please read self.render above
         self.score = function () {
           return self.isDone ? 100 : 0;
         }
 
+        //- subcribe to state changes.
         synonymExercise.on('change:state', checkSynonym);
+        
+        //- run an initial check
         checkSynonym();
-        
+
         $('#checkSynonym').click(checkSynonym);
-        
-    :markdown
-      #### Annotated source
+    ```
 
-      ```
-      +exercise({name: 'ch99_sample1'})
-        .statement Write an word and a synonym for it
+section
+  :markdown
+    # Exercise events
 
+    Exercises trigger events whenever the score or the state changes. Other exercises can use this events system
+    to interact with each other. Or areas in the books can be changed as a result
 
-        +textline({
-          name: 'ch99_sample1_word',
-          pattern: /\w+/,
-          regex: /\w+/,
-          placeholder: '(your word here)'
-        })
-          //- This is executed right after the Exercise is
-          //- created as an object. We keep a reference to 
-          //- the exercise in the wordExercise variable
-          //- to use later
-          script.
-            var wordExercise = Exercises.current;
+    The list of events triggered by the exercises is:
 
+    * `exercise:state:changed`, data: new state, context: exercise
 
-        +textline({
-          name: 'ch99_sample1_synonym',
-          pattern: /\w+/,
-          regex: /\w+/,
-          placeholder: '(synonym for your word here)'
-        })
-          script.
-            //- (same as above, but for the synonym)
-            var synonymExercise = Exercises.current;
+    * `exercise:score:changed`,  data: new score, context: exercise
+    * `exercise:score:decrease`, data: new score, context: exercise
+    * `exercise:score:increase`, data: new score, context: exercise
 
-        .is-done-box
-        //- this div will be used for different announcements
-        #plsWait Please enter a word in the first box and a synonym for it in the second
+    * `exercise:done`, data: exercise, context: none
+    * `exercise:first-time-done`, data: exercise, context: none
 
+    How to use:
+
+    ```
+      window.App.on('exercise:score:changed exercise:state:changed', function(data, exercise){
+        console.log('event!', data, exercise.id);
+      });
+    ```
+
+    And an advanced example, rendered below:
+
+    ```
+      +textline({name: 'extras99-1', pattern: /\d/, regexp: /\d/})
+        +textline({name: 'extras99-2', pattern: /\d/, regexp: /\d/})
+
+        p Entere a digit to get 100%, a letter or nothing to get 0:
+        p Score Output: 
+          span#score-output
+        p State Output: 
+          span#state-output
 
         script.
-          //- self is the 'ch99_sample1' <= +exercise
-          var self = Exercises.current;
-          var $plsWait = $('#plsWait');
+          window.App.on('exercise:score:changed', function(data, exercise){
+              var o = 'New score for exercise ' + exercise.name + ' is ' + data;
+              $('#score-output').text(o);
+          });
 
-          //- function to refresh synonyms list
-          //- using a web service
+          window.App.on('exercise:state:changed', function(data, exercise){
+              var o = 'New state for exercise ' + exercise.name + ' is ' + data;
+              $('#state-output').text(o);
+          });
 
-          var refreshData = function() {
-            $plsWait.text('please wait...');
-
-
-            // this is called back when the remote
-            // web service script is loaded
-            self.process = function (result) {
-              var response = result && result.response;
-              var synonyms = '';
-              _.each(response, function(meaning) {
-                  synonyms += meaning.list.synonyms + '|';
-                });
-            
-              synonyms = synonyms.toLocaleLowerCase();
-              self.synonyms = synonyms;
-              self.$el.find('script').last();
-
-              //- when synonyms list is retrieved, we update
-              //- the tooltip for the synonyms list.
-              //- Yes, it works, try it!
-
-              synonymExercise.$input.find('input').attr('title', synonyms.replace('|', ', '));
-              
-              self.render();
+          window.App.on('exercise:score:changed ', function(score, exercise){
+            if(exercise.name !== 'extras99-1') {
+              return;
             }
 
-            //- web service. calls back self.process function above
-            var s = document.createElement("script");
-            s.src = "http://thesaurus.altervista.org/service.php?word=" +
-               self.word +
-               "&language=en_US&output=json&key=3Xj2J0HlX7PzxwLKQH8U&callback=self.process";
-
-            self.$el.append(s);
-          } 
-
-          var checkSynonym = function() {
-            var word = wordExercise.value();
-            var syn = synonymExercise.value();
-
-            if (word && syn) {
-              word = word.toString().toLocaleLowerCase();
-              if(word.match(/^[a-z]+$/)){
-                //- Don't load new synonyms unless the source word is 
-                //- different.
-                if(word === self.word) {
-                  self.render();
-                } else {
-                  self.word = word;
-                  refreshData();
-                }
-              } else {
-                $plsWait.text('please enter valid words (i.e. letters, no spaces)');
-              }
+            if(score < 100){
+              $('.extras99-2').hide();
             }
             else {
-              $plsWait.text("C'mon, do your job, write something!");
+              $('.extras99-2').show();
             }
-          };
+          });
+          window.App.trigger('exercise:score:invalidate', 'extras99-1');
+    ```
+    
+    **Rendered sample:**
 
-          //- This override the render function for the exercise
-          //- No fuss about it, because +exercise does not have a
-          //- custom render function anyway.
-          //- If you need to override a +yesno, +pickone, etc.
-          //- try to have self.originalRender = self.render;
-          //- self.render = function {self.originalRender(); /* Your code here */}
-          self.render = function () {
-            var syn = synonymExercise.value();
-            if(!self.synonyms || !self.word || !syn) {
-              $plsWait.text("Write the word then the synonym, you know it.");
-              return;
-            } 
++textline({name: 'extras99-1', pattern: /\d/, regexp: /\d/})
++textline({name: 'extras99-2', pattern: /\d/, regexp: /\d/})
 
-            var synRegex = RegExp('\\b' + syn + '\\b', 'i');
-            
-            console.log(syn, self.synonyms, self.synonyms.match(synRegex));
+p Enter a digit to get 100%, a letter or nothing to get 0:
+p Score Output: 
+  span#score-output
+p State Output: 
+  span#state-output
 
-            if(self.synonyms.match(synRegex)) {
-                $plsWait.text("Congrats! " + syn + " is a synonym for " + self.word);
-                self.isDone = true;
-                //- update the score, to reflect the success
-                self._score();
-              } else {
-                $plsWait.text("Woops! " + syn + " is not a synonym for " + self.word);
-                //- or the failure
-                self.isDone = false;
-                self._score();
-              }
-          }
+script.
+  window.App.on('exercise:score:changed', function(data, exercise){
+      var o = 'New score for exercise ' + exercise.name + ' is ' + data;
+      $('#score-output').text(o);
+  });
 
-          //- Override the score function
-          //- Please read self.render above
-          self.score = function () {
-            return self.isDone ? 100 : 0;
-          }
+  window.App.on('exercise:state:changed', function(data, exercise){
+      var o = 'New state for exercise ' + exercise.name + ' is ' + data;
+      $('#state-output').text(o);
+  });
 
-          //- subcribe to state changes.
-          synonymExercise.on('change:state', checkSynonym);
-          
-          //- run an initial check
-          checkSynonym();
+  window.App.on('exercise:score:changed ', function(score, exercise){
+    if(exercise.name !== 'extras99-1') {
+      return;
+    }
 
-          $('#checkSynonym').click(checkSynonym);
-      ```
+    if(score < 100){
+      $('.extras99-2').hide();
+    }
+    else {
+      $('.extras99-2').show();
+    }
+  });
 
-  +section("Exercise events")
-    :markdown
-      # Exercise events
-
-      Exercises trigger events whenever the score or the state changes. Other exercises can use this events system
-      to interact with each other. Or areas in the books can be changed as a result
-
-      The list of events triggered by the exercises is:
-
-      * `exercise:state:changed`, data: new state, context: exercise
-
-      * `exercise:score:changed`,  data: new score, context: exercise
-      * `exercise:score:decrease`, data: new score, context: exercise
-      * `exercise:score:increase`, data: new score, context: exercise
-
-      * `exercise:done`, data: exercise, context: none
-      * `exercise:first-time-done`, data: exercise, context: none
-
-      How to use:
-
-      ```
-        window.App.on('exercise:score:changed exercise:state:changed', function(data, exercise){
-          console.log('event!', data, exercise.id);
-        });
-      ```
-
-      And an advanced example, rendered below:
-
-      ```
-        +textline({name: 'extras99-1', pattern: /\d/, regexp: /\d/})
-          +textline({name: 'extras99-2', pattern: /\d/, regexp: /\d/})
-
-          p Entere a digit to get 100%, a letter or nothing to get 0:
-          p Score Output: 
-            span#score-output
-          p State Output: 
-            span#state-output
-
-          script.
-            window.App.on('exercise:score:changed', function(data, exercise){
-                var o = 'New score for exercise ' + exercise.name + ' is ' + data;
-                $('#score-output').text(o);
-            });
-
-            window.App.on('exercise:state:changed', function(data, exercise){
-                var o = 'New state for exercise ' + exercise.name + ' is ' + data;
-                $('#state-output').text(o);
-            });
-
-            window.App.on('exercise:score:changed ', function(score, exercise){
-              if(exercise.name !== 'extras99-1') {
-                return;
-              }
-
-              if(score < 100){
-                $('.extras99-2').hide();
-              }
-              else {
-                $('.extras99-2').show();
-              }
-            });
-            window.App.trigger('exercise:score:invalidate', 'extras99-1');
-      ```
-      
-      **Rendered sample:**
-
-  +textline({name: 'extras99-1', pattern: /\d/, regexp: /\d/})
-  +textline({name: 'extras99-2', pattern: /\d/, regexp: /\d/})
-
-  p Enter a digit to get 100%, a letter or nothing to get 0:
-  p Score Output: 
-    span#score-output
-  p State Output: 
-    span#state-output
-
-  script.
-    window.App.on('exercise:score:changed', function(data, exercise){
-        var o = 'New score for exercise ' + exercise.name + ' is ' + data;
-        $('#score-output').text(o);
-    });
-
-    window.App.on('exercise:state:changed', function(data, exercise){
-        var o = 'New state for exercise ' + exercise.name + ' is ' + data;
-        $('#state-output').text(o);
-    });
-
-    window.App.on('exercise:score:changed ', function(score, exercise){
-      if(exercise.name !== 'extras99-1') {
-        return;
-      }
-
-      if(score < 100){
-        $('.extras99-2').hide();
-      }
-      else {
-        $('.extras99-2').show();
-      }
-    });
-
-    window.App.trigger('exercise:score:invalidate', 'extras99-1');
+  window.App.trigger('exercise:score:invalidate', 'extras99-1');

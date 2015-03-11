@@ -1,54 +1,33 @@
-+article("Selector exercises","+yesno, +pickone, +numpad")
-  +section("Selectors")
-    h1 Selectors
++title("Selector exercises")
++subtitle("+yesno, +pickone, +numpad")
+section
+  h1 Selectors
 
-    :markdown
-      By selectors we understand the kind of exercises where the user is presented several options to chose from
+  :markdown
+    By selectors we understand the kind of exercises where the user is presented several options to chose from
 
-  +section("YesNo")
-    :markdown
-      ## YesNo Questions
+section
+  :markdown
+    ## YesNo Questions
 
-      ### Description
+    ### Description
 
-      A **YesNo question** provides a simple way to show a Yes/No choice.
+    A **YesNo question** provides a simple way to show a Yes/No choice.
+  
+   
+    **Parameters:**
     
-     
-      **Parameters:**
-      
-      * zero parameters: expected answer defaults to true
-      * one boolean parameter: specify expected answer to get max score
-      * one object parameter: attributes: `answer` (boolean), `name` (string) , `yes` - text for yes, `no` - text for no
-      
-      **Scoring:**
+    * zero parameters: expected answer defaults to true
+    * one boolean parameter: specify expected answer to get max score
+    * one object parameter: attributes: `answer` (boolean), `name` (string) , `yes` - text for yes, `no` - text for no
+    
+    **Scoring:**
 
-      * 0 if selected option is different to expected result
-      * 100 if selected option is equal to expected result
+    * 0 if selected option is different to expected result
+    * 100 if selected option is equal to expected result
 
-      ### Example (source)
-      ```
-        +exercise
-          +statement
-            h3 Important questions
-              span.score-box
-          .row
-            .col-md-12
-              .progress-box
-          
-          .row
-            .col-md-6
-              +yesno(false)
-                | Can you open the pod bay doors? (no)
-              
-              +yesno(true)
-                | Will I dream? (yes, Hal)
-            .col-md-6
-              //- Without a block, name parameter is mandatory
-              +yesno({answer: true, name:'ex123unic', yes: 'True', no: 'False'})
-              +yesno({answer: false, name:'ex234unic', yes: 'Da', no: 'Nu'})
-      ```
-
-    h4 Example (rendered)
+    ### Example (source)
+    ```
       +exercise
         +statement
           h3 Important questions
@@ -56,7 +35,7 @@
         .row
           .col-md-12
             .progress-box
-
+        
         .row
           .col-md-6
             +yesno(false)
@@ -68,214 +47,236 @@
             //- Without a block, name parameter is mandatory
             +yesno({answer: true, name:'ex123unic', yes: 'True', no: 'False'})
             +yesno({answer: false, name:'ex234unic', yes: 'Da', no: 'Nu'})
+    ```
 
-  +section("Pick One")
-    :markdown
-      ## Pick One
-
-      ### Description
-
-      **Pick one** (`+pickone`) is a selector that allows user to select a single choice among several options presented.
-      This exercise is versatile, since it allows lots and lots of input types.
-
-      You can have the trigger DOM element as a button created for you in place or as any element if you put an element
-      with a `.trigger` class inside the exercise.
-
-      ### Parameters
-
-      `+pickone(n, [series], {options}`
-
-      * No parameters: defaults to one choice which is also the default answer (is "1")
-      * One parameter: n (number), means that *n*-th answer is correct. Since there are no options specified,
-        a random number of buttons will be generated.
-      * Two parameters: n (ordinal of the correct answer in the series), [series, of, values] (1 dimensional array)
-      * Three parameters: n, series, options (hashmap). Options can have a *placement* attribute that can have
-        a value of *top*, *bottom*, *left*, *right*. *noClassChange: true* will prevent the trigger button from having 
-        class changed when when user selects an option. **ignoreAnswer: true** makes the score 100% in all cases, no matter
-        which answer is selected.
-
-      ### Scoring
-
-      * 0 if selected option is different to expected result (specified by the 1st parameter of the mixin)
-      * 100 if selected option is equal to expected result
-
-      ### Example (source)
-      ```
-         +exercise({name: 'ch02e01'})
-          +statement Pick one option below
-
-          //- Simple, useless  no text
-          +pickone({name: 'ch02e01po1'})
-
-          //- Still useless, no parameters at all
-          +pickone
-            p Are you the one?
-
-          //- If 'choices' is not specified, it is created by default
-          +pickone(4)
-            p How many seasons are there in a year ?
-
-          //- Options can have any value
-          +pickone(4, ['2', '4', '7', '9', '10'])
-            p How many rings in the Lord of the rings?
-
-          //- Pickone inside an element with a very small declared width
-          .row
-            .col-xs-1
-              +pickone(4, ['1', '2', '4', '6', '10'])
-                p How many horses can you tether to a chariot?
-
-          //- Text value
-          +pickone(3, ['Bulgakov', 'Creangă', 'Shakespeare', 'Shaw'])
-            p Who wrote 'Hamlet'?
-
-          //- UTF text
-          //- placement can be changed if neeed
-          +pickone(2, ['◯', '◯ ◯', '◯ ◯ ◯' , '◯ ◯ ◯ ◯'], {placement: 'top'})
-            p Pick a number greater than one and less than three.
-
-          +pickone(2, ['McDonalds', "Tiffanys", 'KFC'], {placeholder: 'McDonalds', noClassChange: true})
-            p This one is fine because it is hidden. Discover where to click: I want to eat breakfast at
-              span.trigger
-              span .
-
-          +pickone(1, ['2', '4', '6', '20'], {placement: 'top', ignoreAnswer: true})
-            p How many oranges do you want?
-            .score-box
-          
-          +pickone(1, ['2', '4', '6', '20'], {placement: 'top', noClassChange: true, ignoreAnswer: true})
-            p How many bananas do you want, no style?
-            .score-box
-
-          //- Numbers as choices
-          +pickone(1, [0, 1, 2, 3, 5])
-            p Find the number that can be written as a multiple of all the others.
-          
-          //- HTML is an option too
-          +pickone(3, [
-            '<img style=\\"max-width:200px;\\" src=\\"http://readfwd-wp.s3.amazonaws.com/dinu2.png\\"/>', 
-            '<img style=\\"max-width:200px;\\" src=\\"http://readfwd-wp.s3.amazonaws.com/paul.png\\"/>',
-            '<img style=\\"max-width:200px;\\" src=\\"http://readfwd-wp.s3.amazonaws.com/leo.jpg\\"/>'])
-            p Pick the Leo!
-      ```
-
-
-    +exercise({name: 'ch02e01'})
+  h4 Example (rendered)
+    +exercise
       +statement
-        | Pick one option below
-
-      //- Simple, useless  no text
-      +pickone({name: 'ch02e01po1'})
-
-      //- Still useless, no parameters at all
-      +pickone
-        p Are you the one?
-
-      //- If 'choices' is not specified, it is created by default
-      +pickone(4)
-        p How many seasons are there in a year ?
-
-      //- Options can have any value
-      +pickone(4, ['2', '4', '7', '9', '10'])
-        p How many rings in the Lord of the rings?
-
-      //- Pickone inside an element with a very small declared width
+        h3 Important questions
+          span.score-box
       .row
-        .col-xs-1
-          +pickone(4, ['1', '2', '4', '6', '10'])
-            p How many horses can you tether to a chariot?
+        .col-md-12
+          .progress-box
 
-      //- Text value
-      +pickone(3, ['Bulgakov', 'Creangă', 'Shakespeare', 'Shaw'])
-        p Who wrote 'Hamlet'?
+      .row
+        .col-md-6
+          +yesno(false)
+            | Can you open the pod bay doors? (no)
+          
+          +yesno(true)
+            | Will I dream? (yes, Hal)
+        .col-md-6
+          //- Without a block, name parameter is mandatory
+          +yesno({answer: true, name:'ex123unic', yes: 'True', no: 'False'})
+          +yesno({answer: false, name:'ex234unic', yes: 'Da', no: 'Nu'})
 
-      //- UTF text
-      //- placement can be changed if neeed
-      +pickone(2, ['◯', '◯ ◯', '◯ ◯ ◯' , '◯ ◯ ◯ ◯'], {placement: 'top'})
-        p Pick a number greater than one and less than three.
+section
+  :markdown
+    ## Pick One
 
-      +pickone(2, ['McDonalds', "Tiffany`s", 'KFC'], {placeholder: 'McDonalds', noClassChange: true})
-        p This one is fine because it is hidden. Discover where to click: I want to eat breakfast at #{' '}
-          span.trigger
-          | .
+    ### Description
 
-      +pickone(1, ['2', '4', '6', '20'], {placement: 'top', ignoreAnswer: true})
-        p How many oranges do you want?
-        .score-box
-      
-      +pickone(1, ['2', '4', '6', '20'], {placement: 'top', noClassChange: true, ignoreAnswer: true})
-        p How many bananas do you want, no style?
-        .score-box
+    **Pick one** (`+pickone`) is a selector that allows user to select a single choice among several options presented.
+    This exercise is versatile, since it allows lots and lots of input types.
 
-      //- Numbers as choices
-      +pickone(1, [0, 1, 2, 3, 5])
-        p Find the number that can be written as a multiple of all the others.
-      
-      //- HTML is an option too
-      +pickone(3, [
-        '<img style=\\"max-width:200px;\\" src=\\"http://readfwd-wp.s3.amazonaws.com/dinu2.png\\"/>', 
-        '<img style=\\"max-width:200px;\\" src=\\"http://readfwd-wp.s3.amazonaws.com/paul.png\\"/>',
-        '<img style=\\"max-width:200px;\\" src=\\"http://readfwd-wp.s3.amazonaws.com/leo.jpg\\"/>'])
-        p Pick the Leo!
+    You can have the trigger DOM element as a button created for you in place or as any element if you put an element
+    with a `.trigger` class inside the exercise.
+
+    ### Parameters
+
+    `+pickone(n, [series], {options}`
+
+    * No parameters: defaults to one choice which is also the default answer (is "1")
+    * One parameter: n (number), means that *n*-th answer is correct. Since there are no options specified,
+      a random number of buttons will be generated.
+    * Two parameters: n (ordinal of the correct answer in the series), [series, of, values] (1 dimensional array)
+    * Three parameters: n, series, options (hashmap). Options can have a *placement* attribute that can have
+      a value of *top*, *bottom*, *left*, *right*. *noClassChange: true* will prevent the trigger button from having 
+      class changed when when user selects an option. **ignoreAnswer: true** makes the score 100% in all cases, no matter
+      which answer is selected.
+
+    ### Scoring
+
+    * 0 if selected option is different to expected result (specified by the 1st parameter of the mixin)
+    * 100 if selected option is equal to expected result
+
+    ### Example (source)
+    ```
+       +exercise({name: 'ch02e01'})
+        +statement Pick one option below
+
+        //- Simple, useless  no text
+        +pickone({name: 'ch02e01po1'})
+
+        //- Still useless, no parameters at all
+        +pickone
+          p Are you the one?
+
+        //- If 'choices' is not specified, it is created by default
+        +pickone(4)
+          p How many seasons are there in a year ?
+
+        //- Options can have any value
+        +pickone(4, ['2', '4', '7', '9', '10'])
+          p How many rings in the Lord of the rings?
+
+        //- Pickone inside an element with a very small declared width
+        .row
+          .col-xs-1
+            +pickone(4, ['1', '2', '4', '6', '10'])
+              p How many horses can you tether to a chariot?
+
+        //- Text value
+        +pickone(3, ['Bulgakov', 'Creangă', 'Shakespeare', 'Shaw'])
+          p Who wrote 'Hamlet'?
+
+        //- UTF text
+        //- placement can be changed if neeed
+        +pickone(2, ['◯', '◯ ◯', '◯ ◯ ◯' , '◯ ◯ ◯ ◯'], {placement: 'top'})
+          p Pick a number greater than one and less than three.
+
+        +pickone(2, ['McDonalds', "Tiffanys", 'KFC'], {placeholder: 'McDonalds', noClassChange: true})
+          p This one is fine because it is hidden. Discover where to click: I want to eat breakfast at
+            span.trigger
+            span .
+
+        +pickone(1, ['2', '4', '6', '20'], {placement: 'top', ignoreAnswer: true})
+          p How many oranges do you want?
+          .score-box
+        
+        +pickone(1, ['2', '4', '6', '20'], {placement: 'top', noClassChange: true, ignoreAnswer: true})
+          p How many bananas do you want, no style?
+          .score-box
+
+        //- Numbers as choices
+        +pickone(1, [0, 1, 2, 3, 5])
+          p Find the number that can be written as a multiple of all the others.
+        
+        //- HTML is an option too
+        +pickone(3, [
+          '<img style=\\"max-width:200px;\\" src=\\"http://readfwd-wp.s3.amazonaws.com/dinu2.png\\"/>', 
+          '<img style=\\"max-width:200px;\\" src=\\"http://readfwd-wp.s3.amazonaws.com/paul.png\\"/>',
+          '<img style=\\"max-width:200px;\\" src=\\"http://readfwd-wp.s3.amazonaws.com/leo.jpg\\"/>'])
+          p Pick the Leo!
+    ```
 
 
-  +section('Numeric Keypad')
-    :markdown
-      ## Numeric Keypad
+  +exercise({name: 'ch02e01'})
+    +statement
+      | Pick one option below
 
-      ### Description
+    //- Simple, useless  no text
+    +pickone({name: 'ch02e01po1'})
 
-      **Num pad** (`+numpad`) is a selector that allows user to easily enter numbers.
+    //- Still useless, no parameters at all
+    +pickone
+      p Are you the one?
 
-      Inside the mixin you can have the following elements:
+    //- If 'choices' is not specified, it is created by default
+    +pickone(4)
+      p How many seasons are there in a year ?
 
-      * `.trigger`
-      * `.result`
-      * `.result0` last digit, `result1` second to last, etc. The rule is that .resultN is the digit for 10^N in the number
+    //- Options can have any value
+    +pickone(4, ['2', '4', '7', '9', '10'])
+      p How many rings in the Lord of the rings?
 
-      ### Parameters
+    //- Pickone inside an element with a very small declared width
+    .row
+      .col-xs-1
+        +pickone(4, ['1', '2', '4', '6', '10'])
+          p How many horses can you tether to a chariot?
 
-      `+pickone(expectedAnswer, {options})`
+    //- Text value
+    +pickone(3, ['Bulgakov', 'Creangă', 'Shakespeare', 'Shaw'])
+      p Who wrote 'Hamlet'?
 
-      * 
+    //- UTF text
+    //- placement can be changed if neeed
+    +pickone(2, ['◯', '◯ ◯', '◯ ◯ ◯' , '◯ ◯ ◯ ◯'], {placement: 'top'})
+      p Pick a number greater than one and less than three.
 
-      ### Scoring
+    +pickone(2, ['McDonalds', "Tiffany`s", 'KFC'], {placeholder: 'McDonalds', noClassChange: true})
+      p This one is fine because it is hidden. Discover where to click: I want to eat breakfast at #{' '}
+        span.trigger
+        | .
 
-      * 0 if selected option is different to expected result (specified by the 1st parameter of the mixin)
-      * 100 if selected option is equal to expected result
-
-      ### Example (source)
-
-      ```
-      +numpad(172, { placement: 'bottom', placeholder: '?', displayDecimalSeparator: false, numDigits: 3})
-        +statement
-          | 150 + 22 = ???
-        button.btn.btn-lg.btn-success.trigger Push me
-
-        span.result.trigger result
-        br
-        p.trigger Last digit:
-          i.result0 (??)
-          | , Second to last digit:
-          i.result1 (??)
-          | , 100's digit:
-          i.result2 (??)
-      ```
-      ### Example (rendered)
+    +pickone(1, ['2', '4', '6', '20'], {placement: 'top', ignoreAnswer: true})
+      p How many oranges do you want?
+      .score-box
     
+    +pickone(1, ['2', '4', '6', '20'], {placement: 'top', noClassChange: true, ignoreAnswer: true})
+      p How many bananas do you want, no style?
+      .score-box
+
+    //- Numbers as choices
+    +pickone(1, [0, 1, 2, 3, 5])
+      p Find the number that can be written as a multiple of all the others.
+    
+    //- HTML is an option too
+    +pickone(3, [
+      '<img style=\\"max-width:200px;\\" src=\\"http://readfwd-wp.s3.amazonaws.com/dinu2.png\\"/>', 
+      '<img style=\\"max-width:200px;\\" src=\\"http://readfwd-wp.s3.amazonaws.com/paul.png\\"/>',
+      '<img style=\\"max-width:200px;\\" src=\\"http://readfwd-wp.s3.amazonaws.com/leo.jpg\\"/>'])
+      p Pick the Leo!
+
+
+section
+  :markdown
+    ## Numeric Keypad
+
+    ### Description
+
+    **Num pad** (`+numpad`) is a selector that allows user to easily enter numbers.
+
+    Inside the mixin you can have the following elements:
+
+    * `.trigger`
+    * `.result`
+    * `.result0` last digit, `result1` second to last, etc. The rule is that .resultN is the digit for 10^N in the number
+
+    ### Parameters
+
+    `+pickone(expectedAnswer, {options})`
+
+    * 
+
+    ### Scoring
+
+    * 0 if selected option is different to expected result (specified by the 1st parameter of the mixin)
+    * 100 if selected option is equal to expected result
+
+    ### Example (source)
+
+    ```
     +numpad(172, { placement: 'bottom', placeholder: '?', displayDecimalSeparator: false, numDigits: 3})
       +statement
         | 150 + 22 = ???
       button.btn.btn-lg.btn-success.trigger Push me
-      span &nbsp;
-      span.is-done-box
-      span.score-box
 
-      p.result.trigger result
+      span.result.trigger result
+      br
       p.trigger Last digit:
         i.result0 (??)
         | , Second to last digit:
         i.result1 (??)
         | , 100's digit:
         i.result2 (??)
+    ```
+    ### Example (rendered)
+  
+  +numpad(172, { placement: 'bottom', placeholder: '?', displayDecimalSeparator: false, numDigits: 3})
+    +statement
+      | 150 + 22 = ???
+    button.btn.btn-lg.btn-success.trigger Push me
+    span &nbsp;
+    span.is-done-box
+    span.score-box
+
+    p.result.trigger result
+    p.trigger Last digit:
+      i.result0 (??)
+      | , Second to last digit:
+      i.result1 (??)
+      | , 100's digit:
+      i.result2 (??)
 

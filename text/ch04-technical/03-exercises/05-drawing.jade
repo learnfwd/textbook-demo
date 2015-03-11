@@ -1,52 +1,51 @@
-+article("Drawing Exercises","+drawingpad")
-  +section("DrawingPad")
-    :markdown
-      # Drawing Pad
++title("Drawing Exercises")
++subtitle("+drawingpad")
+:markdown
+  # Drawing Pad
 
-      ### Description
+  ### Description
 
-      Creates a drawable canvas element. Supports the following interactions:
+  Creates a drawable canvas element. Supports the following interactions:
 
-      * toggle between main and secondary color
-      * full erase
-      * undo
-      * redo
+  * toggle between main and secondary color
+  * full erase
+  * undo
+  * redo
 
-      **Note**: Saving only works if you provide a name option or a block. See below.
+  **Note**: Saving only works if you provide a name option or a block. See below.
 
-      ### Parameters
+  ### Parameters
 
-      ```
-      +drawingpad({options})
-        block
-      ```
+  ```
+  +drawingpad({options})
+    block
+  ```
 
-      Takes an optional block of text (which it will output above the canvas as-is), and
-      an options parameter that can contain the following parameters:
+  Takes an optional block of text (which it will output above the canvas as-is), and
+  an options parameter that can contain the following parameters:
 
-      * `name` (string), default: None. To enable the save function,
-      you have to provide a name or block content.
-      * `backgroundImage`, default: None. If you use a `backgroundImage`,
-      the canvas will scale to the size of the image, and your
-      width/height values won't matter anymore.
-      * `width` (%, px, em), default: `100%`
-      * `height` (%, px, em), default: as much as `width`
-      * `hideButtons`, default: `false`
+  * `name` (string), default: None. To enable the save function,
+  you have to provide a name or block content.
+  * `backgroundImage`, default: None. If you use a `backgroundImage`,
+  the canvas will scale to the size of the image, and your
+  width/height values won't matter anymore.
+  * `width` (%, px, em), default: `100%`
+  * `height` (%, px, em), default: as much as `width`
+  * `hideButtons`, default: `false`
 
-      ### Scoring
+  ### Scoring
 
-      * 0  if nothing was drawn
-      * 100 if something was drawn
+  * 0  if nothing was drawn
+  * 100 if something was drawn
 
-      ### Example (source)
+  ### Example (source)
 
-      ```
-      +drawingpad({name: 'ch05dp1', primaryColor: '#F33', backgroundImage: 'http://placekitten.com/1500/750'})
-        .score-box
-      ```
+  ```
+  +drawingpad({name: 'ch05dp1', primaryColor: '#F33', backgroundImage: 'http://placekitten.com/1500/750'})
+    .score-box
+  ```
 
-      ### Example (rendered)
+  ### Example (rendered)
 
-    +drawingpad({name: 'ch05dp1', primaryColor: '#F33', backgroundImage: 'http://placekitten.com/1500/750'})
-      .score-box
-    
++drawingpad({name: 'ch05dp1', primaryColor: '#F33', backgroundImage: 'http://placekitten.com/1500/750'})
+  .score-box

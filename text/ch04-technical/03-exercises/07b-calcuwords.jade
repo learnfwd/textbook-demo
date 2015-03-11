@@ -1,363 +1,363 @@
-+article("Math 2","+calcuwords")
-  +section("Calcuwords - the Mathematic Crosswords")
-    :markdown
-      ## Calcuwords - the Mathematic Crosswords
++title("Math 2")
++subtitle("+calcuwords")
+:markdown
+  ## Calcuwords - the Mathematic Crosswords
 
-      Calcuwords resembles
+  Calcuwords resembles
 
-      The grid is magically rendered in the `.calcugrid` element (as a Backbone View if
-      you're really interested in the details).
+  The grid is magically rendered in the `.calcugrid` element (as a Backbone View if
+  you're really interested in the details).
 
-      N.B. You can use the generator at the end of this page. Although far from perfect, it makes your
+  N.B. You can use the generator at the end of this page. Although far from perfect, it makes your
 
-      **Replacements**
+  **Replacements**
 
-      * `*` (star) to `×` (`&times;`)
-      * `--` (minus-minus) to `—` (`&mdash;`)
-      * `-` (minus) to `–` (`&ndash;`)
-      * `/` (slash) to `÷` (`&divide;`)
+  * `*` (star) to `×` (`&times;`)
+  * `--` (minus-minus) to `—` (`&mdash;`)
+  * `-` (minus) to `–` (`&ndash;`)
+  * `/` (slash) to `÷` (`&divide;`)
 
-      In the 'words' field, put a question mark after the items you want to be guessed, not just displayed.
+  In the 'words' field, put a question mark after the items you want to be guessed, not just displayed.
 
-      **Sample code**
+  **Sample code**
 
-      ```
-        +exercise({
-        name: 'calcuwords-haha',
-        description: 'Calcuwords exercises',
-        firstTimeDoneMessage: 'Bravo!'
-        })
-        .row
-          .progress-box
-          .col-md-6.col.col-xs-12.well
-            +calcuwords({
-                name: 'plain-addition',
-                words: [
-                  ['1', '2', '+'],
-                  ['', '9', ''],
-                  ['2?', '1?', ''],
-                ],
-                linesAt: [2]
-              })
-              .inline-block
-                .is-done-box
-                .calcugrid.sans
-          .col-md-6.col.col-xs-12.well
-            +calcuwords({
-                name: 'more rows',
-                words: [
-                  ['3', '2', '7', '+'],
-                  [' ', '8', '8', ''],
-                  ['2', '9', '7', ''],
-                  ['7?', '1?', '2?', ''],
-                ],
-                linesAt: [3]
-              })
-              .inline-block
-                .is-done-box
-                .calcugrid.sans
-          .col-md-6.col.col-xs-12.well
-            +calcuwords({
-                name: 'pe-lung',
-                words: [
-                  ['There are ', '1?', '2?', 'stars on the EU flag']
-                ]
-              })
-              .inline-block
-                .is-done-box
-                .calcugrid.sans
-          .col-md-6.col.col-xs-12.well
-            +calcuwords({
-              name: 'operators-exercise',
-              words: [
-                ['2', '*?', '(?', '2 + 2', ')?', '= 8']
-              ]
-              })
-              .inline-block
-                .is-done-box
-                .calcugrid.sans
-      ```
-
-      **Rendered code**
-
+  ```
     +exercise({
-      name: 'calcuwords-haha',
-      description: 'Calcuwords exercises',
-      firstTimeDoneMessage: 'Bravo!'
-      })
-      .row
-        .progress-box
-        .col-md-6.col.col-xs-12.well
-          +calcuwords({
-              name: 'plain-addition',
-              words: [
-                ['1', '2', '+'],
-                ['', '9', ''],
-                ['2?', '1?', ''],
-              ],
-              linesAt: [2]
-            })
-            .inline-block
-              .is-done-box
-              .calcugrid.sans
-        .col-md-6.col.col-xs-12.well
-          +calcuwords({
-              name: 'more rows',
-              words: [
-                ['3', '2', '7', '+'],
-                [' ', '8', '8', ''],
-                ['2', '9', '7', ''],
-                ['7?', '1?', '2?', ''],
-              ],
-              linesAt: [3]
-            })
-            .inline-block
-              .is-done-box
-              .calcugrid.sans
-        .col-md-6.col.col-xs-12.well
-          +calcuwords({
-              name: 'pe-lung',
-              words: [
-                ['There are ', '1?', '2?', 'stars on the EU flag']
-              ]
-            })
-            .inline-block
-              .is-done-box
-              .calcugrid.sans
-        .col-md-6.col.col-xs-12.well
-          +calcuwords({
-            name: 'operators-exercise',
+    name: 'calcuwords-haha',
+    description: 'Calcuwords exercises',
+    firstTimeDoneMessage: 'Bravo!'
+    })
+    .row
+      .progress-box
+      .col-md-6.col.col-xs-12.well
+        +calcuwords({
+            name: 'plain-addition',
             words: [
-              ['2', '*?', '(?', '2 + 2', ')?', '= 8']
+              ['1', '2', '+'],
+              ['', '9', ''],
+              ['2?', '1?', ''],
+            ],
+            linesAt: [2]
+          })
+          .inline-block
+            .is-done-box
+            .calcugrid.sans
+      .col-md-6.col.col-xs-12.well
+        +calcuwords({
+            name: 'more rows',
+            words: [
+              ['3', '2', '7', '+'],
+              [' ', '8', '8', ''],
+              ['2', '9', '7', ''],
+              ['7?', '1?', '2?', ''],
+            ],
+            linesAt: [3]
+          })
+          .inline-block
+            .is-done-box
+            .calcugrid.sans
+      .col-md-6.col.col-xs-12.well
+        +calcuwords({
+            name: 'pe-lung',
+            words: [
+              ['There are ', '1?', '2?', 'stars on the EU flag']
             ]
-            })
-            .inline-block
-              .is-done-box
-              .calcugrid.sans
-    :markdown
+          })
+          .inline-block
+            .is-done-box
+            .calcugrid.sans
+      .col-md-6.col.col-xs-12.well
+        +calcuwords({
+          name: 'operators-exercise',
+          words: [
+            ['2', '*?', '(?', '2 + 2', ')?', '= 8']
+          ]
+          })
+          .inline-block
+            .is-done-box
+            .calcugrid.sans
+  ```
 
-      ### Customisation
+  **Rendered code**
 
-      ```
-        //
-        // Calcuwords
-        //
++exercise({
+  name: 'calcuwords-haha',
+  description: 'Calcuwords exercises',
+  firstTimeDoneMessage: 'Bravo!'
+  })
+  .row
+    .progress-box
+    .col-md-6.col.col-xs-12.well
+      +calcuwords({
+          name: 'plain-addition',
+          words: [
+            ['1', '2', '+'],
+            ['', '9', ''],
+            ['2?', '1?', ''],
+          ],
+          linesAt: [2]
+        })
+        .inline-block
+          .is-done-box
+          .calcugrid.sans
+    .col-md-6.col.col-xs-12.well
+      +calcuwords({
+          name: 'more rows',
+          words: [
+            ['3', '2', '7', '+'],
+            [' ', '8', '8', ''],
+            ['2', '9', '7', ''],
+            ['7?', '1?', '2?', ''],
+          ],
+          linesAt: [3]
+        })
+        .inline-block
+          .is-done-box
+          .calcugrid.sans
+    .col-md-6.col.col-xs-12.well
+      +calcuwords({
+          name: 'pe-lung',
+          words: [
+            ['There are ', '1?', '2?', 'stars on the EU flag']
+          ]
+        })
+        .inline-block
+          .is-done-box
+          .calcugrid.sans
+    .col-md-6.col.col-xs-12.well
+      +calcuwords({
+        name: 'operators-exercise',
+        words: [
+          ['2', '*?', '(?', '2 + 2', ')?', '= 8']
+        ]
+        })
+        .inline-block
+          .is-done-box
+          .calcugrid.sans
+:markdown
 
-        .calcuwords-grid
-          .calcuwords-block
-            min-width: 30px
-            height: 30px
-            font-size: 25px
-            margin: 2px 2px
-            padding: 0
-          .calcuwords-block-editable
-            input
-              width: 30px
-              height: 30px
+  ### Customisation
 
-              border: 1px solid #76B1C0
-              border-radius: 20%
-              color: #76B1C0
+  ```
+    //
+    // Calcuwords
+    //
 
-              text-align: center
-              font-size: 22px
-              padding: 0
-          .calcuwords-block-operator
-            input
-              border-radius: 50% !important
-              font-size: 20px
+    .calcuwords-grid
+      .calcuwords-block
+        min-width: 30px
+        height: 30px
+        font-size: 25px
+        margin: 2px 2px
+        padding: 0
+      .calcuwords-block-editable
+        input
+          width: 30px
+          height: 30px
 
-          .calcuwords-block-ok
-            input
-              border: 1px solid #0A0 !important
-              color: #0A0 !important
-          hr
-            height: 2px
-            background-color: black
-            padding: 0
-            margin: 0
-      ```
+          border: 1px solid #76B1C0
+          border-radius: 20%
+          color: #76B1C0
 
-      ### Candy for your productivity: Calcuwords Generator
+          text-align: center
+          font-size: 22px
+          padding: 0
+      .calcuwords-block-operator
+        input
+          border-radius: 50% !important
+          font-size: 20px
 
-      Guess what? There is a generator for the mixin.
+      .calcuwords-block-ok
+        input
+          border: 1px solid #0A0 !important
+          color: #0A0 !important
+      hr
+        height: 2px
+        background-color: black
+        padding: 0
+        margin: 0
+  ```
 
-      1. Design the exercise on a sheet of squared paper or in a spreadsheet
-      2. Fill in the with
-         * the name for the exercise
-         * number of columns
-         * number of rows
-      3. Write the numbers, letters and operators inside the blue grid below.
-          For numbers / letters / operators that you need the student to fill in
-          add a `?` sign after it. I.e. '8' will output a static label, and '8?'
-          will output an input text box that validates when the user enters '8'.
-      4. Copy and paste the generated mixin declaration in your code
+  ### Candy for your productivity: Calcuwords Generator
+
+  Guess what? There is a generator for the mixin.
+
+  1. Design the exercise on a sheet of squared paper or in a spreadsheet
+  2. Fill in the with
+     * the name for the exercise
+     * number of columns
+     * number of rows
+  3. Write the numbers, letters and operators inside the blue grid below.
+      For numbers / letters / operators that you need the student to fill in
+      add a `?` sign after it. I.e. '8' will output a static label, and '8?'
+      will output an input text box that validates when the user enters '8'.
+  4. Copy and paste the generated mixin declaration in your code
 
 
-    //-
-    //- GENERATOR FOR CALCUWORD
-    //-
-    #calcugenerator
-      | The name for the exercise is:&nbsp;
-      .inline-block
-        +textline({name: 'calcugenerator-name', type: 'text',  pattern:/^[\w|\-|_]+$/, size:8, max: 20, dontSave: true})
-      | &nbsp; and it has:&nbsp;
-      .inline-block
-        +textline({name: 'calcugenerator-columns', type: 'numeric', pattern:/^\d+$/, size:2, max: 2, dontSave: true})
-      | &nbsp; columns and : &nbsp;
-      .inline-block
-        +textline({name: 'calcugenerator-rows', type: 'numeric',  pattern:/\d+$/, size:2, max: 2, dontSave: true})
-      | &nbsp; rows
-      .row
-        .col-xs-12.col-md-6
-          .cg-grid.sans
-        .col-xs-12.col-md-6
-          pre.cg-output
-    script.
-      var $cg     = $('#calcugenerator');
-      var $grid   = $cg.find('.cg-grid');
-      var $output = $cg.find('.cg-output');
+//-
+//- GENERATOR FOR CALCUWORD
+//-
+#calcugenerator
+  | The name for the exercise is:&nbsp;
+  .inline-block
+    +textline({name: 'calcugenerator-name', type: 'text',  pattern:/^[\w|\-|_]+$/, size:8, max: 20, dontSave: true})
+  | &nbsp; and it has:&nbsp;
+  .inline-block
+    +textline({name: 'calcugenerator-columns', type: 'numeric', pattern:/^\d+$/, size:2, max: 2, dontSave: true})
+  | &nbsp; columns and : &nbsp;
+  .inline-block
+    +textline({name: 'calcugenerator-rows', type: 'numeric',  pattern:/\d+$/, size:2, max: 2, dontSave: true})
+  | &nbsp; rows
+  .row
+    .col-xs-12.col-md-6
+      .cg-grid.sans
+    .col-xs-12.col-md-6
+      pre.cg-output
+script.
+  var $cg     = $('#calcugenerator');
+  var $grid   = $cg.find('.cg-grid');
+  var $output = $cg.find('.cg-output');
 
-      var cols = 3;
-      var rows = 3;
-      var exName = 'REPLACE_THIS';
+  var cols = 3;
+  var rows = 3;
+  var exName = 'REPLACE_THIS';
 
-      var matwix = [];
-      var linesSelected = [];
+  var matwix = [];
+  var linesSelected = [];
 
-      var reGenerateInputs = function() {
-        rows = parseInt(rows);
-        cols = parseInt(cols);
+  var reGenerateInputs = function() {
+    rows = parseInt(rows);
+    cols = parseInt(cols);
 
-        if(isNaN(rows) || isNaN(cols)) {return;}
+    if(isNaN(rows) || isNaN(cols)) {return;}
 
-        var i = 0;
-        var j = 0;
+    var i = 0;
+    var j = 0;
 
-        $grid.empty();
+    $grid.empty();
 
-        var $row;
-        while (i < rows) {
-          matwix[i] = matwix[i] || []
-          $row = $('<div></div>');
+    var $row;
+    while (i < rows) {
+      matwix[i] = matwix[i] || []
+      $row = $('<div></div>');
 
-          j = 0;
-          while (j < cols) {
-            matwix[i][j] = matwix[i][j] || '';
-            var $input = $('<input>').
-                  data('row', i).
-                  data('col', j).
-                  val(matwix[i][j]).blur(function(e) {
-                    reGenerateOuput();
-                  });
-            $row.append($input);
-            j++;
-          }
+      j = 0;
+      while (j < cols) {
+        matwix[i][j] = matwix[i][j] || '';
+        var $input = $('<input>').
+              data('row', i).
+              data('col', j).
+              val(matwix[i][j]).blur(function(e) {
+                reGenerateOuput();
+              });
+        $row.append($input);
+        j++;
+      }
 
-          var $lineButton = $('<div></div>').
-            addClass('add-line-button').
-            width(cols * 46 + 'px').
-            data('row', i).
-            click(function(){
-              $(this).toggleClass('add-line-button-selected');
-              updateLinesSelected();
-            });
-
-          if(linesSelected[i]) {
-            $lineButton.addClass('add-line-button-selected');
-          }
-
-          $row.append('<div class="clear-fix"></div>');
-          $row.append($lineButton);
-          $row.append('<div class="clear-fix"></div>');
-          $grid.append($row);
-          i++;
-        }
-
-        reGenerateOuput();
-      };
-
-      var refreshMatwix = function() {
-        $inputs = $grid.find('input');
-
-        $inputs.each(function (id) {
-          $el = $inputs.eq(id);
-          matwix[$el.data('row')][$el.data('col')] = $el.val();
+      var $lineButton = $('<div></div>').
+        addClass('add-line-button').
+        width(cols * 46 + 'px').
+        data('row', i).
+        click(function(){
+          $(this).toggleClass('add-line-button-selected');
+          updateLinesSelected();
         });
-      };
 
-      var updateLinesSelected = function () {
-        linesSelected = [];
-        $lines = $grid.find('.add-line-button-selected');
-        $lines.each(function(id) {
-          linesSelected[$lines.eq(id).data('row')] = true
-        });
+      if(linesSelected[i]) {
+        $lineButton.addClass('add-line-button-selected');
+      }
+
+      $row.append('<div class="clear-fix"></div>');
+      $row.append($lineButton);
+      $row.append('<div class="clear-fix"></div>');
+      $grid.append($row);
+      i++;
+    }
+
+    reGenerateOuput();
+  };
+
+  var refreshMatwix = function() {
+    $inputs = $grid.find('input');
+
+    $inputs.each(function (id) {
+      $el = $inputs.eq(id);
+      matwix[$el.data('row')][$el.data('col')] = $el.val();
+    });
+  };
+
+  var updateLinesSelected = function () {
+    linesSelected = [];
+    $lines = $grid.find('.add-line-button-selected');
+    $lines.each(function(id) {
+      linesSelected[$lines.eq(id).data('row')] = true
+    });
+    reGenerateOuput();
+  };
+
+  var reGenerateOuput = function() {
+    var i, j;
+
+    refreshMatwix();
+
+    var words = '[\n';
+    for(i = 0; i < matwix.length; i++) {
+      words += '    ['
+      for(j = 0; j < matwix[i].length - 1; j++) {
+        words += '\'' + matwix[i][j] + '\', ';
+      }
+      words += '\'' + matwix[i][j]+ '\'';
+      words +='],\n'
+    }
+    words = words.slice(0, -1) + '\n  ]';
+
+    var linesAt = '';
+
+    i = 0;
+    while(i < linesSelected.length) {
+      if(linesSelected[i]) {
+        linesAt += (1 + i) + ', '
+      }
+      i++;
+    }
+    linesAt = '[' + linesAt.slice(0, -2) + ']';
+
+    var output = '';
+    output += '+calcuwords({\n';
+    output += '  name: \'' + $.trim(exName) + '\', \n';
+    output += '  words: ' + words + ',\n';
+    output += '  linesAt: ' + linesAt + ',\n';
+    output += '  })\n';
+    output += '  .progress-box\n';
+    output += '  .calcugrid\n';
+
+    $output.text(output);
+  };
+
+  window.App.on('exercise:state:changed', function(state, exercise) {
+    switch (exercise.name) {
+      case 'calcugenerator-columns':
+        cols = parseInt(state);
+        reGenerateInputs();
+        break;
+      case 'calcugenerator-rows':
+        rows = parseInt(state);
+        reGenerateInputs();
+        break;
+      case 'calcugenerator-name':
+        exName = state;
         reGenerateOuput();
-      };
+        break;
+    }
+  });
 
-      var reGenerateOuput = function() {
-        var i, j;
+  reGenerateInputs();
 
-        refreshMatwix();
-
-        var words = '[\n';
-        for(i = 0; i < matwix.length; i++) {
-          words += '    ['
-          for(j = 0; j < matwix[i].length - 1; j++) {
-            words += '\'' + matwix[i][j] + '\', ';
-          }
-          words += '\'' + matwix[i][j]+ '\'';
-          words +='],\n'
-        }
-        words = words.slice(0, -1) + '\n  ]';
-
-        var linesAt = '';
-
-        i = 0;
-        while(i < linesSelected.length) {
-          if(linesSelected[i]) {
-            linesAt += (1 + i) + ', '
-          }
-          i++;
-        }
-        linesAt = '[' + linesAt.slice(0, -2) + ']';
-
-        var output = '';
-        output += '+calcuwords({\n';
-        output += '  name: \'' + $.trim(exName) + '\', \n';
-        output += '  words: ' + words + ',\n';
-        output += '  linesAt: ' + linesAt + ',\n';
-        output += '  })\n';
-        output += '  .progress-box\n';
-        output += '  .calcugrid\n';
-
-        $output.text(output);
-      };
-
-      window.App.on('exercise:state:changed', function(state, exercise) {
-        switch (exercise.name) {
-          case 'calcugenerator-columns':
-            cols = parseInt(state);
-            reGenerateInputs();
-            break;
-          case 'calcugenerator-rows':
-            rows = parseInt(state);
-            reGenerateInputs();
-            break;
-          case 'calcugenerator-name':
-            exName = state;
-            reGenerateOuput();
-            break;
-        }
-      });
-
-      reGenerateInputs();
-
-    .panel.panel-warning
-      .panel-heading **ACHTUNG! ACHTUNG**
-      .panel-body
-        ul
-          li Please note that the generator does not save state!
-          li Resizing on the fly works, but was not tested and can lead to
-            | uncertain results.
-          li Navigate with tab key (Shift + Tab to go backwards)
+.panel.panel-warning
+  .panel-heading **ACHTUNG! ACHTUNG**
+  .panel-body
+    ul
+      li Please note that the generator does not save state!
+      li Resizing on the fly works, but was not tested and can lead to
+        | uncertain results.
+      li Navigate with tab key (Shift + Tab to go backwards)

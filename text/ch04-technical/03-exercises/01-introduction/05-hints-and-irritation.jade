@@ -1,24 +1,7 @@
-+article("Hints and irritation")
-  +section("Hints and irritation")
-    :markdown
-      # Hints and irritation
-      ```
-        +exercise
-          .score-box
-          +pickone(9, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], {
-            name: 'irritation-sample',
-            irritationLevel: 5,
-            hints: {
-              3: 'Slowly go to number 9',
-              6: 'On your way, yey'
-            },
-            firstTimeDoneMessage: 'Good one, number 9!',
-            doneMessage: '9 again!'
-
-            })
-            p Try each option and watch the avatar
-      ```
-
++title("Hints and irritation")
+:markdown
+  # Hints and irritation
+  ```
     +exercise
       .score-box
       +pickone(9, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], {
@@ -33,5 +16,21 @@
 
         })
         p Try each option and watch the avatar
+  ```
 
-    script.
++exercise
+  .score-box
+  +pickone(9, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], {
+    name: 'irritation-sample',
+    irritationLevel: 5,
+    hints: {
+      3: 'Slowly go to number 9',
+      6: 'On your way, yey'
+    },
+    firstTimeDoneMessage: 'Good one, number 9!',
+    doneMessage: '9 again!'
+
+    })
+    p Try each option and watch the avatar
+
+script.

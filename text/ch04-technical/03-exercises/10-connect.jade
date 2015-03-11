@@ -1,275 +1,275 @@
-+article("Connect","Bipartite matching exercises")
-  +section("Connect")
-    :markdown
-      ## Connect
++title("Connect")
++subtitle("Bipartite matching exercises")
+:markdown
+  ## Connect
 
-      The connect-points widget allows the user to drag connections between connection points.
+  The connect-points widget allows the user to drag connections between connection points.
 
-      ### Usage:
-      ```jade
-      +connect-points(options)
-        .connector(data-group='a', data-name='p1')
-        .connector(data-group='a')
-        ...
-        .connector(data-group='a')
-        div(data-group='b')
-          .connector
-          ...
-          .connector
-      ```
+  ### Usage:
+  ```jade
+  +connect-points(options)
+    .connector(data-group='a', data-name='p1')
+    .connector(data-group='a')
+    ...
+    .connector(data-group='a')
+    div(data-group='b')
+      .connector
+      ...
+      .connector
+  ```
 
-      * Each `.connector` represents a connection bullet (like this: <div class='connect-points dummy'><div class='connector'/></div>)
-      * Each `.connector` must belong to a group and can optionally have a unique name
-      * The user can draw connections between `.connector`s of different groups
-      * The group can be specified either by assigning a `data-group` to the `.connector` or by enclosing the `.connector` in a container with `data-group` set
-      * The name can be optionally specified by assigning `data-name` to the `.connector`
-      * `.connector`s can be pinned to the sides of their parent elements with `.pin-left`, `.pin-right`, `.pin-top`, `.pin-bottom`. If `.pin-*` are used on the `.connector`, `.pin-to` must also be added to its parent element
-      * Each `.connector` can (and should) have an `.extension` element in its parent chain that allows the element's drag area to be extended. If `.extension` is missing and `.pin-to` is present, then `.pin-to` is also considered an extension. Multiple `.connector`s in the same `.extension` represents undefined behaviour.
-      * Each `.connector` and its extension gets `.hover` when a valid drag hovers over it.
+  * Each `.connector` represents a connection bullet (like this: <div class='connect-points dummy'><div class='connector'/></div>)
+  * Each `.connector` must belong to a group and can optionally have a unique name
+  * The user can draw connections between `.connector`s of different groups
+  * The group can be specified either by assigning a `data-group` to the `.connector` or by enclosing the `.connector` in a container with `data-group` set
+  * The name can be optionally specified by assigning `data-name` to the `.connector`
+  * `.connector`s can be pinned to the sides of their parent elements with `.pin-left`, `.pin-right`, `.pin-top`, `.pin-bottom`. If `.pin-*` are used on the `.connector`, `.pin-to` must also be added to its parent element
+  * Each `.connector` can (and should) have an `.extension` element in its parent chain that allows the element's drag area to be extended. If `.extension` is missing and `.pin-to` is present, then `.pin-to` is also considered an extension. Multiple `.connector`s in the same `.extension` represents undefined behaviour.
+  * Each `.connector` and its extension gets `.hover` when a valid drag hovers over it.
 
 
-      ### Options:
-      * `connections`: list of 2 element arrays of connector names representing correct connections
-      * `lineStyle`: a hash of SVG attributes to define the connector line's style. defaults to `{ 'stroke': '#1E6BBA' }`
-      * `correctLineStyle`: a hash of SVG attributes to define the connector line's style when it's a correct answer.
-      * `orientation`: `'vertical'`/`'horizontal'`/`'any'` the preffered orientation of the connector lines. defaults to `any`
+  ### Options:
+  * `connections`: list of 2 element arrays of connector names representing correct connections
+  * `lineStyle`: a hash of SVG attributes to define the connector line's style. defaults to `{ 'stroke': '#1E6BBA' }`
+  * `correctLineStyle`: a hash of SVG attributes to define the connector line's style when it's a correct answer.
+  * `orientation`: `'vertical'`/`'horizontal'`/`'any'` the preffered orientation of the connector lines. defaults to `any`
 
-      ### Example 1:
+  ### Example 1:
 
-      **Code**
-      ```jade
-      +connect-points({
-        name: 'arab-to-roman',
-        orientation: 'horizontal',
-        connections: [
-          ['a1', 'r1'],
-          ['a5', 'r5'],
-          ['a9', 'r9'],
-        ]
-      })
-        .progress-box
-        .score-box
-        +statement
-          p Match the arab numerals with the roman numerals
-        .row
-          //first group
-          .col-xs-5(data-group='arab')
-            .choice.pin-to
-              .connector(data-name='a1').pin-right
-              | 1
-            .choice.pin-to
-              .connector(data-name='a5').pin-right
-              | 5
-            .choice.pin-to
-              .connector(data-name='a9').pin-right
-              | 9
-          //space for the lines
-          .col-xs-2 
-          //second group
-          .col-xs-5(data-group='roman')
-            .choice.pin-to
-              .connector(data-name='r9').pin-left
-              | IX
-            .choice.pin-to
-              .connector(data-name='r5').pin-left
-              | V
-            .choice.pin-to
-              .connector(data-name='r1').pin-left
-              | I
-      ```
+  **Code**
+  ```jade
+  +connect-points({
+    name: 'arab-to-roman',
+    orientation: 'horizontal',
+    connections: [
+      ['a1', 'r1'],
+      ['a5', 'r5'],
+      ['a9', 'r9'],
+    ]
+  })
+    .progress-box
+    .score-box
+    +statement
+      p Match the arab numerals with the roman numerals
+    .row
+      //first group
+      .col-xs-5(data-group='arab')
+        .choice.pin-to
+          .connector(data-name='a1').pin-right
+          | 1
+        .choice.pin-to
+          .connector(data-name='a5').pin-right
+          | 5
+        .choice.pin-to
+          .connector(data-name='a9').pin-right
+          | 9
+      //space for the lines
+      .col-xs-2 
+      //second group
+      .col-xs-5(data-group='roman')
+        .choice.pin-to
+          .connector(data-name='r9').pin-left
+          | IX
+        .choice.pin-to
+          .connector(data-name='r5').pin-left
+          | V
+        .choice.pin-to
+          .connector(data-name='r1').pin-left
+          | I
+  ```
 
-      **Style**
-      ```stylus
-      .connect-points.arab-to-roman
-        .choice
-          width: 100%
-          background-color: #5f9edf
-          color: white
-          margin-bottom: 1em
-          padding: 0.3em 1em
+  **Style**
+  ```stylus
+  .connect-points.arab-to-roman
+    .choice
+      width: 100%
+      background-color: #5f9edf
+      color: white
+      margin-bottom: 1em
+      padding: 0.3em 1em
 
-        .choice.hover
-          background-color: #5187bf // a bit darker
-          
-        div[data-group='arab'] .choice
-          text-align: right
+    .choice.hover
+      background-color: #5187bf // a bit darker
+      
+    div[data-group='arab'] .choice
+      text-align: right
 
-      ```
+  ```
 
-      **Rendered exercise**
+  **Rendered exercise**
 
-    +connect-points({
-      name: 'arab-to-roman',
-      orientation: 'horizontal',
-      connections: [
-        ['a1', 'r1'],
-        ['a5', 'r5'],
-        ['a9', 'r9'],
-      ]
-    })
-      .progress-box
-      .score-box
-      +statement
-        p Match the arab numerals with the roman numerals
-      .row
-        //first group
-        .col-xs-5(data-group='arab')
-          .choice.pin-to
-            .connector(data-name='a1').pin-right
-            | 1
-          .choice.pin-to
-            .connector(data-name='a5').pin-right
-            | 5
-          .choice.pin-to
-            .connector(data-name='a9').pin-right
-            | 9
-        //space for the lines
-        .col-xs-2 
-        //second group
-        .col-xs-5(data-group='roman')
-          .choice.pin-to
-            .connector(data-name='r9').pin-left
-            | IX
-          .choice.pin-to
-            .connector(data-name='r5').pin-left
-            | V
-          .choice.pin-to
-            .connector(data-name='r1').pin-left
-            | I
++connect-points({
+  name: 'arab-to-roman',
+  orientation: 'horizontal',
+  connections: [
+    ['a1', 'r1'],
+    ['a5', 'r5'],
+    ['a9', 'r9'],
+  ]
+})
+  .progress-box
+  .score-box
+  +statement
+    p Match the arab numerals with the roman numerals
+  .row
+    //first group
+    .col-xs-5(data-group='arab')
+      .choice.pin-to
+        .connector(data-name='a1').pin-right
+        | 1
+      .choice.pin-to
+        .connector(data-name='a5').pin-right
+        | 5
+      .choice.pin-to
+        .connector(data-name='a9').pin-right
+        | 9
+    //space for the lines
+    .col-xs-2 
+    //second group
+    .col-xs-5(data-group='roman')
+      .choice.pin-to
+        .connector(data-name='r9').pin-left
+        | IX
+      .choice.pin-to
+        .connector(data-name='r5').pin-left
+        | V
+      .choice.pin-to
+        .connector(data-name='r1').pin-left
+        | I
 
-    :markdown
-      ### Example 2:
+:markdown
+  ### Example 2:
 
-      **Code**
-      ```jade
-      +connect-points({
-        name: 'planets-to-labels',
-        orientation: 'vertical',
-        correctLineStyle: { 'stroke': '#069e06' },
-        connections: [
-          ['mars-img', 'mars-label'],
-          ['mercury-img', 'mercury-label'],
-          ['phobos-img', 'phobos-label'],
-          ['io-img', 'io-label']
-        ]
-      })
-        .progress-box
-        .score-box
-        +statement
-          p Match the celestial bodies with their names
-        .row(data-group='planets')
-          .planet.col-xs-3.pin-to
-            +img('http://upload.wikimedia.org/wikipedia/commons/8/88/Reprocessed_Mariner_10_image_of_Mercury.jpg')
-            .connector(data-name='mercury-img').pin-bottom
+  **Code**
+  ```jade
+  +connect-points({
+    name: 'planets-to-labels',
+    orientation: 'vertical',
+    correctLineStyle: { 'stroke': '#069e06' },
+    connections: [
+      ['mars-img', 'mars-label'],
+      ['mercury-img', 'mercury-label'],
+      ['phobos-img', 'phobos-label'],
+      ['io-img', 'io-label']
+    ]
+  })
+    .progress-box
+    .score-box
+    +statement
+      p Match the celestial bodies with their names
+    .row(data-group='planets')
+      .planet.col-xs-3.pin-to
+        +img('http://upload.wikimedia.org/wikipedia/commons/8/88/Reprocessed_Mariner_10_image_of_Mercury.jpg')
+        .connector(data-name='mercury-img').pin-bottom
 
-          .planet.col-xs-3.pin-to
-            +img('http://upload.wikimedia.org/wikipedia/commons/7/7b/Io_highest_resolution_true_color.jpg')
-            .connector(data-name='io-img').pin-bottom
+      .planet.col-xs-3.pin-to
+        +img('http://upload.wikimedia.org/wikipedia/commons/7/7b/Io_highest_resolution_true_color.jpg')
+        .connector(data-name='io-img').pin-bottom
 
-          .planet.col-xs-3.pin-to
-            +img('http://upload.wikimedia.org/wikipedia/commons/8/82/Mars_and_Syrtis_Major_-_GPN-2000-000923.jpg')
-            .connector(data-name='mars-img').pin-bottom
+      .planet.col-xs-3.pin-to
+        +img('http://upload.wikimedia.org/wikipedia/commons/8/82/Mars_and_Syrtis_Major_-_GPN-2000-000923.jpg')
+        .connector(data-name='mars-img').pin-bottom
 
-          .planet.col-xs-3.pin-to
-            +img('http://upload.wikimedia.org/wikipedia/commons/5/5c/Phobos_colour_2008.jpg')
-            .connector(data-name='phobos-img').pin-bottom
+      .planet.col-xs-3.pin-to
+        +img('http://upload.wikimedia.org/wikipedia/commons/5/5c/Phobos_colour_2008.jpg')
+        .connector(data-name='phobos-img').pin-bottom
 
-        .spacer
+    .spacer
 
-        .row(data-group='labels')
-          .col-xs-2
-            .planet-label.pin-to Mars
-              .connector(data-name='mars-label').pin-top
-          .col-xs-2
-            .planet-label.pin-to Io
-              .connector(data-name='io-label').pin-top
-          .col-xs-2
-            .planet-label.pin-to Venus
-              .connector.pin-top
-          .col-xs-2
-            .planet-label.pin-to Mercury
-              .connector(data-name='mercury-label').pin-top
-          .col-xs-2
-            .planet-label.pin-to Phobos 
-              .connector(data-name='phobos-label').pin-top
-          .col-xs-2
-            .planet-label.pin-to Pluto
-              .connector.pin-top
-      ```
+    .row(data-group='labels')
+      .col-xs-2
+        .planet-label.pin-to Mars
+          .connector(data-name='mars-label').pin-top
+      .col-xs-2
+        .planet-label.pin-to Io
+          .connector(data-name='io-label').pin-top
+      .col-xs-2
+        .planet-label.pin-to Venus
+          .connector.pin-top
+      .col-xs-2
+        .planet-label.pin-to Mercury
+          .connector(data-name='mercury-label').pin-top
+      .col-xs-2
+        .planet-label.pin-to Phobos 
+          .connector(data-name='phobos-label').pin-top
+      .col-xs-2
+        .planet-label.pin-to Pluto
+          .connector.pin-top
+  ```
 
-      **Style**
-      ```stylus
-      .connect-points.planets-to-labels
-        .planet-label
-          width: 100%
-          background-color: #5f9edf
-          color: white
-          margin: 1em
-          padding: 0.3em 0
-          text-align: center
+  **Style**
+  ```stylus
+  .connect-points.planets-to-labels
+    .planet-label
+      width: 100%
+      background-color: #5f9edf
+      color: white
+      margin: 1em
+      padding: 0.3em 0
+      text-align: center
 
-        .planet-label.hover
-          background-color: #5187bf // a bit darker
+    .planet-label.hover
+      background-color: #5187bf // a bit darker
 
-        .planet.hover
-          opacity: 0.7
+    .planet.hover
+      opacity: 0.7
 
-        .spacer
-          height: 5em
-      ```
+    .spacer
+      height: 5em
+  ```
 
-      **Rendered exercise**
+  **Rendered exercise**
 
-    +connect-points({
-      name: 'planets-to-labels',
-      orientation: 'vertical',
-      correctLineStyle: { 'stroke': '#069e06' },
-      connections: [
-        ['mars-img', 'mars-label'],
-        ['mercury-img', 'mercury-label'],
-        ['phobos-img', 'phobos-label'],
-        ['io-img', 'io-label']
-      ]
-    })
-      .progress-box
-      .score-box
-      +statement
-        p Match the celestial bodies with their names
-      .row(data-group='planets')
-        .planet.col-xs-3.pin-to
-          +img('http://upload.wikimedia.org/wikipedia/commons/8/88/Reprocessed_Mariner_10_image_of_Mercury.jpg')
-          .connector(data-name='mercury-img').pin-bottom
++connect-points({
+  name: 'planets-to-labels',
+  orientation: 'vertical',
+  correctLineStyle: { 'stroke': '#069e06' },
+  connections: [
+    ['mars-img', 'mars-label'],
+    ['mercury-img', 'mercury-label'],
+    ['phobos-img', 'phobos-label'],
+    ['io-img', 'io-label']
+  ]
+})
+  .progress-box
+  .score-box
+  +statement
+    p Match the celestial bodies with their names
+  .row(data-group='planets')
+    .planet.col-xs-3.pin-to
+      +img('http://upload.wikimedia.org/wikipedia/commons/8/88/Reprocessed_Mariner_10_image_of_Mercury.jpg')
+      .connector(data-name='mercury-img').pin-bottom
 
-        .planet.col-xs-3.pin-to
-          +img('http://upload.wikimedia.org/wikipedia/commons/7/7b/Io_highest_resolution_true_color.jpg')
-          .connector(data-name='io-img').pin-bottom
+    .planet.col-xs-3.pin-to
+      +img('http://upload.wikimedia.org/wikipedia/commons/7/7b/Io_highest_resolution_true_color.jpg')
+      .connector(data-name='io-img').pin-bottom
 
-        .planet.col-xs-3.pin-to
-          +img('http://upload.wikimedia.org/wikipedia/commons/8/82/Mars_and_Syrtis_Major_-_GPN-2000-000923.jpg')
-          .connector(data-name='mars-img').pin-bottom
+    .planet.col-xs-3.pin-to
+      +img('http://upload.wikimedia.org/wikipedia/commons/8/82/Mars_and_Syrtis_Major_-_GPN-2000-000923.jpg')
+      .connector(data-name='mars-img').pin-bottom
 
-        .planet.col-xs-3.pin-to
-          +img('http://upload.wikimedia.org/wikipedia/commons/5/5c/Phobos_colour_2008.jpg')
-          .connector(data-name='phobos-img').pin-bottom
+    .planet.col-xs-3.pin-to
+      +img('http://upload.wikimedia.org/wikipedia/commons/5/5c/Phobos_colour_2008.jpg')
+      .connector(data-name='phobos-img').pin-bottom
 
-      .spacer
+  .spacer
 
-      .row(data-group='labels')
-        .col-xs-2
-          .planet-label.pin-to Mars
-            .connector(data-name='mars-label').pin-top
-        .col-xs-2
-          .planet-label.pin-to Io
-            .connector(data-name='io-label').pin-top
-        .col-xs-2
-          .planet-label.pin-to Venus
-            .connector.pin-top
-        .col-xs-2
-          .planet-label.pin-to Mercury
-            .connector(data-name='mercury-label').pin-top
-        .col-xs-2
-          .planet-label.pin-to Phobos 
-            .connector(data-name='phobos-label').pin-top
-        .col-xs-2
-          .planet-label.pin-to Pluto
-            .connector.pin-top
+  .row(data-group='labels')
+    .col-xs-2
+      .planet-label.pin-to Mars
+        .connector(data-name='mars-label').pin-top
+    .col-xs-2
+      .planet-label.pin-to Io
+        .connector(data-name='io-label').pin-top
+    .col-xs-2
+      .planet-label.pin-to Venus
+        .connector.pin-top
+    .col-xs-2
+      .planet-label.pin-to Mercury
+        .connector(data-name='mercury-label').pin-top
+    .col-xs-2
+      .planet-label.pin-to Phobos 
+        .connector(data-name='phobos-label').pin-top
+    .col-xs-2
+      .planet-label.pin-to Pluto
+        .connector.pin-top

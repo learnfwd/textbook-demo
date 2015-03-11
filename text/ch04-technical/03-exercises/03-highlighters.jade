@@ -1,128 +1,128 @@
-+article("Highlighter exercises","+select-to-highlight")
-  +section("Select-to-highlight")
-    :markdown
-      ## Select to Highlight
++title("Highlighter exercises")
++subtitle("+select-to-highlight")
+:markdown
+  ## Select to Highlight
 
-      ### Description
+  ### Description
 
-      **Select-to-Highlight** (`+select-to-highlight`) is a type of exercise where the user
-      can select and deselect elements. Selected elements recieve a class (see `selectedClass` below).
-      You can have any kind of content, as long as the `good` and `bad` CSS classes are used.
+  **Select-to-Highlight** (`+select-to-highlight`) is a type of exercise where the user
+  can select and deselect elements. Selected elements recieve a class (see `selectedClass` below).
+  You can have any kind of content, as long as the `good` and `bad` CSS classes are used.
 
-      ### Parameters
+  ### Parameters
 
-      * `scoreN`: N from the scoring section below. defaults to the number of *good* elements
-      * `startingScore`: the score before clicking on anything. defaults to `0`
-      * `selectedClass`: the class to add to selected elements. defaults to `selected`
+  * `scoreN`: N from the scoring section below. defaults to the number of *good* elements
+  * `startingScore`: the score before clicking on anything. defaults to `0`
+  * `selectedClass`: the class to add to selected elements. defaults to `selected`
 
-      ### Scoring
+  ### Scoring
 
-      * Score starts at `startingScore`
-      * Each selected *good* element adds 100/N to the score
-      * Each selected *bad* element substracts 100/N from the score
-      * Score cannot be lower than 0
-      * Score cannot be higher than 100
-      * If `scoreN` and `startingScore` are left to their defaults, the score is 100 when all *good* elements are selected and no *bad* element is selected
+  * Score starts at `startingScore`
+  * Each selected *good* element adds 100/N to the score
+  * Each selected *bad* element substracts 100/N from the score
+  * Score cannot be lower than 0
+  * Score cannot be higher than 100
+  * If `scoreN` and `startingScore` are left to their defaults, the score is 100 when all *good* elements are selected and no *bad* element is selected
 
-      ### Example (source)
-      
-      ```jade
-      +exercise({name:'ch03-highlighters-e1')
-        +statement
-          h4 Exercise: Final 'a'
-          .progress-box
-          | Click or tap  letter <strong>a</strong> at the end of the words below.
-        +select-to-highlight
-            div
-              span.bad mamm
-              span.good a
-            div
-              span.bad Ann
-              span.good a
-            div
-              span.bad pupil
-            div
-              span.bad parent
-            div
-              span.bad principal
-      ```
+  ### Example (source)
+  
+  ```jade
+  +exercise({name:'ch03-highlighters-e1')
+    +statement
+      h4 Exercise: Final 'a'
+      .progress-box
+      | Click or tap  letter <strong>a</strong> at the end of the words below.
+    +select-to-highlight
+        div
+          span.bad mamm
+          span.good a
+        div
+          span.bad Ann
+          span.good a
+        div
+          span.bad pupil
+        div
+          span.bad parent
+        div
+          span.bad principal
+  ```
 
-    p Rendered sample:
+p Rendered sample:
 
-    +exercise({name:'ch03-highlighters-e1'})
-      +statement
-        h4 Exercise: Final 'a'
-        .progress-box
-        | Click or tap  letter <strong>a</strong> at the end of the words below.
-      +select-to-highlight
-          div
-            span.bad mamm
-            span.good a
-          div
-            span.bad Ann
-            span.good a
-          div
-            span.bad pupil
-          div
-            span.bad parent
-          div
-            span.bad principal
++exercise({name:'ch03-highlighters-e1'})
+  +statement
+    h4 Exercise: Final 'a'
+    .progress-box
+    | Click or tap  letter <strong>a</strong> at the end of the words below.
+  +select-to-highlight
+      div
+        span.bad mamm
+        span.good a
+      div
+        span.bad Ann
+        span.good a
+      div
+        span.bad pupil
+      div
+        span.bad parent
+      div
+        span.bad principal
 
-    :markdown
-      As long as there are 'bad' and 'good' divs, anything can go inside, including divs and images
+:markdown
+  As long as there are 'bad' and 'good' divs, anything can go inside, including divs and images
 
-    pre.
-      +exercise({name:'ch03-highlighters-e2'})        
-        .progress-box
-        +statement
-          h4 Exercise:  Planets and satellites
-          | Select which one of the following are a satellites in the Solar System
-        +select-to-highlight
-          .row.container
-            .item.bad.col-md-3 Mercury
-              +img('http://upload.wikimedia.org/wikipedia/commons/8/88/Reprocessed_Mariner_10_image_of_Mercury.jpg')
-            .item.good.col-md-3 Io
-              +img('http://upload.wikimedia.org/wikipedia/commons/7/7b/Io_highest_resolution_true_color.jpg')
-            .item.bad.col-md-3 Mars
-              +img('http://upload.wikimedia.org/wikipedia/commons/8/82/Mars_and_Syrtis_Major_-_GPN-2000-000923.jpg')
-            .item.good.col-md-3 Phobos
-              +img('http://upload.wikimedia.org/wikipedia/commons/5/5c/Phobos_colour_2008.jpg')
-    p CSS:
-    pre.
-      .ch03-highlighters-e2 .row
-        background-color: #000
+pre.
+  +exercise({name:'ch03-highlighters-e2'})        
+    .progress-box
+    +statement
+      h4 Exercise:  Planets and satellites
+      | Select which one of the following are a satellites in the Solar System
+    +select-to-highlight
+      .row.container
+        .item.bad.col-md-3 Mercury
+          +img('http://upload.wikimedia.org/wikipedia/commons/8/88/Reprocessed_Mariner_10_image_of_Mercury.jpg')
+        .item.good.col-md-3 Io
+          +img('http://upload.wikimedia.org/wikipedia/commons/7/7b/Io_highest_resolution_true_color.jpg')
+        .item.bad.col-md-3 Mars
+          +img('http://upload.wikimedia.org/wikipedia/commons/8/82/Mars_and_Syrtis_Major_-_GPN-2000-000923.jpg')
+        .item.good.col-md-3 Phobos
+          +img('http://upload.wikimedia.org/wikipedia/commons/5/5c/Phobos_colour_2008.jpg')
+p CSS:
+pre.
+  .ch03-highlighters-e2 .row
+    background-color: #000
 
-      .ch03-highlighters-e2 .item
-        color: #fff
-        margin: 0
-        padding: 5px 10px
-        text-align: center
+  .ch03-highlighters-e2 .item
+    color: #fff
+    margin: 0
+    padding: 5px 10px
+    text-align: center
 
-      .ch03-highlighters-e2 img
-        opacity: .5
+  .ch03-highlighters-e2 img
+    opacity: .5
 
-      .ch03-highlighters-e2 .item.good.selected img
-        opacity: 1
+  .ch03-highlighters-e2 .item.good.selected img
+    opacity: 1
 
-      .ch03-highlighters-e2 .item.bad.selected img
-        opacity: 0.3
+  .ch03-highlighters-e2 .item.bad.selected img
+    opacity: 0.3
 
-    p Rendered sample:
+p Rendered sample:
 
-    +exercise({name:'ch03-highlighters-e2'})
-      +statement
-        h4 Exercise:  Planets and satellites
-        .progress-box
-        | Select which one of the following are a satellites in the Solar System
-        | Current score: &nbsp
-        span.score-box
-      +select-to-highlight
-        .row
-          .item.bad.col-md-3 Mercury
-            +img('http://upload.wikimedia.org/wikipedia/commons/8/88/Reprocessed_Mariner_10_image_of_Mercury.jpg')
-          .item.good.col-md-3 Io
-            +img('http://upload.wikimedia.org/wikipedia/commons/7/7b/Io_highest_resolution_true_color.jpg')
-          .item.bad.col-md-3 Mars
-            +img('http://upload.wikimedia.org/wikipedia/commons/8/82/Mars_and_Syrtis_Major_-_GPN-2000-000923.jpg')
-          .item.good.col-md-3 Phobos
-            +img('http://upload.wikimedia.org/wikipedia/commons/5/5c/Phobos_colour_2008.jpg')
++exercise({name:'ch03-highlighters-e2'})
+  +statement
+    h4 Exercise:  Planets and satellites
+    .progress-box
+    | Select which one of the following are a satellites in the Solar System
+    | Current score: &nbsp
+    span.score-box
+  +select-to-highlight
+    .row
+      .item.bad.col-md-3 Mercury
+        +img('http://upload.wikimedia.org/wikipedia/commons/8/88/Reprocessed_Mariner_10_image_of_Mercury.jpg')
+      .item.good.col-md-3 Io
+        +img('http://upload.wikimedia.org/wikipedia/commons/7/7b/Io_highest_resolution_true_color.jpg')
+      .item.bad.col-md-3 Mars
+        +img('http://upload.wikimedia.org/wikipedia/commons/8/82/Mars_and_Syrtis_Major_-_GPN-2000-000923.jpg')
+      .item.good.col-md-3 Phobos
+        +img('http://upload.wikimedia.org/wikipedia/commons/5/5c/Phobos_colour_2008.jpg')

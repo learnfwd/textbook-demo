@@ -1,30 +1,30 @@
-+article('2. Solving Exercises', 'Exercises and widgets')
-  +section
-    :markdown
-      # Solving Exercises
++title("2. Solving Exercises")
++subtitle("Exercises and widgets")
+:markdown
+  # Solving Exercises
 
-      Exercises are interactive elements in the page. There are more than 15 types of exercises, many of them showcased in this document. Actually, next pages show most important exercise types, you'll learn what is their structure, how to get the score and, of course how they can be used.
+  Exercises are interactive elements in the page. There are more than 15 types of exercises, many of them showcased in this document. Actually, next pages show most important exercise types, you'll learn what is their structure, how to get the score and, of course how they can be used.
 
-    .percent-50.pull-right.margin-for-right.bordered
-      +img('img/classroom2.jpg')
+.percent-50.pull-right.margin-for-right.bordered
+  +img('img/classroom2.jpg')
 
-    :markdown
-      You'll see that most of the time exercises offer feedback when you need it. Simple exercises can be combined in more complex ones, the score of the latter being computed as a function of the simple exercises results. A green bar shows the progress inside the exercise and the evolution is observed by the avatar (who also gives visual clues on how you're doing).
+:markdown
+  You'll see that most of the time exercises offer feedback when you need it. Simple exercises can be combined in more complex ones, the score of the latter being computed as a function of the simple exercises results. A green bar shows the progress inside the exercise and the evolution is observed by the avatar (who also gives visual clues on how you're doing).
 
-      **N.B.** Exercises automatically save their state locally in the browser. For this to work the browser needs to be in the normal navigation mode (that is not in private navigation mode). Besides, Internet Explorer developers decided not to allow data save when an application is open as a file directly (double click on *index.html* file, without a sever). Although we found a solution for this problem, we recommend to use Chrome or Firefox when using the textbook directly.
+  **N.B.** Exercises automatically save their state locally in the browser. For this to work the browser needs to be in the normal navigation mode (that is not in private navigation mode). Besides, Internet Explorer developers decided not to allow data save when an application is open as a file directly (double click on *index.html* file, without a sever). Although we found a solution for this problem, we recommend to use Chrome or Firefox when using the textbook directly.
 
-      ## Quiz
+  ## Quiz
 
-    +exercise({name: 'ex02'})
-      .progress-box
++exercise({name: 'ex02'})
+  .progress-box
 
-      +pickone(3, ['two or three', '+/- 5 or so', 'around 15'], {name: 'ex02po01', placement: 'top'})
-        .block
-          p How many exercise types are there in Learn Forward?
+  +pickone(3, ['two or three', '+/- 5 or so', 'around 15'], {name: 'ex02po01', placement: 'top'})
+    .block
+      p How many exercise types are there in Learn Forward?
 
-      +yesno({name: 'ex02yn01', answer: false})
-        p After the student solves an exercise, the result needs to be manually saved
+  +yesno({name: 'ex02yn01', answer: false})
+    p After the student solves an exercise, the result needs to be manually saved
 
-      +yesno({name: 'ex02yn02', answer: true})
-        p Usually exercises offer instant feedback that shows if you make progress or not
+  +yesno({name: 'ex02yn02', answer: true})
+    p Usually exercises offer instant feedback that shows if you make progress or not
 

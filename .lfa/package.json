@@ -1,0 +1,10 @@
+{
+  "name": "lfdemo",
+  "book": {
+    "title": "textbook-demo"
+  },
+  "keywords": [
+    "lfa-book"
+  ],
+  "projectPath": ".."
+}

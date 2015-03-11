@@ -1,82 +1,82 @@
-+article("1. Introduction", "About digital textbooks")
-  +section("Intro")
-    :markdown
-      # Introduction
++title("1. Introduction")
++subtitle("About digital textbooks")
+:markdown
+  # Introduction
 
-      ## What is this
+  ## What is this
 
-      This is a document explaining what *Learn Forward* is, what are its main features, how it can be used and what are possible next steps after you understand all of this.
+  This is a document explaining what *Learn Forward* is, what are its main features, how it can be used and what are possible next steps after you understand all of this.
 
-      The document itself is produced using only LFA technologies. We're eating our own food here :)
-      
-      Chapters one two and three are for users. Chapter 4 presents the tool, the concepts behnind it and how you can get to make your own textbook.
-
-
-      ## Paper vs. Digital
-
-    .aside-box.percent-50.pull-right
-      +three-d({
-        url: '3d/mug/mug.json',
-        name: 'intro-3d-example',
-        backgroundColor: '#f8ddb3',
-        ambientLight: '#606060',
-        lights: [
-          {
-            type: 'directional',
-            color: 0xf8ddb3, //to fit the background
-            position: [0, -1, 0], //from the bottom
-            intensity: 0.3, //pretty dim
-          },
-          {
-            type: 'directional',
-            position: [0, 0, 1], //from behind the camera
-            intensity: 0.1, //just a tad
-          },
-          {
-            type: 'point',
-            position: [3, 1, 3], //front-right
-          },
-          {
-            type: 'point',
-            position: [-3, 1, 3], //front-left
-          },
-        ],
-      })
-
-    :markdown
-      What you get in a digital version is not just a version of a paper textbook, but a product designed from scratch to be used on laptop, tablet or smartphone.
-
-      Digital versions have very high quality images, sounds, movies, interaction and other complex learning activities. Usually in primary and secondary education, there will also be a paper version for each textbook, which is fine, since the two can be used both separately and together, depending on teacher's preferences or available equipment in the classroom. Students can use paper textbook and the teacher can project on a screen from the digital manual, for example. Or students can use their smartphones or tablets for reading and taking notes, while solving exercises on paper.
-
-      However the digital textbook will be used, it is captivating and interactive, and this makes learning more pleasant and efficient.
-
-    .aside-box.percent-50.pull-right
-      quote For children the school can now finally compete on equal terms with the TV or mobile apps.
-
-    :markdown
-      Also, children with disabilities, this kind of textbook is a gigantic leap forward. Content can be navigated and exercises can be solved with a single finger, or, if special equipments is available, even without it. Children with dyslexia can have the text read for them. Letter and image size can be increased so people with sight challenges can enjoy text and pictures without outside help.
+  The document itself is produced using only LFA technologies. We're eating our own food here :)
+  
+  Chapters one two and three are for users. Chapter 4 presents the tool, the concepts behnind it and how you can get to make your own textbook.
 
 
-      ## Digital textbooks vs. Learn Forward textbooks
+  ## Paper vs. Digital
 
-      The kind of textbook you're experiencing now is special because it is smarter and context-aware. For all the features visit the product website at [learnfwd.com](http://learnfwd.com), but mainly: you can access it from any device with a modern browser, you can host it anywhere you want (including a USB thumb drive), any work you do in it is automatically saved. And... it has built in features to support teacher-to-student and student-to-student interaction. With no software, no logins, no URLs or anything.
+.aside-box.percent-50.pull-right
+  +three-d({
+    url: '3d/mug/mug.json',
+    name: 'intro-3d-example',
+    backgroundColor: '#f8ddb3',
+    ambientLight: '#606060',
+    lights: [
+      {
+        type: 'directional',
+        color: 0xf8ddb3, //to fit the background
+        position: [0, -1, 0], //from the bottom
+        intensity: 0.3, //pretty dim
+      },
+      {
+        type: 'directional',
+        position: [0, 0, 1], //from behind the camera
+        intensity: 0.1, //just a tad
+      },
+      {
+        type: 'point',
+        position: [3, 1, 3], //front-right
+      },
+      {
+        type: 'point',
+        position: [-3, 1, 3], //front-left
+      },
+    ],
+  })
 
-      The textbook uses open standards (HTML, CSS, JavaScript) and this means that there is no need to buy computers, software licenses or even install anything to experience it. No plugins (Flash, PDF, Quicktime). And being the same standards that power the Internet, it also means they are not going to be obsoleted in short or medium term.
+:markdown
+  What you get in a digital version is not just a version of a paper textbook, but a product designed from scratch to be used on laptop, tablet or smartphone.
 
-    +exercise({name: 'ex01'})
-      .progress-box
-      
-      h2 Short quiz:
+  Digital versions have very high quality images, sounds, movies, interaction and other complex learning activities. Usually in primary and secondary education, there will also be a paper version for each textbook, which is fine, since the two can be used both separately and together, depending on teacher's preferences or available equipment in the classroom. Students can use paper textbook and the teacher can project on a screen from the digital manual, for example. Or students can use their smartphones or tablets for reading and taking notes, while solving exercises on paper.
 
-      .col-md-9.col-xs-12
+  However the digital textbook will be used, it is captivating and interactive, and this makes learning more pleasant and efficient.
 
-        +yesno({name: 'ex01yn01', answer: false})
-          p Paper textbooks are better for dyslexic children.
+.aside-box.percent-50.pull-right
+  quote For children the school can now finally compete on equal terms with the TV or mobile apps.
 
-        +yesno({name: 'ex01yn02', answer: true})
-          p Children usually prefer digital textbooks.
+:markdown
+  Also, children with disabilities, this kind of textbook is a gigantic leap forward. Content can be navigated and exercises can be solved with a single finger, or, if special equipments is available, even without it. Children with dyslexia can have the text read for them. Letter and image size can be increased so people with sight challenges can enjoy text and pictures without outside help.
 
-        +yesno({name: 'ex01yn03', answer: true})
-          p Paper and digital textbooks can be used together in learning.
-      .col-md-3.col-hidden-xs
-        +lightbox('img/rastel.jpg')
+
+  ## Digital textbooks vs. Learn Forward textbooks
+
+  The kind of textbook you're experiencing now is special because it is smarter and context-aware. For all the features visit the product website at [learnfwd.com](http://learnfwd.com), but mainly: you can access it from any device with a modern browser, you can host it anywhere you want (including a USB thumb drive), any work you do in it is automatically saved. And... it has built in features to support teacher-to-student and student-to-student interaction. With no software, no logins, no URLs or anything.
+
+  The textbook uses open standards (HTML, CSS, JavaScript) and this means that there is no need to buy computers, software licenses or even install anything to experience it. No plugins (Flash, PDF, Quicktime). And being the same standards that power the Internet, it also means they are not going to be obsoleted in short or medium term.
+
++exercise({name: 'ex01'})
+  .progress-box
+  
+  h2 Short quiz:
+
+  .col-md-9.col-xs-12
+
+    +yesno({name: 'ex01yn01', answer: false})
+      p Paper textbooks are better for dyslexic children.
+
+    +yesno({name: 'ex01yn02', answer: true})
+      p Children usually prefer digital textbooks.
+
+    +yesno({name: 'ex01yn03', answer: true})
+      p Paper and digital textbooks can be used together in learning.
+  .col-md-3.col-hidden-xs
+    +lightbox('img/rastel.jpg')

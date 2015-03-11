@@ -1,47 +1,46 @@
-+article('Combine Exercise', '')
-  +section('Combine')
-    .text
-      :markdown
-        # Combine Exercise
++title("Combine Exercise")
+.text
+  :markdown
+    # Combine Exercise
 
-        This exercise type is used mainly when the authors need to make the student practice combining several parts in sequence to form different bigger elements.
+    This exercise type is used mainly when the authors need to make the student practice combining several parts in sequence to form different bigger elements.
 
-        Usually the parts are syllables and the bigger elements are several words that can be made out of these syllables. Solving this exercise involves dragging and dropping the small elements to a tray and press the validation button. If the sequence is correct, it is validated and added to the correct sequences list.
+    Usually the parts are syllables and the bigger elements are several words that can be made out of these syllables. Solving this exercise involves dragging and dropping the small elements to a tray and press the validation button. If the sequence is correct, it is validated and added to the correct sequences list.
 
-        The score is computed as a ratio among the number of validated sequences and the expected total number of sequences (decided by the textbook authors).
+    The score is computed as a ratio among the number of validated sequences and the expected total number of sequences (decided by the textbook authors).
 
-       +combine-syllables({
-          words: ['zebra', 'jaguar', 'cobra', 'crocodile'],
-          wordCount: 4,
-          recall: true,
-          name: 'help09-1',
-          ignoreAvatar: false
-        })
+   +combine-syllables({
+      words: ['zebra', 'jaguar', 'cobra', 'crocodile'],
+      wordCount: 4,
+      recall: true,
+      name: 'help09-1',
+      ignoreAvatar: false
+    })
+      .row
+        .progress-box
+        .is-done-box
+        .score-box
+      .row.items
+        .col-xs-12
           .row
-            .progress-box
-            .is-done-box
-            .score-box
-          .row.items
-            .col-xs-12
-              .row
-                .col-xs-3: .item(data-syl='ze') ze
-                .col-xs-3: .item(data-syl='gu') gu
-                .col-xs-3: .item(data-syl='co') co
-                .col-xs-3: .item(data-syl='cro') cro
-            .col-xs-12
-              .row
-                .col-xs-3: .item(data-syl='bra') bra
-                .col-xs-3: .item(data-syl='ja') ja
-                .col-xs-3: .item(data-syl='dile') dile
-                .col-xs-3: .item(data-syl='ar') ar
+            .col-xs-3: .item(data-syl='ze') ze
+            .col-xs-3: .item(data-syl='gu') gu
+            .col-xs-3: .item(data-syl='co') co
+            .col-xs-3: .item(data-syl='cro') cro
+        .col-xs-12
           .row
-            .col-sm-8
-              .well.well-sm.dropspot
-                button.btn.btn-default.pull-right.hidden-xs(data-target='combine-syllables.validate') Try
-                span.hint Drop syllables here.
-            .col-sm-4
-              button.btn.btn-default.visible-xs(data-target='combine-syllables.validate') Try
-              p.visible-xs Already found:
-              .well.well-sm.wordwell
-                .wordlist
-                button.btn.btn-default(data-target='combine-syllables.clearlist') Clear list
+            .col-xs-3: .item(data-syl='bra') bra
+            .col-xs-3: .item(data-syl='ja') ja
+            .col-xs-3: .item(data-syl='dile') dile
+            .col-xs-3: .item(data-syl='ar') ar
+      .row
+        .col-sm-8
+          .well.well-sm.dropspot
+            button.btn.btn-default.pull-right.hidden-xs(data-target='combine-syllables.validate') Try
+            span.hint Drop syllables here.
+        .col-sm-4
+          button.btn.btn-default.visible-xs(data-target='combine-syllables.validate') Try
+          p.visible-xs Already found:
+          .well.well-sm.wordwell
+            .wordlist
+            button.btn.btn-default(data-target='combine-syllables.clearlist') Clear list

@@ -1,229 +1,194 @@
-+article("Word Games","Crossword")
-  +section("Split in syllables")
-    :markdown
-      # Word Games
++title("Word Games")
++subtitle("Crossword")
+section
+  :markdown
+    # Word Games
 
-      (please also see the crossword at the end of this chapter)
+    (please also see the crossword at the end of this chapter)
 
-      ## Split in syllables
-
-
-      This type of exercise can be used when you need separator between elements.
-      Although it is mainly useful for "Split this word in syllables", it can be used
-      for other types, such as 'Put the commas in this sentence'
-
-      Syntax is standard. Besides the usual parameters there are:
-
-      * `separator` is the text (or HTML code) 
-      * `word` is an expression with the syllables, containing text or HTML code.
-          Inside syllables use `||` (the bar character twice) to instruct the exercise
-          code to insert a fake separator ana `^^` to insert a real one.
-          E.g. if you want the word 'el·e·phant' rendered as
-          'el/e/ph/an/t', use this syntax 'el^^e^^ph||an||t'. 
-      * `isModal` instructs the exercise to be displayed full-scren.
+    ## Split in syllables
 
 
-      Special elements inside the mixin:
-      * `.split-in-syllables-body` is the container (div, span), where the exercise
-      widget will be rendered. If not present, one is created and appended at the end.
-      * `.preview` is an element that in case the exercise is modal, this div
-      is displayed outside, not inside the modal. Useful when 
-      * `.result` is an element (span, div, whatever) that when present is updated
-      with the rendered value of the exercise (see the exemples below)
-      * `.full-screen-header` when pesent replaces the header in the modal box. Here
-      you can place score boxes, is done boxes, etc.
-      * score-box, is-done-box, progress-box are used as usual
+    This type of exercise can be used when you need separator between elements.
+    Although it is mainly useful for "Split this word in syllables", it can be used
+    for other types, such as 'Put the commas in this sentence'
 
-      ```
-        +split-in-syllables({
-            name: 'split-in-syllables-1',
-            separator: '·', // or any html code. Undefined or falsy for '-'
-            word: 'h||e^^m||a^^t<i class=\\"fa fa-user\\"></i>',
-          })
-          .score-box
-          .progress-box
-          .is-done-box
-          .preview
-            | Your result, mylord:
-            span.result
+    Syntax is standard. Besides the usual parameters there are:
 
-        +split-in-syllables({
-            name: 'split-in-syllables-2',
-            separator: ',',
-            word: 'Anna^^come|| outside^^ please!'
-          })
-          .is-done-box
-          .score-box
+    * `separator` is the text (or HTML code) 
+    * `word` is an expression with the syllables, containing text or HTML code.
+        Inside syllables use `||` (the bar character twice) to instruct the exercise
+        code to insert a fake separator ana `^^` to insert a real one.
+        E.g. if you want the word 'el·e·phant' rendered as
+        'el/e/ph/an/t', use this syntax 'el^^e^^ph||an||t'. 
+    * `isModal` instructs the exercise to be displayed full-scren.
 
-        +split-in-syllables({
-            name: 'split-in-syllables-3',
-            separator: ',',
-            word: 'I|| do not|| have|| time^^ Dan^^ I|| really|| do not.',
-            isModal: true
-          })
-          .is-done-box
-          .full-screen-header
-            .is-done-box.inline-block
-            span Place the commas
-            span.small.result.sans
-            .progress-box
-          .preview
-            .score-box
-            | Your result, sir:
-            span.result
-      ```
 
-    +split-in-syllables({
-        name: 'split-in-syllables-1',
-        separator: '·', // or any html code. Undefined or falsy for '-'
-        word: 'h||e^^m||a^^t<i class=\\"fa fa-user\\"></i>',
-      })
-      .score-box
-      .progress-box
-      .is-done-box
-      .preview
-        | Your result, mylord:
-        span.result
+    Special elements inside the mixin:
+    * `.split-in-syllables-body` is the container (div, span), where the exercise
+    widget will be rendered. If not present, one is created and appended at the end.
+    * `.preview` is an element that in case the exercise is modal, this div
+    is displayed outside, not inside the modal. Useful when 
+    * `.result` is an element (span, div, whatever) that when present is updated
+    with the rendered value of the exercise (see the exemples below)
+    * `.full-screen-header` when pesent replaces the header in the modal box. Here
+    you can place score boxes, is done boxes, etc.
+    * score-box, is-done-box, progress-box are used as usual
 
-    +split-in-syllables({
-        name: 'split-in-syllables-2',
-        separator: ',',
-        word: 'Anna^^come|| outside^^ please!'
-      })
-      .is-done-box
-      .score-box
-
-    +split-in-syllables({
-        name: 'split-in-syllables-3',
-        separator: ',',
-        word: 'I|| do not|| have|| time^^ Dan^^ I|| really|| do not.',
-        isModal: true
-      })
-      .is-done-box
-      .full-screen-header
-        .is-done-box.inline-block
-        span Place the commas
-        span.small.result.sans
-        .progress-box
-      .preview
-        .score-box
-        | Your result, sir:
-        span.result
-
-  +section("Crossword")
-    :markdown
-      ## Crossword
-      
-      **Options:**
-
-      Please see the samples to see how this is used, but only after you read the rest.
-
-      * `noAutoResize`: by default the crosswords resize to fit the container. 
-        Make this attribute true to prevent automatic resize.
-      * `hideNumbers`: don't show the small numbers
-      
-
-      By default the widget comes styled with bright colors. Copy and paste these
-      statements in your **master.styl** file and play with the values:
-
-      ```
-      .YOURCLASSHERE
-        .xwgrid
-          .xwgrid-letter
-            color: #fff
-            margin: 1px
-            padding: 0
-          .xwgrid-letter-non-blank
-            background-color: #5F9EDF
-            border: 0;
-          .xw-word-ok
-            input
-              background-color: #33bb33;
-          .xw-letter-ok
-            input
-              background-color: #66dd33;
-          input:focus
-            background-color: #ff9933 !important
-          span.xwnumber
-            color: white;
-            font-size: 60%;
-            margin: 0 0 0 5px;
-            padding: 0;
-      ```
-
-      **CSS Classes**
-
-      There are a lot of extra CSS classes that are available to customize how the crosswords look and feel like
-
-        * `xwgrid-letter` -- all boxes have this style (blanks or letters)
-        * `xwgrid-letter-blank` -- blank boxes have this (you may want to color blanks your way)
-        * `xwgrid-letter-non-blank` -- lettr boxes
-        * `xwgrid-letter-row-11` -- each row is numbered (1, 2, ...) from top to bottom
-        * `xwgrid-letter-column-3` -- each column is numbered (1, 2, ...) from left to right
-        * `xwgrid-letter-letter-A` -- each letter has its own class (maybe you need to style 'H' differently)
-        * `xwgrid-word-id-3` (each word -- horizontal or vertical has its own ID, 1, 2....)
-        * `xw-letter-ok` -- if a letter is correct, this class is on. This is not styled in CSS by default
-        * `xw-letter-not-ok` -- if a letter is incorrect, this class is on
-        * `xw-word-ok` -- same as above, but for whole words
-        * `xw-word-not-ok` -- word is incorrect, even if some letters are correct
-
-      ***Sample code / Tutorial:***
-
-      1. First, plan your crosswords on a piece of paper or in a spreadsheet. If you already have it on paper, skip this step.
-      1. Copy and paste the sample below in your target textbook
-      1. Count the rows, columns and how many definitions you have, than use the generator to get the letter matrix right
-      1. Copy and paste the generated matrix in your code
-      1. Indent it properly
-      1. Replace underscores with your letters at the right position. Please keep reading
-        1. If you have fixed / prefilled letters, place a `>` sign before the letter (this is why we left you spaces between underscores and letters :) ). E.g. >K to have a fixed K.
-        1. If the letter is at the beginning of a definition, write the number before the letter. E.g. `12R` to have number `12` written in small fonts above the input box. Or `12>R` to have R fixed in place for you.
-      
-      In the sample below *1>K* is pre-filled at row 1, column 8.
-      ```
-        +crosswords({
-          name: 'fulxword1',
-          hideNumbers: false,
-
-          words: //  1  2  3  4  5  6  7  8  9  0  1  2
-                 ['  _  _  _  _  _  _  _1>K  _  _  _  _',  //  1
-                  '  _  _  _  _  _  _  _  U  _  _  _  _',  //  2
-                  '  _  _  _ 2O  R  H  A  N  _  _  _  _',  //  3
-                  '  _  _  _  _  _  _  _  D  _  _  _  _',  //  4
-                  '  _  _  _  _  _  _  _  E  _  _  _  _',  //  5
-                  '  _  _  _  _  _  _  _  R  _  _  _  _',  //  6
-                  '  _  _  _  _3>M  U  R  A  K  A  M  I',  //  7
-                  '  _  _  _  _  E  _  _  _  _  _  _  _',  //  8
-                  '  _  _ 4S  A >L  I  N  G  E  R  _  _',  //  9
-                  '  _  _  _  _  V  _  _  _  _  _  _  _',  //  10
-                  '  _  _ 5A  S  I  M  O  V  _ 6C  _  _',  //  11
-                  '  _  _  _  _  L  _  _  _  _  L  _  _',  //  12
-                  ' 7G  O  G  O  L  _  _  _  _  A  _  _',  //  13
-                  '  _  _  _  _8>E  X  U  P  E  R  Y  _',  //  14
-                  '  _  _  _  _  _  _  _  _  _  K  _  _',  //  15
-                  '  _  _  _  _  _  _  _  _  _  E  _  _']  //  16
+    ```
+      +split-in-syllables({
+          name: 'split-in-syllables-1',
+          separator: '·', // or any html code. Undefined or falsy for '-'
+          word: 'h||e^^m||a^^t<i class=\\"fa fa-user\\"></i>',
         })
-        .progress-box
         .score-box
-        .row
-          .col-md-8
-            .xwordscontent
-            .clearfix  
-          .col-md-4.well.sans
-            strong Writer Names
-            br
-            span Definitions
-      ```
+        .progress-box
+        .is-done-box
+        .preview
+          | Your result, mylord:
+          span.result
 
-      ***Rendered example:***
+      +split-in-syllables({
+          name: 'split-in-syllables-2',
+          separator: ',',
+          word: 'Anna^^come|| outside^^ please!'
+        })
+        .is-done-box
+        .score-box
 
-    +crosswords({
+      +split-in-syllables({
+          name: 'split-in-syllables-3',
+          separator: ',',
+          word: 'I|| do not|| have|| time^^ Dan^^ I|| really|| do not.',
+          isModal: true
+        })
+        .is-done-box
+        .full-screen-header
+          .is-done-box.inline-block
+          span Place the commas
+          span.small.result.sans
+          .progress-box
+        .preview
+          .score-box
+          | Your result, sir:
+          span.result
+    ```
+
+  +split-in-syllables({
+      name: 'split-in-syllables-1',
+      separator: '·', // or any html code. Undefined or falsy for '-'
+      word: 'h||e^^m||a^^t<i class=\\"fa fa-user\\"></i>',
+    })
+    .score-box
+    .progress-box
+    .is-done-box
+    .preview
+      | Your result, mylord:
+      span.result
+
+  +split-in-syllables({
+      name: 'split-in-syllables-2',
+      separator: ',',
+      word: 'Anna^^come|| outside^^ please!'
+    })
+    .is-done-box
+    .score-box
+
+  +split-in-syllables({
+      name: 'split-in-syllables-3',
+      separator: ',',
+      word: 'I|| do not|| have|| time^^ Dan^^ I|| really|| do not.',
+      isModal: true
+    })
+    .is-done-box
+    .full-screen-header
+      .is-done-box.inline-block
+      span Place the commas
+      span.small.result.sans
+      .progress-box
+    .preview
+      .score-box
+      | Your result, sir:
+      span.result
+
+section
+  :markdown
+    ## Crossword
+    
+    **Options:**
+
+    Please see the samples to see how this is used, but only after you read the rest.
+
+    * `noAutoResize`: by default the crosswords resize to fit the container. 
+      Make this attribute true to prevent automatic resize.
+    * `hideNumbers`: don't show the small numbers
+    
+
+    By default the widget comes styled with bright colors. Copy and paste these
+    statements in your **master.styl** file and play with the values:
+
+    ```
+    .YOURCLASSHERE
+      .xwgrid
+        .xwgrid-letter
+          color: #fff
+          margin: 1px
+          padding: 0
+        .xwgrid-letter-non-blank
+          background-color: #5F9EDF
+          border: 0;
+        .xw-word-ok
+          input
+            background-color: #33bb33;
+        .xw-letter-ok
+          input
+            background-color: #66dd33;
+        input:focus
+          background-color: #ff9933 !important
+        span.xwnumber
+          color: white;
+          font-size: 60%;
+          margin: 0 0 0 5px;
+          padding: 0;
+    ```
+
+    **CSS Classes**
+
+    There are a lot of extra CSS classes that are available to customize how the crosswords look and feel like
+
+      * `xwgrid-letter` -- all boxes have this style (blanks or letters)
+      * `xwgrid-letter-blank` -- blank boxes have this (you may want to color blanks your way)
+      * `xwgrid-letter-non-blank` -- lettr boxes
+      * `xwgrid-letter-row-11` -- each row is numbered (1, 2, ...) from top to bottom
+      * `xwgrid-letter-column-3` -- each column is numbered (1, 2, ...) from left to right
+      * `xwgrid-letter-letter-A` -- each letter has its own class (maybe you need to style 'H' differently)
+      * `xwgrid-word-id-3` (each word -- horizontal or vertical has its own ID, 1, 2....)
+      * `xw-letter-ok` -- if a letter is correct, this class is on. This is not styled in CSS by default
+      * `xw-letter-not-ok` -- if a letter is incorrect, this class is on
+      * `xw-word-ok` -- same as above, but for whole words
+      * `xw-word-not-ok` -- word is incorrect, even if some letters are correct
+
+    ***Sample code / Tutorial:***
+
+    1. First, plan your crosswords on a piece of paper or in a spreadsheet. If you already have it on paper, skip this step.
+    1. Copy and paste the sample below in your target textbook
+    1. Count the rows, columns and how many definitions you have, than use the generator to get the letter matrix right
+    1. Copy and paste the generated matrix in your code
+    1. Indent it properly
+    1. Replace underscores with your letters at the right position. Please keep reading
+      1. If you have fixed / prefilled letters, place a `>` sign before the letter (this is why we left you spaces between underscores and letters :) ). E.g. >K to have a fixed K.
+      1. If the letter is at the beginning of a definition, write the number before the letter. E.g. `12R` to have number `12` written in small fonts above the input box. Or `12>R` to have R fixed in place for you.
+    
+    In the sample below *1>K* is pre-filled at row 1, column 8.
+    ```
+      +crosswords({
         name: 'fulxword1',
         hideNumbers: false,
 
         words: //  1  2  3  4  5  6  7  8  9  0  1  2
                ['  _  _  _  _  _  _  _1>K  _  _  _  _',  //  1
                 '  _  _  _  _  _  _  _  U  _  _  _  _',  //  2
-                '  _  _  _ 2O >R >H >A >N  _  _  _  _',  //  3
+                '  _  _  _ 2O  R  H  A  N  _  _  _  _',  //  3
                 '  _  _  _  _  _  _  _  D  _  _  _  _',  //  4
                 '  _  _  _  _  _  _  _  E  _  _  _  _',  //  5
                 '  _  _  _  _  _  _  _  R  _  _  _  _',  //  6
@@ -248,74 +213,110 @@
           strong Writer Names
           br
           span Definitions
+    ```
 
-          .row
-            .col-xs-12
-              pre.
-                Horizontal:
+    ***Rendered example:***
 
-                2. ... Pamuk 
-                3. Haruki ...
-                4. J.D. ...  
-                5. Isac ...  
-                6. N.V. ...  
-                7. Antoine de Saint-....
-            .col-xs-12
-              pre.
-                Vertical:
+  +crosswords({
+      name: 'fulxword1',
+      hideNumbers: false,
 
-                1. Milan ...  
-                3. Herman ...  
-                6. Arthur C. ....
-    
-    h2 Crossword Letter Matrix Generator
-    
-    p Use this generator to get an empty template for your mixin
-    
+      words: //  1  2  3  4  5  6  7  8  9  0  1  2
+             ['  _  _  _  _  _  _  _1>K  _  _  _  _',  //  1
+              '  _  _  _  _  _  _  _  U  _  _  _  _',  //  2
+              '  _  _  _ 2O >R >H >A >N  _  _  _  _',  //  3
+              '  _  _  _  _  _  _  _  D  _  _  _  _',  //  4
+              '  _  _  _  _  _  _  _  E  _  _  _  _',  //  5
+              '  _  _  _  _  _  _  _  R  _  _  _  _',  //  6
+              '  _  _  _  _3>M  U  R  A  K  A  M  I',  //  7
+              '  _  _  _  _  E  _  _  _  _  _  _  _',  //  8
+              '  _  _ 4S  A >L  I  N  G  E  R  _  _',  //  9
+              '  _  _  _  _  V  _  _  _  _  _  _  _',  //  10
+              '  _  _ 5A  S  I  M  O  V  _ 6C  _  _',  //  11
+              '  _  _  _  _  L  _  _  _  _  L  _  _',  //  12
+              ' 7G  O  G  O  L  _  _  _  _  A  _  _',  //  13
+              '  _  _  _  _8>E  X  U  P  E  R  Y  _',  //  14
+              '  _  _  _  _  _  _  _  _  _  K  _  _',  //  15
+              '  _  _  _  _  _  _  _  _  _  E  _  _']  //  16
+    })
+    .progress-box
+    .score-box
+    .row
+      .col-md-8
+        .xwordscontent
+        .clearfix  
+      .col-md-4.well.sans
+        strong Writer Names
+        br
+        span Definitions
+
+        .row
+          .col-xs-12
+            pre.
+              Horizontal:
+
+              2. ... Pamuk 
+              3. Haruki ...
+              4. J.D. ...  
+              5. Isac ...  
+              6. N.V. ...  
+              7. Antoine de Saint-....
+          .col-xs-12
+            pre.
+              Vertical:
+
+              1. Milan ...  
+              3. Herman ...  
+              6. Arthur C. ....
+  
+  h2 Crossword Letter Matrix Generator
+  
+  p Use this generator to get an empty template for your mixin
+  
+  .clearfix
+    form
+      span Rows:
+        input#numrows(type='numeric', size='2', max=2, value=12).inline-block
+        span x Columns:
+        input#numcols(type='numeric', size='2', max=2, value=8).inline-block
+        span with :
+        input#numdefs(type='numeric', size='2', max=2, value=8).inline-block
+        span  definitions
+
     .clearfix
-      form
-        span Rows:
-          input#numrows(type='numeric', size='2', max=2, value=12).inline-block
-          span x Columns:
-          input#numcols(type='numeric', size='2', max=2, value=8).inline-block
-          span with :
-          input#numdefs(type='numeric', size='2', max=2, value=8).inline-block
-          span  definitions
-
-      .clearfix
-        pre.stars Please wait a sec...
-      
+      pre.stars Please wait a sec...
+    
 
 
-      script.
-        var rows_generator = function(r,c, spacers){
-          result = '//';
+    script.
+      var rows_generator = function(r,c, spacers){
+        result = '//';
+        for(var i = 1; i <= c; i++) {
+          result += spacers + i %10;
+        }
+        for(var j = 1; j <= r; j++) {
+          result += '\n \'';
           for(var i = 1; i <= c; i++) {
-            result += spacers + i %10;
+            result += spacers + '_';
           }
-          for(var j = 1; j <= r; j++) {
-            result += '\n \'';
-            for(var i = 1; i <= c; i++) {
-              result += spacers + '_';
-            }
-            result += '\', // ' + j;
-          }
-          return result;
-        };
+          result += '\', // ' + j;
+        }
+        return result;
+      };
 
-        var onUpdate = function() {
-          var r = parseInt( $('#numrows').val());
-          var c = parseInt( $('#numcols').val());
-          // make space for definition numbers (1 space for less than 10 def., 2 spaces for more, etc.)
-          var spacers = new Array(2+Math.floor(Math.log(parseInt( $('#numdefs').val())/ Math.LN10))).join(' ');
-          $('.stars').text(rows_generator(r, c, spacers));
-        };
+      var onUpdate = function() {
+        var r = parseInt( $('#numrows').val());
+        var c = parseInt( $('#numcols').val());
+        // make space for definition numbers (1 space for less than 10 def., 2 spaces for more, etc.)
+        var spacers = new Array(2+Math.floor(Math.log(parseInt( $('#numdefs').val())/ Math.LN10))).join(' ');
+        $('.stars').text(rows_generator(r, c, spacers));
+      };
 
-        $('#numrows').keyup(onUpdate);
-        $('#numcols').keyup(onUpdate);
-        $('#numdefs').keyup(onUpdate);
-        $(function(){
-          onUpdate();
-        });
+      $('#numrows').keyup(onUpdate);
+      $('#numcols').keyup(onUpdate);
+      $('#numdefs').keyup(onUpdate);
+      $(function(){
+        onUpdate();
+      });
 
-      
+    
