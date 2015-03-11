@@ -1,9 +1,9 @@
 define([
-  '../addons/lfa-exercises/js/main',
-  '../addons/lfa-backstage/js/main',
-  '../addons/lfa-classroom/js/main',
-  '../addons/lfa-classroom/js/views/name-input',
-  '../addons/lfa-content-widgets/js/main',
+  'lfa-exercises',
+  'lfa-backstage',
+  'lfa-classroom',
+  'lfa-classroom/views/name-input',
+  'lfa-content-widgets',
 ], function(Exercises) {
   // Add content editor module
   //$.getScript('/dist/lfa-content-editor.js');
