@@ -1,10 +1,13 @@
 {
   "name": "lfdemo",
   "book": {
-    "title": "textbook-demo"
+    "title": "LFA Demo"
   },
   "keywords": [
     "lfa-book"
   ],
+  "engines": {
+    "lfa": "~0.7.0"
+  },
   "projectPath": ".."
 }
