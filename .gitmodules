@@ -1,12 +1,12 @@
-[submodule "addons/lfa-classroom"]
-	path = addons/lfa-classroom
+[submodule "plugins/lfa-classroom"]
+	path = plugins/lfa-classroom
 	url = git@github.com:learnfwd/lfa-addon-classroom.git
-[submodule "addons/lfa-backstage"]
-	path = addons/lfa-backstage
+[submodule "plugins/lfa-backstage"]
+	path = plugins/lfa-backstage
 	url = git@github.com:learnfwd/lfa-addon-backstage.git
-[submodule "addons/lfa-exercises"]
-	path = addons/lfa-exercises
+[submodule "plugins/lfa-exercises"]
+	path = plugins/lfa-exercises
 	url = git@github.com:learnfwd/lfa-addon-exercises.git
-[submodule "addons/lfa-content-widgets"]
-	path = addons/lfa-content-widgets
+[submodule "plugins/lfa-content-widgets"]
+	path = plugins/lfa-content-widgets
 	url = git@github.com:learnfwd/lfa-content-widgets.git
