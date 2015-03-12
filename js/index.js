@@ -4,6 +4,10 @@
 var Exercises = require('lfa-exercises');
 var NameInput = require('lfa-classroom/views/name-input');
 var App = require('lfa-core/app');
+var $ = require('jquery');
+
+// For progressbar and the likes
+require('lfa-content-widgets');
 
 window.Exercises = Exercises;
 
