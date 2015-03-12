@@ -1,26 +1,25 @@
 +title("The Backstage")
 +subtitle("What this is about")
 :markdown
-
   # The Backstage
-
+  
   The backstage is the hub for all the non-study and maintenance activities
   in a textbook.
-
+  
   The main modules in the backstage are:
-
+  
   * The Avatar
   * Notification system
   * The Dashboard
-
+  
   To make the system more flexible and the modules independent, the API is based on
   events (i.e. Backbone events) and the event bus is the App object. This allows modules
   to work together even if one is missing.
-
+  
   For example when an exercise is complete it can trigger a mood change event to
   the avatar. If avatar module is not installed (for various reasons like licensing
   or policy) the message is ignored and nobody's hurt.
-
+  
   The syntax for this is `App.trigger(<message>, <param>[, <param>,...])`
   (e.g. `App.trigger('avatar:say', 'Hello, world!! :)')`)
 

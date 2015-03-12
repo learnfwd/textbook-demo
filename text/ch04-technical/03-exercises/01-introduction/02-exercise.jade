@@ -2,15 +2,15 @@
 +subtitle("About +exercise mixin")
 :markdown
   ## `+exercise` mixin. `Exercise` class
-
+  
   <i class="fa fa-exclamation-triangle"></i>
   Please read the documentation for this base class carefully as the concepts
   presented here are applied to all the exercise types.
-
-
+  
+  
   An `+exercise` can be created with no parameters or with a hashmap
   parameter that holds several optional parameters:
-
+  
   * *name*: name for the exercise
   * *dontSave*: if truthy then the exercise is not persisted in local storage
   * *ignoreScore*: if truthy then the exercise score is ignored in computing parent score.
@@ -21,22 +21,47 @@
   * *ignoreAvatar* - if true, the exercise does not send messages and dowes not update.
     By default, only '+exercise' interacts with the avatar. If you want to interact with the
     avatar from a +yesno or +textline, etc., make `ignoreAvatar: false`.
-
+  
   There are a few classes that are reserved for extra-goodies:
-
+  
   * `.progress-box` - if exists, then a progress bar with the score is shown inside
   * `.score-box` - if exists, then the score (integer val) is shown
   * `.is-done-box` - displays '...' when score < 100 and a checkmark if score > 100
-
+  
   * `onChildChangedState (state, exercise)` - called when child state property changes.
   * `onChildChangedScore (score, exercise)` - called when child score property changes.
   **Sample code**
-
+  
   ```
-   //- No parameters. Exercise state and score is
-   //- saved, and retrieved, but cannot be accessed
-   //- in other parts of the textbook
-   +exercise
+  //- No parameters. Exercise state and score is
+  //- saved, and retrieved, but cannot be accessed
+  //- in other parts of the textbook
+  +exercise
+    .panel.panel-info
+      .panel-heading
+        +statement
+          | Please be so kind and answer the following questions
+    .panel-body
+      .row
+        .col-md-6
+         +yesno({answer: false, name:'ex01basicsYN1'})
+            | Is 100 a negative number?
+        .col-md-6
+          +pickone(3, ['planet', 'star', 'satellite', 'comet'])
+            | The Moon, is a <br/>
+
+  //- The score and other data for this exercise
+  //- can be retrieved elsewhere using JavaScript
+  //- var ex03_01b = Exercises.getAttributesByName('Ch03Ex01B')
+  //- var score = ex03_01b && ex03_01b.score;
+  //-
+  //- Also, because it has a name, it can be styled:
+  //- This is the styling entry in `master.styl`
+  //-  .ex01basicsYN1
+  //-    .buttons
+  //-      width: 10em
+  
+  +exercise
      .panel.panel-info
        .panel-heading
          +statement
@@ -47,77 +72,51 @@
           +yesno({answer: false, name:'ex01basicsYN1'})
              | Is 100 a negative number?
          .col-md-6
-           +pickone(3, ['planet', 'star', 'satellite', 'comet'])
+           +pickone(3, ['planet', 'star', 'satellite', 'commet'])
              | The Moon, is a <br/>
 
-   //- The score and other data for this exercise
-   //- can be retrieved elsewhere using JavaScript
-   //- var ex03_01b = Exercises.getAttributesByName('Ch03Ex01B')
-   //- var score = ex03_01b && ex03_01b.score;
-   //-
-   //- Also, because it has a name, it can be styled:
-   //- This is the styling entry in `master.styl`
-   //-  .ex01basicsYN1
-   //-    .buttons
-   //-      width: 10em
+    +exercise({name: 'Ch03Ex01B'})
+     .progress-box
 
-   +exercise
-      .panel.panel-info
-        .panel-heading
-          +statement
-            | Please be so kind and answer the following questions
-      .panel-body
-        .row
-          .col-md-6
-           +yesno({answer: false, name:'ex01basicsYN1'})
-              | Is 100 a negative number?
-          .col-md-6
-            +pickone(3, ['planet', 'star', 'satellite', 'commet'])
-              | The Moon, is a <br/>
-
-     +exercise({name: 'Ch03Ex01B'})
-      .progress-box
-
-      +statement
-        p Please tap or click on the even numbers below:
-        .score-box
-      +select-to-highlight
-        .btn-group
-          button.btn.btn-default.good 2232
-          button.btn.btn-default.bad 7787
-          button.btn.btn-default.bad 10123
-          button.btn.btn-default.good 20
-      .is-done-box
-
+     +statement
+       p Please tap or click on the even numbers below:
+       .score-box
+     +select-to-highlight
+       .btn-group
+         button.btn.btn-default.good 2232
+         button.btn.btn-default.bad 7787
+         button.btn.btn-default.bad 10123
+         button.btn.btn-default.good 20
+     .is-done-box
   ```
-
+  
   **Rendered exercise**
 
- +exercise
-  .panel.panel-info
-    .panel-heading
-      +statement
-        | Please be so kind and answer the following questions
-  .panel-body
-    .row
-      .col-md-6
-       +yesno({answer: false, name:'ex01basicsYN1'})
-          | Is 100 a negative number?
-      .col-md-6
-        +pickone(3, ['planet', 'star', 'satellite', 'commet'])
-          | The Moon, is a <br/>
++exercise
+ .panel.panel-info
+   .panel-heading
+     +statement
+       | Please be so kind and answer the following questions
+ .panel-body
+   .row
+     .col-md-6
+      +yesno({answer: false, name:'ex01basicsYN1'})
+         | Is 100 a negative number?
+     .col-md-6
+       +pickone(3, ['planet', 'star', 'satellite', 'commet'])
+         | The Moon, is a <br/>
 
- +exercise({name: 'Ch03Ex01B'})
-  .progress-box
++exercise({name: 'Ch03Ex01B'})
+ .progress-box
 
-  +statement
-    p Please tap or click on the even numbers below:
-    .score-box
-  +select-to-highlight
-    .btn-group
-      button.btn.btn-default.good 2232
-      button.btn.btn-default.bad 7787
-      button.btn.btn-default.bad 10123
-      button.btn.btn-default.good 20
+ +statement
+   p Please tap or click on the even numbers below:
+   .score-box
+ +select-to-highlight
+   .btn-group
+     button.btn.btn-default.good 2232
+     button.btn.btn-default.bad 7787
+     button.btn.btn-default.bad 10123
+     button.btn.btn-default.good 20
 
-  .is-done-box
+ .is-done-box
