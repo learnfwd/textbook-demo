@@ -215,6 +215,9 @@
       pre.cg-output
 script.
   (function () {
+    var $ = require('jquery');
+    var App = require('lfa-core/app');
+
     var $cg     = $('#calcugenerator');
     var $grid   = $cg.find('.cg-grid');
     var $output = $cg.find('.cg-output');
@@ -335,7 +338,7 @@ script.
       $output.text(output);
     };
 
-    window.App.on('exercise:state:changed', function(state, exercise) {
+    App.on('exercise:state:changed', function(state, exercise) {
       switch (exercise.name) {
         case 'calcugenerator-columns':
           cols = parseInt(state);

@@ -63,22 +63,27 @@
       ```
 
 script.
-  $('#say').click(function (){
-    App.trigger('notify', 'Hello!');
-  });
-  $('#aha').click(function (){
-    App.trigger('notify', 'You earned a bonus star!', {
-      info: 'Well done, 10/10.',
-      icon: 'fa-star',
-      sound: 'http://buzz.jaysalvat.com/demo/sounds/win.mp3',
-      silent: true,
-      url: '01-backstage-02-notifications'
+  (function () {
+    var $ = require('jquery');
+    var App = require('lfa-core/app');
+
+    $('#say').click(function (){
+      App.trigger('notify', 'Hello!');
     });
-  });
-  $('#bravo').click(function (){
-    App.trigger('notify', 'Bravo, bravo!', {
-      info: 'Te-ai descurcat excelent. Și ai făcut-o pe Miruna fericită',
-      icon: 'fa-play',
-      sound: 'audio/bravo_bravo.mp3'
+    $('#aha').click(function (){
+      App.trigger('notify', 'You earned a bonus star!', {
+        info: 'Well done, 10/10.',
+        icon: 'fa-star',
+        sound: 'http://buzz.jaysalvat.com/demo/sounds/win.mp3',
+        silent: true,
+        url: '01-backstage-02-notifications'
+      });
     });
-  });
+    $('#bravo').click(function (){
+      App.trigger('notify', 'Bravo, bravo!', {
+        info: 'Te-ai descurcat excelent. Și ai făcut-o pe Miruna fericită',
+        icon: 'fa-play',
+        sound: 'audio/bravo_bravo.mp3'
+      });
+    });
+  })();

@@ -289,34 +289,41 @@ section
 
 
     script.
-      var rows_generator = function(r,c, spacers){
-        result = '//';
-        for(var i = 1; i <= c; i++) {
-          result += spacers + i %10;
-        }
-        for(var j = 1; j <= r; j++) {
-          result += '\n \'';
+      (function () {
+        var $ = require('jquery');
+        var App = require('lfa-core/app');
+
+        var rows_generator = function(r,c, spacers){
+          result = '//';
           for(var i = 1; i <= c; i++) {
-            result += spacers + '_';
+            result += spacers + i %10;
           }
-          result += '\', // ' + j;
-        }
-        return result;
-      };
+          for(var j = 1; j <= r; j++) {
+            result += '\n \'';
+            for(var i = 1; i <= c; i++) {
+              result += spacers + '_';
+            }
+            result += '\', // ' + j;
+          }
+          return result;
+        };
 
-      var onUpdate = function() {
-        var r = parseInt( $('#numrows').val());
-        var c = parseInt( $('#numcols').val());
-        // make space for definition numbers (1 space for less than 10 def., 2 spaces for more, etc.)
-        var spacers = new Array(2+Math.floor(Math.log(parseInt( $('#numdefs').val())/ Math.LN10))).join(' ');
-        $('.stars').text(rows_generator(r, c, spacers));
-      };
+        var onUpdate = function() {
+          var r = parseInt($('#numrows').val());
+          var c = parseInt($('#numcols').val());
+          var defs = parseInt($('#numdefs').val());
+          if (isNaN(r) || isNaN(c) || isNaN(defs)) { return; }
+          // make space for definition numbers (1 space for less than 10 def., 2 spaces for more, etc.)
+          var spacers = new Array(2+Math.floor(Math.log(defs/ Math.LN10))).join(' ');
+          $('.stars').text(rows_generator(r, c, spacers));
+        };
 
-      $('#numrows').keyup(onUpdate);
-      $('#numcols').keyup(onUpdate);
-      $('#numdefs').keyup(onUpdate);
-      $(function(){
-        onUpdate();
-      });
+        $('#numrows').keyup(onUpdate);
+        $('#numcols').keyup(onUpdate);
+        $('#numdefs').keyup(onUpdate);
+        $(function(){
+          onUpdate();
+        });
+      })();
 
     

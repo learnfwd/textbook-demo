@@ -139,87 +139,91 @@ section
 
 
     script.
-      var self = Exercises.current;
-      var $plsWait = $('#plsWait');
+      (function () {
+        var $ = require('jquery');
+
+        var self = Exercises.current;
+        var $plsWait = $('#plsWait');
 
 
-      var refreshData = function() {
-        $plsWait.text('please wait...');
-        self.process = function (result) {
-          var response = result && result.response;
-          var synonyms = '';
-          _.each(response, function(meaning) {
-              synonyms += meaning.list.synonyms + '|';
-            });
-          synonyms = synonyms.toLocaleLowerCase();
-          self.synonyms = synonyms;
-          self.$el.find('script').last();
+        var refreshData = function() {
+          $plsWait.text('please wait...');
+          self.process = function (result) {
+            var response = result && result.response;
+            var synonyms = '';
+            _.each(response, function(meaning) {
+                synonyms += meaning.list.synonyms + '|';
+              });
+            synonyms = synonyms.toLocaleLowerCase();
+            self.synonyms = synonyms;
+            self.$el.find('script').last();
 
-          synonymExercise.$input.find('input').attr('title', synonyms.replace('|', ', '));
-          
-          self.render();
-        }
-
-        var s = document.createElement("script");
-        s.src = "http://thesaurus.altervista.org/service.php?word=" +
-           self.word +
-           "&language=en_US&output=json&key=3Xj2J0HlX7PzxwLKQH8U&callback=self.process";
-
-        self.$el.append(s);
-      } 
-
-      var checkSynonym = function() {
-        var word = wordExercise.value();
-        var syn = synonymExercise.value();
-
-        if (word && syn) {
-          word = word.toString().toLocaleLowerCase();
-          if(word.match(/^[a-z]+$/)){
-            if(word === self.word) {
-              self.render();
-            } else {
-              self.word = word;
-              refreshData();
-            }
-          } else {
-            $plsWait.text('please enter valid words (i.e. letters, no spaces)');
+            synonymExercise.$input.find('input').attr('title', synonyms.replace('|', ', '));
+            
+            self.render();
           }
-        }
-        else {
-          $plsWait.text("C'mon, do your job, write something!");
-        }
-      };
 
-      self.render = function () {
-        var syn = synonymExercise.value();
-        if(!self.synonyms || !self.word || !syn) {
-          $plsWait.text("Write the word then the synonym, you know it.");
-          return;
+          var s = document.createElement("script");
+          s.src = "http://thesaurus.altervista.org/service.php?word=" +
+             self.word +
+             "&language=en_US&output=json&key=3Xj2J0HlX7PzxwLKQH8U&callback=self.process";
+
+          self.$el.append(s);
         } 
 
-        var synRegex = RegExp('\\b' + syn + '\\b', 'i');
-        
-        console.log(syn, self.synonyms, self.synonyms.match(synRegex));
+        var checkSynonym = function() {
+          var word = wordExercise.value();
+          var syn = synonymExercise.value();
 
-        if(self.synonyms.match(synRegex)) {
-            $plsWait.text("Congrats! " + syn + " is a synonym for " + self.word);
-            self.isDone = true;
-            self._score();
-          } else {
-            $plsWait.text("Woops! " + syn + " is not a synonym for " + self.word);
-            self.isDone = false;
-            self._score();
+          if (word && syn) {
+            word = word.toString().toLocaleLowerCase();
+            if(word.match(/^[a-z]+$/)){
+              if(word === self.word) {
+                self.render();
+              } else {
+                self.word = word;
+                refreshData();
+              }
+            } else {
+              $plsWait.text('please enter valid words (i.e. letters, no spaces)');
+            }
           }
-      }
+          else {
+            $plsWait.text("C'mon, do your job, write something!");
+          }
+        };
 
-      self.score = function () {
-        return self.isDone ? 100 : 0;
-      }
+        self.render = function () {
+          var syn = synonymExercise.value();
+          if(!self.synonyms || !self.word || !syn) {
+            $plsWait.text("Write the word then the synonym, you know it.");
+            return;
+          } 
 
-      synonymExercise.on('change:state', checkSynonym);
-      checkSynonym();
-      
-      $('#checkSynonym').click(checkSynonym);
+          var synRegex = RegExp('\\b' + syn + '\\b', 'i');
+          
+          console.log(syn, self.synonyms, self.synonyms.match(synRegex));
+
+          if(self.synonyms.match(synRegex)) {
+              $plsWait.text("Congrats! " + syn + " is a synonym for " + self.word);
+              self.isDone = true;
+              self._score();
+            } else {
+              $plsWait.text("Woops! " + syn + " is not a synonym for " + self.word);
+              self.isDone = false;
+              self._score();
+            }
+        }
+
+        self.score = function () {
+          return self.isDone ? 100 : 0;
+        }
+
+        synonymExercise.on('change:state', checkSynonym);
+        checkSynonym();
+        
+        $('#checkSynonym').click(checkSynonym);
+      })();
       
   :markdown
     #### Annotated source
@@ -446,27 +450,32 @@ p State Output:
   span#state-output
 
 script.
-  window.App.on('exercise:score:changed', function(data, exercise){
-      var o = 'New score for exercise ' + exercise.name + ' is ' + data;
-      $('#score-output').text(o);
-  });
+  (function () {
+    var $ = require('jquery');
+    var App = require('lfa-core/app');
 
-  window.App.on('exercise:state:changed', function(data, exercise){
-      var o = 'New state for exercise ' + exercise.name + ' is ' + data;
-      $('#state-output').text(o);
-  });
+    App.on('exercise:score:changed', function(data, exercise){
+        var o = 'New score for exercise ' + exercise.name + ' is ' + data;
+        $('#score-output').text(o);
+    });
 
-  window.App.on('exercise:score:changed ', function(score, exercise){
-    if(exercise.name !== 'extras99-1') {
-      return;
-    }
+    App.on('exercise:state:changed', function(data, exercise){
+        var o = 'New state for exercise ' + exercise.name + ' is ' + data;
+        $('#state-output').text(o);
+    });
 
-    if(score < 100){
-      $('.extras99-2').hide();
-    }
-    else {
-      $('.extras99-2').show();
-    }
-  });
+    App.on('exercise:score:changed ', function(score, exercise){
+      if(exercise.name !== 'extras99-1') {
+        return;
+      }
 
-  window.App.trigger('exercise:score:invalidate', 'extras99-1');
+      if(score < 100){
+        $('.extras99-2').hide();
+      }
+      else {
+        $('.extras99-2').show();
+      }
+    });
+
+    App.trigger('exercise:score:invalidate', 'extras99-1');
+  })();

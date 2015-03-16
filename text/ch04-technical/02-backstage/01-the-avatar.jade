@@ -20,12 +20,18 @@ each mood in ["angry", "cheeky", "happy", "helpless", "neutral", "sad", "smart",
     code(id=mood) App.trigger('avatar:mood', '#{mood}');
 
   script.
-    $('##{mood}').click(function(){
-      App.trigger('avatar:mood', '#{mood}');
-    });
+    (function () {
+      var $ = require('jquery');
+      var App = require('lfa-core/app');
+      $('##{mood}').click(function(){
+        App.trigger('avatar:mood', '#{mood}');
+      });
+    })()
 
 script.
   (function () {
+    var $ = require('jquery');
+    var App = require('lfa-core/app');
     var $what = $('#ch03_notif_text').find('input')
 
     $what.keyup(function (e) {
@@ -62,16 +68,20 @@ script.
 button.btn.btn-large.btn-danger#cry Cry! (with sound)
 
 script.
-  $('#cry').click(function () {
-      window.App.trigger('avatar:mood', {
-        mood: 'sad',
-        message: 'This book was sooo sad!',
-        interval: 5000,
-        info: 'I am talking about Hector Marlot book',
-        sound: 'http://soundbible.com/grab.php?id=764&type=mp3',
-        icon: 'fa-cloud-download'
+  (function () {
+    var $ = require('jquery');
+    var App = require('lfa-core/app');
+    $('#cry').click(function () {
+        App.trigger('avatar:mood', {
+          mood: 'sad',
+          message: 'This book was sooo sad!',
+          interval: 5000,
+          info: 'I am talking about Hector Marlot book',
+          sound: 'http://soundbible.com/grab.php?id=764&type=mp3',
+          icon: 'fa-cloud-download'
+        });
       });
-    });
+  })();
 
 :markdown
   ## Looks and feels
