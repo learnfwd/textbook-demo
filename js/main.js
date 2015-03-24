@@ -5,9 +5,6 @@ define([
   '../addons/lfa-classroom/js/views/name-input',
   '../addons/lfa-content-widgets/js/main',
 ], function(Exercises) {
-  // Add content editor module
-  //$.getScript('/dist/lfa-content-editor.js');
-
   window.Exercises = Exercises;
   NameInput = arguments[3];
 
@@ -20,6 +17,10 @@ define([
     'Impressive!',
     'Flawless!'
   ];
+
+  $('#textbook')
+    .removeClass('col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2')
+    .addClass('col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1');
 
   var greetings = ['Welcome!', 'Hi!', 'Good day!', 'Howdy!', 'What\'s up?'];
 
@@ -73,4 +74,6 @@ define([
 
     $('.progress .progress-bar').progressbar();
   });
+
+  $('body').after('<script type="text/javascript" src="dist/lfa-content-editor.js"></script>');
 });

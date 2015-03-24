@@ -39,6 +39,20 @@ button:focus {
 //
 // General
 //
+
+@media (min-width: 900px)
+  #scrollview
+    background: url('../img/bg/4.png');
+    background-color: #ddd;
+
+    #content
+      margin: 1em 0;
+
+      #textbook
+        background-color: white
+        padding: 0 3em;
+
+
 article
   section
     p
@@ -132,3 +146,36 @@ h1.book-title
 //
 //
 //
+
+
+// Intro to finance
+// @cdinu
+
+p.ch01s02sample, p.ch01s03sample
+  input
+    width: 2.8em;
+    text-align: center
+
+.lf-ch00
+  h1, h2, h3, h4
+    text-align: center;
+    margin: 0.3em
+
+.comment-on-done
+  display: none
+
+.done > .comment-on-done
+  display: inline
+  p
+    margin: 1em
+    padding: 0.6em
+    border-radius: 0.4em
+    background: #ffffdd
+    font-size: 95%
+
+.yesno
+  .buttons
+    max-width: 30em;
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
