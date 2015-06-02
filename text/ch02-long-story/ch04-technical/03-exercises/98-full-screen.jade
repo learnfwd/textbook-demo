@@ -1,49 +1,22 @@
-+article("Full Screen", 'Full screen exercise')
-  +section("Notifications")
-    :markdown
++title('Full Screen')
++subtitle('Full screen exercise')
+:markdown
+  # The notification system
 
-      # The notification system
+  Options:
 
-      Options:
+  * `title` - modal window title
+  * `okLabelText` - modal dismiss button text
+  * `triggerLabelText` - launch button text
 
-      * `title` - modal window title
-      * `okLabelText` - modal dismiss button text
-      * `triggerLabelText` - launch button text
+  Sub-divisions:
 
-      Sub-divisions:
+  * One or more `.previews`
+  * One or more `.triggers`
 
-      * One or more `.previews`
-      * One or more `.triggers`
+  Sampe code:
 
-      Sampe code:
-
-      ```
-        +exercise-modal({name: 'ex98_1', title: 'Full screen hello', okLabelText: 'Done', triggerLabelText: 'How are you?'})
-          +yesno
-            p Are you ok?
-
-
-        +exercise-modal({name: 'ex98_2',
-          title: 'Sample with preview div', 
-          okLabelText: 'Done',
-          triggerLabelText: 'Who sings that?'})
-          .preview
-            p
-            | Iarba ce-a rămas verde într-un cucui
-
-          +textline({name: 'ex98_2_1'})
-
-        +exercise-modal({name: 'ex98_1', title: 'Full screen hello', okLabelText: 'Done', triggerLabelText: 'How are you?'})
-          .preview
-            p Custom trigger!
-              span.trigger Click this absolutely unconspicous text!
-          +yesno
-            p You din't see that coming.
-      ```
-
-      Rendered code:
-      
-
+  ```
     +exercise-modal({name: 'ex98_1', title: 'Full screen hello', okLabelText: 'Done', triggerLabelText: 'How are you?'})
       +yesno
         p Are you ok?
@@ -65,3 +38,29 @@
           span.trigger Click this absolutely unconspicous text!
       +yesno
         p You din't see that coming.
+  ```
+
+  Rendered code:
+  
+
++exercise-modal({name: 'ex98_1', title: 'Full screen hello', okLabelText: 'Done', triggerLabelText: 'How are you?'})
+  +yesno
+    p Are you ok?
+
+
++exercise-modal({name: 'ex98_2',
+  title: 'Sample with preview div', 
+  okLabelText: 'Done',
+  triggerLabelText: 'Who sings that?'})
+  .preview
+    p
+    | Iarba ce-a rămas verde într-un cucui
+
+  +textline({name: 'ex98_2_1'})
+
++exercise-modal({name: 'ex98_1', title: 'Full screen hello', okLabelText: 'Done', triggerLabelText: 'How are you?'})
+  .preview
+    p Custom trigger!
+      span.trigger Click this absolutely unconspicous text!
+  +yesno
+    p You din't see that coming.

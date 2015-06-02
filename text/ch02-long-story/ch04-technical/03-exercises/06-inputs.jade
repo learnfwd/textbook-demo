@@ -1,70 +1,49 @@
-+article("Text Inputs","+textline")
-  +section("Text Line")
-    :markdown
-      ## Text Line
++title('Text Inputs')
++subtitle('+textline')
+:markdown
+  ## Text Line
 
-      ### Decription
+  ### Decription
 
-      This mixin, `+textline` is a simple input box that saves the data locally.
-      It inherits all the functionality of *+exercise*.
+  This mixin, `+textline` is a simple input box that saves the data locally.
+  It inherits all the functionality of *+exercise*.
 
-      As a parameter it takes the option object with the following optional fields:
+  As a parameter it takes the option object with the following optional fields:
 
-      * `regexp` - a regular expression pattern (e.g. `/(\d+)$/i` to match a string
-          that ends with a number and saves it inside a match variable - see .matchN below) 
-          that can be used to score the exercise. Usual JS string patterns can be used here.
-      * `regexpFlags` -- regular expression flags (see 
-          [docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp))    
-      * `max` - the maximum number of characters that the text line ca
-      * `placeholder` - placeholder text inside the input box
-      * `title` -- title text for the input
-      * `type` - html type for the input (i.e. *number*, *tel*, *email*, *date*, *url* , 
-        [goto MDN to see more](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input)). There are also the special
-        **multiline** value that ouptputs a multi-row textarea instead of one line input, and `reflexive-multiply`
-        + `multiply-to-addition` to provide regular expressions for usual math type exercises (see below the examples)
-      * `trim` -- trims the text inside the input
-      * `size` -- width in columns
-      * `rows` -- for multiline text, how many rows
-      * `initialText`-- this is the text to show (not a placeholder) when the exercise loads for the first 
-         time or the state is empty
-      * `disabled` -- if true, the text is not editableg
+  * `regexp` - a regular expression pattern (e.g. `/(\d+)$/i` to match a string
+      that ends with a number and saves it inside a match variable - see .matchN below) 
+      that can be used to score the exercise. Usual JS string patterns can be used here.
+  * `regexpFlags` -- regular expression flags (see 
+      [docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp))    
+  * `max` - the maximum number of characters that the text line ca
+  * `placeholder` - placeholder text inside the input box
+  * `title` -- title text for the input
+  * `type` - html type for the input (i.e. *number*, *tel*, *email*, *date*, *url* , 
+    [goto MDN to see more](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input)). There are also the special
+    **multiline** value that ouptputs a multi-row textarea instead of one line input, and `reflexive-multiply`
+    + `multiply-to-addition` to provide regular expressions for usual math type exercises (see below the examples)
+  * `trim` -- trims the text inside the input
+  * `size` -- width in columns
+  * `rows` -- for multiline text, how many rows
+  * `initialText`-- this is the text to show (not a placeholder) when the exercise loads for the first 
+     time or the state is empty
+  * `disabled` -- if true, the text is not editableg
 
-      Inside the +textline block there can be usual elements (*.progress-box*, *.is-done-box*, etc.) and specifically for this mixin there 
-      can be a few more elements that need to have the class name in the form of `.matchN` where N is  a number and it is a place holder where.
-      N starts with 0 for the first match.
+  Inside the +textline block there can be usual elements (*.progress-box*, *.is-done-box*, etc.) and specifically for this mixin there 
+  can be a few more elements that need to have the class name in the form of `.matchN` where N is  a number and it is a place holder where.
+  N starts with 0 for the first match.
 
-      Extra bonus: `.remaining` class, if present and 'max' is specified shows the number of characters left.
-      Style it as you want and add a style for `.remaining-alert` to enjoy it fully.
+  Extra bonus: `.remaining` class, if present and 'max' is specified shows the number of characters left.
+  Style it as you want and add a style for `.remaining-alert` to enjoy it fully.
 
-      Have fun with it!
+  Have fun with it!
 
-      ### Example (source)
-      ```
-        +textline({name: "ch06_ex1", type: 'numeric', max: 15,
-            title: "e.g. Watson eats frogs.",
-            placeholder: 'Your text here...',
-            regexp: "^(\\\\w+)\\\\s+(\\\\w+)\\\\s+(\\\\w+).*",
-            regexpFlags: ''
-            })
-          +statement
-            | Enter a three word sentence in the form: subject predicate complement.
-            | For example <em>I see you.</em> or <em>You need food.</em>
-
-          .is-done-box
-          .input
-          p Here are your results. Subject is &nbsp;
-            strong.match1
-            |, predicate &nbsp;
-            strong.match2
-            |, complement &nbsp;
-            strong.match3
-      ```
-      ### Example (rendered)
-
-    +textline({name: "ch06_ex1", type: 'numeric', max: 25,
+  ### Example (source)
+  ```
+    +textline({name: "ch06_ex1", type: 'numeric', max: 15,
         title: "e.g. Watson eats frogs.",
         placeholder: 'Your text here...',
-        regexp: /^(\S+)\s+(\S+)\s+(\S+).*/,
+        regexp: "^(\\\\w+)\\\\s+(\\\\w+)\\\\s+(\\\\w+).*",
         regexpFlags: ''
         })
       +statement
@@ -72,71 +51,42 @@
         | For example <em>I see you.</em> or <em>You need food.</em>
 
       .is-done-box
-      .score-box
-
       .input
-      .remaining
       p Here are your results. Subject is &nbsp;
         strong.match1
         |, predicate &nbsp;
         strong.match2
         |, complement &nbsp;
         strong.match3
+  ```
+  ### Example (rendered)
 
-    :markdown
-      ### Another examples (code)
++textline({name: "ch06_ex1", type: 'numeric', max: 25,
+    title: "e.g. Watson eats frogs.",
+    placeholder: 'Your text here...',
+    regexp: /^(\S+)\s+(\S+)\s+(\S+).*/,
+    regexpFlags: ''
+    })
+  +statement
+    | Enter a three word sentence in the form: subject predicate complement.
+    | For example <em>I see you.</em> or <em>You need food.</em>
 
-      ```
-        +textline({name: "ch06_ex2", type: 'tel', max: 20,
-          title: "Enter your phone number for emergencies",
-          placeholder: '07...',
-          })
-          +statement
-            | Enter your phone number for emergencies
-            span.input
+  .is-done-box
+  .score-box
 
-        +textline({name: "ch06_ex3", type: 'url', max: 150, size: 50,
-          title: "Your website",
-          placeholder: 'http://example.com/page.html',
-          })
-          +statement
-            | Enter your website
-            span.input
-        +textline({name: "ch06_ex4", type: 'text', max: 30,
-          size: 2, regexp: '[A-Z]{2}'})
-          +statement
-            | Your initials? (two CAPITAL letters, please)
-            span.input
-            span.is-done-box
+  .input
+  .remaining
+  p Here are your results. Subject is &nbsp;
+    strong.match1
+    |, predicate &nbsp;
+    strong.match2
+    |, complement &nbsp;
+    strong.match3
 
-        +textline({name: "ch06_ex5", type: 'date', max: 30})
-          +statement
-            | Enter your date of birth
-            span.input
+:markdown
+  ### Another examples (code)
 
-        +textline({name: "ch06_ex6", type: 'time', max: 30,
-          title: "When did you feel it?",
-          placeholder: '',
-          })
-          +statement
-            | What time did you experience the earthquake?
-            span.input
-
-        +textline({name: "ch06_ex7", type: 'multiline', max: 5000,
-          title: "When did you feel it?",
-          rows: 7,
-          placeholder: '',
-          })
-          +statement
-            | What makes you tick? Don't be shy:
-
-          .remaining
-          .input
-
-      ```
-
-      ### Rendered:
-
+  ```
     +textline({name: "ch06_ex2", type: 'tel', max: 20,
       title: "Enter your phone number for emergencies",
       placeholder: '07...',
@@ -183,33 +133,60 @@
       .remaining
       .input
 
-    :markdown
-      ### Initial Text, disabled
+  ```
 
-      ```
-        +textline({name: "ch06_ex9", type: 'text', max: 60, size: 60,
-          title: "Put spaces here",
-          placeholder: 'use your keyboard',
-          initialText: 'Dearguysfromsupportmyspacebardoesnotseemtowork',
-          ignoreScore: true,
-          disabled: false
-          })
-          +statement
-            p Put spaces here
-            span.input.disabled
-        
-        +textline({name: "ch06_ex9", type: 'text', max: 60, size: 60,
-          title: "Go away, nothing to do here",
-          placeholder: 'use your keyboard',
-          initialText: 'This is also disabled',
-          ignoreScore: true,
-          disabled: true
-          })
-          +statement
-            p Put spaces here
-            span.input.disabled
-      ```
+  ### Rendered:
 
++textline({name: "ch06_ex2", type: 'tel', max: 20,
+  title: "Enter your phone number for emergencies",
+  placeholder: '07...',
+  })
+  +statement
+    | Enter your phone number for emergencies
+    span.input
+
++textline({name: "ch06_ex3", type: 'url', max: 150, size: 50,
+  title: "Your website",
+  placeholder: 'http://example.com/page.html',
+  })
+  +statement
+    | Enter your website
+    span.input
++textline({name: "ch06_ex4", type: 'text', max: 30,
+  size: 2, regexp: '[A-Z]{2}'})
+  +statement
+    | Your initials? (two CAPITAL letters, please)
+    span.input
+    span.is-done-box
+
++textline({name: "ch06_ex5", type: 'date', max: 30})
+  +statement
+    | Enter your date of birth
+    span.input
+
++textline({name: "ch06_ex6", type: 'time', max: 30,
+  title: "When did you feel it?",
+  placeholder: '',
+  })
+  +statement
+    | What time did you experience the earthquake?
+    span.input
+
++textline({name: "ch06_ex7", type: 'multiline', max: 5000,
+  title: "When did you feel it?",
+  rows: 7,
+  placeholder: '',
+  })
+  +statement
+    | What makes you tick? Don't be shy:
+
+  .remaining
+  .input
+
+:markdown
+  ### Initial Text, disabled
+
+  ```
     +textline({name: "ch06_ex9", type: 'text', max: 60, size: 60,
       title: "Put spaces here",
       placeholder: 'use your keyboard',
@@ -221,7 +198,7 @@
         p Put spaces here
         span.input.disabled
     
-    +textline({name: "ch06_ex10", type: 'text', max: 60, size: 60,
+    +textline({name: "ch06_ex9", type: 'text', max: 60, size: 60,
       title: "Go away, nothing to do here",
       placeholder: 'use your keyboard',
       initialText: 'This is also disabled',
@@ -231,30 +208,53 @@
       +statement
         p Put spaces here
         span.input.disabled
+  ```
 
-    :markdown
-      ### Special Math exercise
++textline({name: "ch06_ex9", type: 'text', max: 60, size: 60,
+  title: "Put spaces here",
+  placeholder: 'use your keyboard',
+  initialText: 'Dearguysfromsupportmyspacebardoesnotseemtowork',
+  ignoreScore: true,
+  disabled: false
+  })
+  +statement
+    p Put spaces here
+    span.input.disabled
 
-      * `multiply-to-addition` creates a numeric input used for multiply exercises
-         of the following form: "Write 3 * 5 as an addition.", expecting the result 
-         to be '3 + 3 + 3 + 3 + 3' or '5 + 5 + 5'. Whitespace in thr result 
-         is discretionary, i.e. '2+2', '  2 +2' or ' 2 + 2 ' are all valid.
++textline({name: "ch06_ex10", type: 'text', max: 60, size: 60,
+  title: "Go away, nothing to do here",
+  placeholder: 'use your keyboard',
+  initialText: 'This is also disabled',
+  ignoreScore: true,
+  disabled: true
+  })
+  +statement
+    p Put spaces here
+    span.input.disabled
 
-      * `reflexive-multiply` creates a numeric input used for the arithmetic exercises
-        of the following kind: write '3 + 3' as a multiplication and the result can be
-        '2*3', '2 x 3', '3 X 2', etc. Whitespace has the same policy as above.
+:markdown
+  ### Special Math exercise
+
+  * `multiply-to-addition` creates a numeric input used for multiply exercises
+     of the following form: "Write 3 * 5 as an addition.", expecting the result 
+     to be '3 + 3 + 3 + 3 + 3' or '5 + 5 + 5'. Whitespace in thr result 
+     is discretionary, i.e. '2+2', '  2 +2' or ' 2 + 2 ' are all valid.
+
+  * `reflexive-multiply` creates a numeric input used for the arithmetic exercises
+    of the following kind: write '3 + 3' as a multiplication and the result can be
+    '2*3', '2 x 3', '3 X 2', etc. Whitespace has the same policy as above.
 
 
-    +textline({name: "ch06_ex8", type: 'multiply-to-addition', max: 30,
-      a: 5, b: 2,
-      placeholder: '5 + 5 + ....',
-      })
-      .input
-      .score-box
++textline({name: "ch06_ex8", type: 'multiply-to-addition', max: 30,
+  a: 5, b: 2,
+  placeholder: '5 + 5 + ....',
+  })
+  .input
+  .score-box
 
-    +textline({name: "ch06_ex9", type: 'reflexive-multiply', max: 30,
-      a: 3, b: 7,
-      placeholder: '3 * ...',
-      })
-      .input
-      .score-box
++textline({name: "ch06_ex9", type: 'reflexive-multiply', max: 30,
+  a: 3, b: 7,
+  placeholder: '3 * ...',
+  })
+  .input
+  .score-box

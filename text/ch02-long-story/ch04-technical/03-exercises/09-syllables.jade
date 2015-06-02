@@ -1,202 +1,202 @@
-+article("Syllables","Mix and matching")
-  +section("Combine Syllables")
-    :markdown
-      ## Combine Syllables
++title('Syllables')
++subtitle('Mix and matching')
+:markdown
+  ## Combine Syllables
 
-      The user drags and drops a palette of syllables in the shape of words which get validated
+  The user drags and drops a palette of syllables in the shape of words which get validated
 
-      ### Usage:
-      ```jade
-      +combine-syllables(options)
-        .items
-          .item(data-syl='syl') syl
-          .item(data-syl='la') la
-          .item(data-syl='ble') ble
-        .dropspot
-        button.btn.btn-default(data-target='combine-syllables.validate') Validate
-        button.btn.btn-default(data-target='combine-syllables.clearlist') Clear
-        .wordlist
-      ```
+  ### Usage:
+  ```jade
+  +combine-syllables(options)
+    .items
+      .item(data-syl='syl') syl
+      .item(data-syl='la') la
+      .item(data-syl='ble') ble
+    .dropspot
+    button.btn.btn-default(data-target='combine-syllables.validate') Validate
+    button.btn.btn-default(data-target='combine-syllables.clearlist') Clear
+    .wordlist
+  ```
 
-      * `.items` must exist and contain `.item`s that represent each syllable. 
-      * The goal of the user is to drop the `.item`s in the `.dropspot` in such a order that the concatenated values of their `data-syl` make up a word in `options.words`.
-      * `.dropspot` must exist and represents the drop area where the word is composed. New `.item`s will be created here with `position: absolute`, so make sure you set the `width` and `height` for this div.
-      * `.wordlist` will be filled with `.word`s that the user guessess right. The most recently validated `.word` will also get `.last`.
-      * Any element with `data-target='combine-syllables.validate'` will be considered a validation button and get a `click` event bound
-      to it at runtime that validates the user's combination.
-      * Any element with `data-target='combine-syllables.clearlist'` will be considered a clear button and get a `click` event bound
-      to it at runtime that clears the word list.
-      * The exercise's div will get `.good`, `.bad`, or `.already-submitted` after each validation. These classes will be removed the next time the user interacts with the exercise.
-      * When the user starts dragging an `.item`, it gets `.dragging-from` and a new draggable `.item` with `position: fixed` is created. `.dragging-from` hides the view away by default.
-      * When the `.item` gets dropped in the `.dropspot`, the original `.item` will get `.used`. `.used` hides the view away by default.
-      * If `options.recall` is used, `.recall` will be applied to the original `.item`s while the recall animation is in progress. `.recall` hides the view away by default.
+  * `.items` must exist and contain `.item`s that represent each syllable. 
+  * The goal of the user is to drop the `.item`s in the `.dropspot` in such a order that the concatenated values of their `data-syl` make up a word in `options.words`.
+  * `.dropspot` must exist and represents the drop area where the word is composed. New `.item`s will be created here with `position: absolute`, so make sure you set the `width` and `height` for this div.
+  * `.wordlist` will be filled with `.word`s that the user guessess right. The most recently validated `.word` will also get `.last`.
+  * Any element with `data-target='combine-syllables.validate'` will be considered a validation button and get a `click` event bound
+  to it at runtime that validates the user's combination.
+  * Any element with `data-target='combine-syllables.clearlist'` will be considered a clear button and get a `click` event bound
+  to it at runtime that clears the word list.
+  * The exercise's div will get `.good`, `.bad`, or `.already-submitted` after each validation. These classes will be removed the next time the user interacts with the exercise.
+  * When the user starts dragging an `.item`, it gets `.dragging-from` and a new draggable `.item` with `position: fixed` is created. `.dragging-from` hides the view away by default.
+  * When the `.item` gets dropped in the `.dropspot`, the original `.item` will get `.used`. `.used` hides the view away by default.
+  * If `options.recall` is used, `.recall` will be applied to the original `.item`s while the recall animation is in progress. `.recall` hides the view away by default.
 
-      ### Options:
-      * `words`: list of words to validate. defaults to `[]`
-      * `recall`: words go back to their places when successfully validated. defaults to `true'
-      * `autoValidate`: pressing on the validation button is not required as input is validated continuously. defaults to `false`
-      * `bonusScore`: score can go over 100%. defaults to `false`
-      * `wordCount`: required number of validated words for 100% score. defaults to `words.length`
-      * `callback`: JS expression to be run with `eval()` after each validation attempt with the following context:
-        * `this` will be set to the exercises's model. guarranteed to have at least `id`, `words`
-        * `word` will be set to the current word
-        * `valid` will be true if the word is valid
-        * `already` will be true if the word is already present in the word list
+  ### Options:
+  * `words`: list of words to validate. defaults to `[]`
+  * `recall`: words go back to their places when successfully validated. defaults to `true'
+  * `autoValidate`: pressing on the validation button is not required as input is validated continuously. defaults to `false`
+  * `bonusScore`: score can go over 100%. defaults to `false`
+  * `wordCount`: required number of validated words for 100% score. defaults to `words.length`
+  * `callback`: JS expression to be run with `eval()` after each validation attempt with the following context:
+    * `this` will be set to the exercises's model. guarranteed to have at least `id`, `words`
+    * `word` will be set to the current word
+    * `valid` will be true if the word is valid
+    * `already` will be true if the word is already present in the word list
 
-      ### Example:
+  ### Example:
 
-      **Code**
+  **Code**
 
-      ```jade
-      +combine-syllables({
-        words: ['constable', 'syllable', 'constant'],
-        wordCount: 3,
-        recall: true,
-        name: 'comb_syl1',
-      })
-        .progress-box
-        .score-box
-        .row.items
-          .col-sm-10
-            .row
-              .col-sm-6
-                .row
-                  .col-xs-4
-                    .item(data-syl='syl') syl
-                  .col-xs-4
-                    .item(data-syl='la') la
-                  .col-xs-4
-                    .item(data-syl='ble') ble
-
-              .col-sm-6
-                .row
-                  .col-xs-4
-                    .item(data-syl='con') con
-                  .col-xs-4
-                    .item(data-syl='sta') sta
-                  .col-xs-4
-                    .item(data-syl='nt') nt
-          .col-sm-2.hidden-xs
-            p Guessed:
+  ```jade
+  +combine-syllables({
+    words: ['constable', 'syllable', 'constant'],
+    wordCount: 3,
+    recall: true,
+    name: 'comb_syl1',
+  })
+    .progress-box
+    .score-box
+    .row.items
+      .col-sm-10
         .row
-          .col-sm-10
-            .well.well-sm.dropspot
-              button.btn.btn-default.pull-right.hidden-xs(data-target='combine-syllables.validate') Submit
-              span.hint Drop some of the syllables above in here
-          .col-sm-2
-            button.btn.btn-default.visible-xs(data-target='combine-syllables.validate') Submit
-            p.visible-xs Guessed:
-            .well.well-sm.wordwell
-              .wordlist
-              button.btn.btn-default(data-target='combine-syllables.clearlist') Clear
-      ```
+          .col-sm-6
+            .row
+              .col-xs-4
+                .item(data-syl='syl') syl
+              .col-xs-4
+                .item(data-syl='la') la
+              .col-xs-4
+                .item(data-syl='ble') ble
 
-      **Style**
+          .col-sm-6
+            .row
+              .col-xs-4
+                .item(data-syl='con') con
+              .col-xs-4
+                .item(data-syl='sta') sta
+              .col-xs-4
+                .item(data-syl='nt') nt
+      .col-sm-2.hidden-xs
+        p Guessed:
+    .row
+      .col-sm-10
+        .well.well-sm.dropspot
+          button.btn.btn-default.pull-right.hidden-xs(data-target='combine-syllables.validate') Submit
+          span.hint Drop some of the syllables above in here
+      .col-sm-2
+        button.btn.btn-default.visible-xs(data-target='combine-syllables.validate') Submit
+        p.visible-xs Guessed:
+        .well.well-sm.wordwell
+          .wordlist
+          button.btn.btn-default(data-target='combine-syllables.clearlist') Clear
+  ```
+
+  **Style**
 
 
-      ```stylus
-      // Basic styling:
+  ```stylus
+  // Basic styling:
 
-      .comb_syl1
-        .dropspot
-          min-height: 3.2em // This needs to be set since .item-s are absolutely positioned
-          .btn
-            margin-top: 0.3em
+  .comb_syl1
+    .dropspot
+      min-height: 3.2em // This needs to be set since .item-s are absolutely positioned
+      .btn
+        margin-top: 0.3em
 
-        .wordwell // Matching styles
-          min-height: 3.2em
-          .btn
-            margin-top: 0.3em
+    .wordwell // Matching styles
+      min-height: 3.2em
+      .btn
+        margin-top: 0.3em
 
-        .items .col-sm-6 .row // Some spacing
-          margin-bottom: 0.7em
-          margin-top: 0.5em
+    .items .col-sm-6 .row // Some spacing
+      margin-bottom: 0.7em
+      margin-top: 0.5em
 
-        .hint // Hide the hint when not empty
-          display: none
+    .hint // Hide the hint when not empty
+      display: none
 
-      .comb_syl1.empty // And show it when empty
-        .hint
-          display: inline
+  .comb_syl1.empty // And show it when empty
+    .hint
+      display: inline
 
-      // Animations:
+  // Animations:
 
-      @keyframes red-text-flash
-        0% { color: red }
-        22% { color: red }
-        100% { color: auto }
+  @keyframes red-text-flash
+    0% { color: red }
+    22% { color: red }
+    100% { color: auto }
 
-      @keyframes red-flash
-        0% { background-color: red; color: #fff }
-        22% { background-color: red; color: #fff }
-        100% { background-color: auto }
+  @keyframes red-flash
+    0% { background-color: red; color: #fff }
+    22% { background-color: red; color: #fff }
+    100% { background-color: auto }
 
-      @keyframes green-text-flash
-        0% { color: green }
-        22% { color: green }
-        100% { color: auto }
+  @keyframes green-text-flash
+    0% { color: green }
+    22% { color: green }
+    100% { color: auto }
 
-      @keyframes green-flash
-        0% { background-color: green; color: #fff }
-        22% { background-color: green; color: #fff }
-        100% { background-color: auto; color: auto }
+  @keyframes green-flash
+    0% { background-color: green; color: #fff }
+    22% { background-color: green; color: #fff }
+    100% { background-color: auto; color: auto }
 
-      .comb_syl1.bad
-        .dropspot .item
-          animation: red-flash 0.5s 1 linear
+  .comb_syl1.bad
+    .dropspot .item
+      animation: red-flash 0.5s 1 linear
 
-      .comb_syl1.already-submitted
-        .word.last
-          animation: red-text-flash 1.5s 1 linear
+  .comb_syl1.already-submitted
+    .word.last
+      animation: red-text-flash 1.5s 1 linear
 
-      .comb_syl1.good
-        button[data-target="combine-syllables.validate"]
-          animation: green-flash 0.5s 1 linear
+  .comb_syl1.good
+    button[data-target="combine-syllables.validate"]
+      animation: green-flash 0.5s 1 linear
 
-        .word.last
-          animation: green-text-flash 1.5s 1 linear
+    .word.last
+      animation: green-text-flash 1.5s 1 linear
 
-      ```
+  ```
 
-      **Rendered exercise**
+  **Rendered exercise**
 
-    +combine-syllables({
-      words: ['constable', 'syllable', 'constant'],
-      wordCount: 3,
-      name: 'comb_syl1',
-    })
-      .progress-box
-      .score-box
-      .row.items
-        .col-sm-10
-          .row
-            .col-sm-6
-              .row
-                .col-xs-4
-                  .item(data-syl='syl') syl
-                .col-xs-4
-                  .item(data-syl='la') la
-                .col-xs-4
-                  .item(data-syl='ble') ble
-
-            .col-sm-6
-              .row
-                .col-xs-4
-                  .item(data-syl='con') con
-                .col-xs-4
-                  .item(data-syl='sta') sta
-                .col-xs-4
-                  .item(data-syl='nt') nt
-        .col-sm-2.hidden-xs
-          p Guessed:
++combine-syllables({
+  words: ['constable', 'syllable', 'constant'],
+  wordCount: 3,
+  name: 'comb_syl1',
+})
+  .progress-box
+  .score-box
+  .row.items
+    .col-sm-10
       .row
-        .col-sm-10
-          .well.well-sm.dropspot
-            button.btn.btn-default.pull-right.hidden-xs(data-target='combine-syllables.validate') Submit
-            span.hint Drop some of the syllables above in here
-        .col-sm-2
-          button.btn.btn-default.visible-xs(data-target='combine-syllables.validate') Submit
-          p.visible-xs Guessed:
-          .well.well-sm.wordwell
-            .wordlist
-            button.btn.btn-default(data-target='combine-syllables.clearlist') Clear
+        .col-sm-6
+          .row
+            .col-xs-4
+              .item(data-syl='syl') syl
+            .col-xs-4
+              .item(data-syl='la') la
+            .col-xs-4
+              .item(data-syl='ble') ble
+
+        .col-sm-6
+          .row
+            .col-xs-4
+              .item(data-syl='con') con
+            .col-xs-4
+              .item(data-syl='sta') sta
+            .col-xs-4
+              .item(data-syl='nt') nt
+    .col-sm-2.hidden-xs
+      p Guessed:
+  .row
+    .col-sm-10
+      .well.well-sm.dropspot
+        button.btn.btn-default.pull-right.hidden-xs(data-target='combine-syllables.validate') Submit
+        span.hint Drop some of the syllables above in here
+    .col-sm-2
+      button.btn.btn-default.visible-xs(data-target='combine-syllables.validate') Submit
+      p.visible-xs Guessed:
+      .well.well-sm.wordwell
+        .wordlist
+        button.btn.btn-default(data-target='combine-syllables.clearlist') Clear

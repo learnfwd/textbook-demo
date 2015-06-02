@@ -1,29 +1,53 @@
-+article("+exercise mixin (cont.)", 'About +exercise mixin, continued')
-  +section("More about the mixin")
-    :markdown
-      ### **ignoreScore** test
++title('+exercise mixin (cont.)')
++subtitle('About +exercise mixin, continued')
+:markdown
+  ### **ignoreScore** test
 
-    .row
-      .col-md-6.success
-        p:strong Without ignoreScore
-        p Enter a single digit to get 100%:
+.row
+  .col-md-6.success
+    p:strong Without ignoreScore
+    p Enter a single digit to get 100%:
 
-          +textline({name: 'ch01ignoreScore01', regexp: /\d/, pattern: /\d/})
-            .progress-box
-            .score-box
-            .is-done-box
-      .col-md-6.success
-        p:strong Same code, with ignoreScore:true
-        p Enter a single digit to get 100%:
+      +textline({name: 'ch01ignoreScore01', regexp: /\d/, pattern: /\d/})
+        .progress-box
+        .score-box
+        .is-done-box
+  .col-md-6.success
+    p:strong Same code, with ignoreScore:true
+    p Enter a single digit to get 100%:
 
-          +textline({name: 'ch01ignoreScore02', regexp: /\d/, pattern: /\d/, ignoreScore: true})
-            .progress-box
-            .score-box
-            .is-done-box
+      +textline({name: 'ch01ignoreScore02', regexp: /\d/, pattern: /\d/, ignoreScore: true})
+        .progress-box
+        .score-box
+        .is-done-box
 
-    p Now we have a composite exercise. Each line needs to contain letters to get 100%.
-      | See if you can spot which one is ignored.
+p Now we have a composite exercise. Each line needs to contain letters to get 100%.
+  | See if you can spot which one is ignored.
 
++exercise({name: 'ch01ignoreScore03'})
+  .progress-box
+  .score-box
+  .is-done-box
+  +textline({name: 'ch01ignoreScore04', regexp: /[A-Z]/, pattern: /[A-Z]/, regexpFlags: 'i', ignoreScore: false})
+  +textline({name: 'ch01ignoreScore05', regexp: /[A-Z]/, pattern: /[A-Z]/, regexpFlags: 'i', ignoreScore: false})
+  +textline({name: 'ch01ignoreScore06', regexp: /[A-Z]/, pattern: /[A-Z]/, regexpFlags: 'i', ignoreScore: false})
+  +textline({name: 'ch01ignoreScore07', regexp: /[A-Z]/, pattern: /[A-Z]/, regexpFlags: 'i', ignoreScore: true})
+  +textline({name: 'ch01ignoreScore08', regexp: /[A-Z]/, pattern: /[A-Z]/, regexpFlags: 'i', ignoreScore: false})
+  
+:markdown
+  ### Source for the exercises above:
+
+  ```
+      //- .progress-box .score-box .is-done-box will be removed, just in case
+      +textline({name: 'ch01ignoreScore02', regexp: /\d/, pattern: /\d/, ignoreScore: true})
+        .progress-box
+        .score-box
+        .is-done-box
+  ```
+
+  and
+
+  ```
     +exercise({name: 'ch01ignoreScore03'})
       .progress-box
       .score-box
@@ -33,28 +57,4 @@
       +textline({name: 'ch01ignoreScore06', regexp: /[A-Z]/, pattern: /[A-Z]/, regexpFlags: 'i', ignoreScore: false})
       +textline({name: 'ch01ignoreScore07', regexp: /[A-Z]/, pattern: /[A-Z]/, regexpFlags: 'i', ignoreScore: true})
       +textline({name: 'ch01ignoreScore08', regexp: /[A-Z]/, pattern: /[A-Z]/, regexpFlags: 'i', ignoreScore: false})
-      
-    :markdown
-      ### Source for the exercises above:
-
-      ```
-          //- .progress-box .score-box .is-done-box will be removed, just in case
-          +textline({name: 'ch01ignoreScore02', regexp: /\d/, pattern: /\d/, ignoreScore: true})
-            .progress-box
-            .score-box
-            .is-done-box
-      ```
-
-      and
-
-      ```
-        +exercise({name: 'ch01ignoreScore03'})
-          .progress-box
-          .score-box
-          .is-done-box
-          +textline({name: 'ch01ignoreScore04', regexp: /[A-Z]/, pattern: /[A-Z]/, regexpFlags: 'i', ignoreScore: false})
-          +textline({name: 'ch01ignoreScore05', regexp: /[A-Z]/, pattern: /[A-Z]/, regexpFlags: 'i', ignoreScore: false})
-          +textline({name: 'ch01ignoreScore06', regexp: /[A-Z]/, pattern: /[A-Z]/, regexpFlags: 'i', ignoreScore: false})
-          +textline({name: 'ch01ignoreScore07', regexp: /[A-Z]/, pattern: /[A-Z]/, regexpFlags: 'i', ignoreScore: true})
-          +textline({name: 'ch01ignoreScore08', regexp: /[A-Z]/, pattern: /[A-Z]/, regexpFlags: 'i', ignoreScore: false})
-      ```
+  ```

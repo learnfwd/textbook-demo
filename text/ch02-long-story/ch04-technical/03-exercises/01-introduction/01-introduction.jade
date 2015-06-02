@@ -1,32 +1,31 @@
-+article("Introduction", 'What are exercises')
-  +section("Intro")
-    :markdown
++title('Introduction')
++subtitle('What are exercises')
+:markdown
+  # LFA Exercises Module
 
-      # LFA Exercises Module
+  ## Introduction
 
-      ## Introduction
+  Exercises are created with the help of mixins. The structure of the exercises is
+  hierachical (i.e. a tree of exercises). An `+exercise` can contain any combination
+  `+exercise`, `+pickone`-s etc.
 
-      Exercises are created with the help of mixins. The structure of the exercises is
-      hierachical (i.e. a tree of exercises). An `+exercise` can contain any combination
-      `+exercise`, `+pickone`-s etc.
+  **Parameters** are usually optional, but sometimes you need them in order
+  to be able to modify how an exercise looks or to get its score / other saved
+  attributes.
 
-      **Parameters** are usually optional, but sometimes you need them in order
-      to be able to modify how an exercise looks or to get its score / other saved
-      attributes.
+  These parameters are often given in the form of a JavaScript object (e.g.
+  `{name: 'Unit 1 Exercise 3', answer: true, btnClass: 'btn-danger'}`). This
+  allows for more flexible argument management.
 
-      These parameters are often given in the form of a JavaScript object (e.g.
-      `{name: 'Unit 1 Exercise 3', answer: true, btnClass: 'btn-danger'}`). This
-      allows for more flexible argument management.
+  An exercise also automatically gets an unique id in the DOM, in the form
+  of `ex_<unique_number>` which is  consistently generated as a hash of its
+  contents (or its name, if the content is empty). So, as long as you don't
+  modify the content, the id remains the same, and the results will persist
+  between page loads.
 
-      An exercise also automatically gets an unique id in the DOM, in the form
-      of `ex_<unique_number>` which is  consistently generated as a hash of its
-      contents (or its name, if the content is empty). So, as long as you don't
-      modify the content, the id remains the same, and the results will persist
-      between page loads.
+  This id is used as a key to save and retrieve their state from the local
+  storage. All exercise types automatically save their state and restore it when
+  the page is reloaded.
 
-      This id is used as a key to save and retrieve their state from the local
-      storage. All exercise types automatically save their state and restore it when
-      the page is reloaded.
-
-      It is reccomended that each important exercise have a name, so that it (or
-      its attributes) can be retrieved in review questions.
+  It is reccomended that each important exercise have a name, so that it (or
+  its attributes) can be retrieved in review questions.

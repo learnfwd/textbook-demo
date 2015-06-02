@@ -1,146 +1,137 @@
-+article("The Avatar", 'Little dead thing that moves')
-  +section("The Avatar")
-    :markdown
++title('The Avatar')
++subtitle('Little dead thing that moves')
+:markdown
+  # The Avatar
+  ## What it is
+  The avatar is a backstage module that shows an animated character in the top-right corner of the textbook. The avatar has a number of moods (in this version: *angry*, *cheeky*, *happy*, *helpless*, *neutral*, *sad*, *smart*, *smile*, *uneasy*, *wink*) and it integrates with the notification system so that it shows different messages as speech bubbles.
+  ## How to use (for developers)  
+  The avatar is used using `App.trigger` message bus.
 
-      # The Avatar
+each mood in ['angry', 'cheeky', 'happy', 'helpless', 'neutral', 'sad', 'smart', 'smile', 'uneasy', 'wink']
+  p
+    code(id=mood) App.trigger('avatar:mood', '#{mood}');
 
-      ## What it is
+  script.
+    $('##{mood}').click(function(){
+      App.trigger('avatar:mood', '#{mood}');
+    });
 
-      The avatar is a backstage module that shows an animated character in the top-right corner of the textbook. The avatar has a number of moods (in this version: *angry*, *cheeky*, *happy*, *helpless*, *neutral*, *sad*, *smart*, *smile*, *uneasy*, *wink*) and it integrates with the notification system so that it shows different messages as speech bubbles.
+script.
+  var $what = $('#ch03_notif_text').find('input')
 
-      ## How to use (for developers)
+  $what.keyup(function (e) {
+    if (e.keyCode == 13) {
+      App.trigger('avatar:mood', {mood: 'wink', message: $what.val(), icon: 'fa-pencil'});
+      $what.val('');
+    }
+  });
 
-      The avatar is used using `App.trigger` message bus.
 
-    +textline({name: 'ch03_notif'})
-      #ch03_notif_text.input
+  $('#sad').click(function(){
+    App.trigger('avatar:mood', 'sad');
+  });
 
-    each mood in ["angry", "cheeky", "happy", "helpless", "neutral", "sad", "smart", "smile", "uneasy", "wink"]
-      p
-        code(id=mood) App.trigger('avatar:mood', '#{mood}');
+  $('#smart').click(function(){
+    App.trigger('avatar:mood', 'smart');
+  });
 
-      script.
-        $('##{mood}').click(function(){
-          App.trigger('avatar:mood', '#{mood}');
-        });
+:markdown
+  ## Event options
 
-    script.
-      var $what = $('#ch03_notif_text').find('input')
-
-      $what.keyup(function (e) {
-        if (e.keyCode == 13) {
-          App.trigger('avatar:mood', {mood: 'wink', message: $what.val(), icon: 'fa-pencil'});
-          $what.val('');
-        }
+  ```
+     window.App.trigger('avatar:mood', {
+        mood: 'sad',
+        message: 'This book was sooo sad!',
+        interval: 5000,
+        info: 'I am talking about Hector Marlot book',
+        sound: 'http://soundbible.com/grab.php?id=764&type=mp3',
+        icon: 'fa-cloud-download'
       });
+  ```
 
+button.btn.btn-large.btn-danger#cry Cry! (with sound)
 
-      $('#sad').click(function(){
-        App.trigger('avatar:mood', 'sad');
+script.
+  $('#cry').click(function () {
+      window.App.trigger('avatar:mood', {
+        mood: 'sad',
+        message: 'This book was sooo sad!',
+        interval: 5000,
+        info: 'I am talking about Hector Marlot book',
+        sound: 'http://soundbible.com/grab.php?id=764&type=mp3',
+        icon: 'fa-cloud-download'
       });
+    });
 
-      $('#smart').click(function(){
-        App.trigger('avatar:mood', 'smart');
-      });
+:markdown
+  ## Looks and feels
 
-    :markdown
+  The avatar look and feel is not included in the lfa-addon-backstage by default,
+  because each textbook should have different images and behavior.
 
-      ## Event options
+  Usually just some styling should be enough. Here is a copy & paste ready snippet
+  to get you started quickly (don't forget to have your own mood images):
 
-      ```
-         window.App.trigger('avatar:mood', {
-            mood: 'sad',
-            message: 'This book was sooo sad!',
-            interval: 5000,
-            info: 'I am talking about Hector Marlot book',
-            sound: 'http://soundbible.com/grab.php?id=764&type=mp3',
-            icon: 'fa-cloud-download'
-          });
-      ```
+  ```
+    // // // // // //
+    //   Avatar !  //
+    // // // // // //
 
-    button.btn.btn-large.btn-danger#cry Cry! (with sound)
+    #rightbar-toggle
+      background-color: transparent;
 
-    script.
-      $('#cry').click(function () {
-          window.App.trigger('avatar:mood', {
-            mood: 'sad',
-            message: 'This book was sooo sad!',
-            interval: 5000,
-            info: 'I am talking about Hector Marlot book',
-            sound: 'http://soundbible.com/grab.php?id=764&type=mp3',
-            icon: 'fa-cloud-download'
-          });
-        });
+    .avatar-mood-neutral
+    .avatar-mood-happy
+    .avatar-mood-sad
+    .avatar-mood-smart
+    .avatar-mood-smile
+    .avatar-mood-angry
+    .avatar-mood-cheeky
+    .avatar-mood-helpless
+    .avatar-mood-sleeping
+    .avatar-mood-uneasy
+    .avatar-mood-wink
 
-    :markdown
-      ## Looks and feels
+      transition: all 0.3s ease
+      background-color: transparent;
+      background-size: contain;
+      background-repeat: no-repeat;
 
-      The avatar look and feel is not included in the lfa-addon-backstage by default,
-      because each textbook should have different images and behavior.
+    .avatar-mood-neutral
+      background-image: url('/images/avatar/neutral.png');
 
-      Usually just some styling should be enough. Here is a copy & paste ready snippet
-      to get you started quickly (don't forget to have your own mood images):
+    .avatar-mood-happy
+      background-image: url('/images/avatar/happy.png');
+      transform: translate(0px, -10px);
 
-      ```
-        // // // // // //
-        //   Avatar !  //
-        // // // // // //
+    .avatar-mood-sad
+      background-image: url('/images/avatar/sad.png');
+      transform: translate(0px, 10px);
 
-        #rightbar-toggle
-          background-color: transparent;
+    .avatar-mood-smart
+      background-image: url('/images/avatar/smart.png');
+      transform: scale(1.2);
 
-        .avatar-mood-neutral
-        .avatar-mood-happy
-        .avatar-mood-sad
-        .avatar-mood-smart
-        .avatar-mood-smile
-        .avatar-mood-angry
-        .avatar-mood-cheeky
-        .avatar-mood-helpless
-        .avatar-mood-sleeping
-        .avatar-mood-uneasy
-        .avatar-mood-wink
+    .avatar-mood-smile
+      background-image: url('/images/avatar/smile.png');
 
-          transition: all 0.3s ease
-          background-color: transparent;
-          background-size: contain;
-          background-repeat: no-repeat;
+    .avatar-mood-angry
+      background-image: url('/images/avatar/angry.png');
 
-        .avatar-mood-neutral
-          background-image: url('/images/avatar/neutral.png');
+    .avatar-mood-cheeky
+      background-image: url('/images/avatar/cheeky.png');
 
-        .avatar-mood-happy
-          background-image: url('/images/avatar/happy.png');
-          transform: translate(0px, -10px);
+    .avatar-mood-helpless
+      background-image: url('/images/avatar/helpless.png');
 
-        .avatar-mood-sad
-          background-image: url('/images/avatar/sad.png');
-          transform: translate(0px, 10px);
+    .avatar-mood-sleeping
+      background-image: url('/images/avatar/sleeping.png');
 
-        .avatar-mood-smart
-          background-image: url('/images/avatar/smart.png');
-          transform: scale(1.2);
+    .avatar-mood-uneasy
+      background-image: url('/images/avatar/uneasy.png');
 
-        .avatar-mood-smile
-          background-image: url('/images/avatar/smile.png');
+    .avatar-mood-wink
+      background-image: url('/images/avatar/wink.png');
+      transform: rotate(10deg);
 
-        .avatar-mood-angry
-          background-image: url('/images/avatar/angry.png');
-
-        .avatar-mood-cheeky
-          background-image: url('/images/avatar/cheeky.png');
-
-        .avatar-mood-helpless
-          background-image: url('/images/avatar/helpless.png');
-
-        .avatar-mood-sleeping
-          background-image: url('/images/avatar/sleeping.png');
-
-        .avatar-mood-uneasy
-          background-image: url('/images/avatar/uneasy.png');
-
-        .avatar-mood-wink
-          background-image: url('/images/avatar/wink.png');
-          transform: rotate(10deg);
-
-      ```
+  ```

@@ -1,107 +1,97 @@
-+article("Math","+arithmetic")
-  +section("Arithmetic exercise")
-    :markdown
-      ## Arithmetic exercise
++title('Math')
++subtitle('+arithmetic')
+:markdown
+  ## Arithmetic exercise
 
-      ### Decription
+  ### Decription
 
-      This mixin, `+arithmetic` is a composed exercise that uses its children values
-      and a specified expression to validate. **$1** represents the value of the 1st child,
-      **$2** is the value of the 2nd and so on.
+  This mixin, `+arithmetic` is a composed exercise that uses its children values
+  and a specified expression to validate. **$1** represents the value of the 1st child,
+  **$2** is the value of the 2nd and so on.
 
-      Expression can be any arithmetic formula in JS syntax. Symbolic expressions are not supported.
-      Because expressions are used with JS **eval** function, any non digit and non operator are
-      discarded from the strings involved. 
+  Expression can be any arithmetic formula in JS syntax. Symbolic expressions are not supported.
+  Because expressions are used with JS **eval** function, any non digit and non operator are
+  discarded from the strings involved. 
 
-      Also, take care that '^' operator means "bitwise or", not power and is not supported.
+  Also, take care that '^' operator means "bitwise or", not power and is not supported.
 
-      Nota bene: `3,2` becomes `3.2` in expression eval. We need to support German / European notation formula
-      for float numbers.
+  Nota bene: `3,2` becomes `3.2` in expression eval. We need to support German / European notation formula
+  for float numbers.
 
-      Samples:
+  Samples:
 
-      * Expression `$1 < 63, number is integer (see pattern)`
-      ```
-        +arithmetic({name: 'ch07_sample1', expression: '$1 < 63'})
-          +textline({name: "ch07_sample1_1", type: 'numeric', max: 3, pattern: '[0-9]+'})
-          .is-done-box
-      ```
-
+  * Expression `$1 < 63, number is integer (see pattern)`
+  ```
     +arithmetic({name: 'ch07_sample1', expression: '$1 < 63'})
       +textline({name: "ch07_sample1_1", type: 'numeric', max: 3, pattern: '[0-9]+'})
       .is-done-box
+  ```
 
-    :markdown
-      * Expression `$1 * $1 <= 64`
-      ```
-        +arithmetic({name: 'ch07_sample2', expression: '$1 * $1 <= 64'})
-          +textline({name: "ch07_sample2_1", type: 'numeric', max: 3, pattern: '[0-9\,]+'})
-          .is-done-box
-      ```
++arithmetic({name: 'ch07_sample1', expression: '$1 < 63'})
+  +textline({name: "ch07_sample1_1", type: 'numeric', max: 3, pattern: '[0-9]+'})
+  .is-done-box
 
+:markdown
+  * Expression `$1 * $1 <= 64`
+  ```
     +arithmetic({name: 'ch07_sample2', expression: '$1 * $1 <= 64'})
       +textline({name: "ch07_sample2_1", type: 'numeric', max: 3, pattern: '[0-9\,]+'})
       .is-done-box
+  ```
 
-    :markdown
-      * Expression `$1 * $1 + $2 * $2 === $3 * $3` (pitagorean numbers)
-      ```
-        +arithmetic({name: 'ch07_sample3', expression: '$1 * $1 + $2 * $2 === $3 * $3'})
-          +textline({name: "ch07_sample3_1", type: 'numeric', max: 3, pattern: '[0-9\.]+'})
-          +textline({name: "ch07_sample3_2", type: 'numeric', max: 3, pattern: '[0-9\.]+'})
-          +textline({name: "ch07_sample3_3", type: 'numeric', max: 3, pattern: '[0-9\.]+'})
-          .is-done-box
-          .score-box
-      ```
++arithmetic({name: 'ch07_sample2', expression: '$1 * $1 <= 64'})
+  +textline({name: "ch07_sample2_1", type: 'numeric', max: 3, pattern: '[0-9\,]+'})
+  .is-done-box
 
+:markdown
+  * Expression `$1 * $1 + $2 * $2 === $3 * $3` (pitagorean numbers)
+  ```
     +arithmetic({name: 'ch07_sample3', expression: '$1 * $1 + $2 * $2 === $3 * $3'})
       +textline({name: "ch07_sample3_1", type: 'numeric', max: 3, pattern: '[0-9\.]+'})
       +textline({name: "ch07_sample3_2", type: 'numeric', max: 3, pattern: '[0-9\.]+'})
       +textline({name: "ch07_sample3_3", type: 'numeric', max: 3, pattern: '[0-9\.]+'})
       .is-done-box
       .score-box
+  ```
+
++arithmetic({name: 'ch07_sample3', expression: '$1 * $1 + $2 * $2 === $3 * $3'})
+  +textline({name: "ch07_sample3_1", type: 'numeric', max: 3, pattern: '[0-9\.]+'})
+  +textline({name: "ch07_sample3_2", type: 'numeric', max: 3, pattern: '[0-9\.]+'})
+  +textline({name: "ch07_sample3_3", type: 'numeric', max: 3, pattern: '[0-9\.]+'})
+  .is-done-box
+  .score-box
 
 
-    :markdown
-      * More complex example: write something in a fixed form so that the result is
-        eight 
-      ```
-        +arithmetic({name: 'ch07_ex2', expression: '$1 === 8'})
-          p.statement Write an expression in the form (a+b)/c so that the result is 8
-          .score-box
-
-          +textline({name: "ch07_ex2_1", type: 'numeric', max: 20, 
-            pattern: /^\s*\(\s*\d+\s*\+\s*\d+\s*\)\s*\/\s*\d\s*$/,
-            regexp:  /^\s*\(\s*\d+\s*\+\s*\d+\s*\)\s*\/\s*\d\s*$/,
-            title: 'Do not forget to write as: (a+b) /c'
-            })
-            .input
-      ```
-
-    +arithmetic({name: 'ch07_sample4', expression: '$1 === 8'})
+:markdown
+  * More complex example: write something in a fixed form so that the result is
+    eight 
+  ```
+    +arithmetic({name: 'ch07_ex2', expression: '$1 === 8'})
       p.statement Write an expression in the form (a+b)/c so that the result is 8
       .score-box
 
-      +textline({name: "ch07_sample4_1", type: 'numeric', max: 20, 
+      +textline({name: "ch07_ex2_1", type: 'numeric', max: 20, 
         pattern: /^\s*\(\s*\d+\s*\+\s*\d+\s*\)\s*\/\s*\d\s*$/,
         regexp:  /^\s*\(\s*\d+\s*\+\s*\d+\s*\)\s*\/\s*\d\s*$/,
         title: 'Do not forget to write as: (a+b) /c'
         })
         .input
+  ```
 
-    :markdown
-      You can use any exercise type that can be evaluated as a number
-      ```
-        +arithmetic({name: 'ch07_sample5', expression: '$1 + $2 === $3'})
-          +pickone(1, [1, 2, 3], {name: 'ch07_sample5_1'})
-          | +
-          +pickone(1, ['3-2', 2, 3], {name: 'ch07_sample5_2'})
-          | =
-          +pickone(2, [1, 2], {name: 'ch07_sample5_3'})
-          .score-box
-          .is-done-box
++arithmetic({name: 'ch07_sample4', expression: '$1 === 8'})
+  p.statement Write an expression in the form (a+b)/c so that the result is 8
+  .score-box
 
-      ```
+  +textline({name: "ch07_sample4_1", type: 'numeric', max: 20, 
+    pattern: /^\s*\(\s*\d+\s*\+\s*\d+\s*\)\s*\/\s*\d\s*$/,
+    regexp:  /^\s*\(\s*\d+\s*\+\s*\d+\s*\)\s*\/\s*\d\s*$/,
+    title: 'Do not forget to write as: (a+b) /c'
+    })
+    .input
+
+:markdown
+  You can use any exercise type that can be evaluated as a number
+  ```
     +arithmetic({name: 'ch07_sample5', expression: '$1 + $2 === $3'})
       +pickone(1, [1, 2, 3], {name: 'ch07_sample5_1'})
       | +
@@ -110,3 +100,13 @@
       +pickone(2, [1, 2], {name: 'ch07_sample5_3'})
       .score-box
       .is-done-box
+
+  ```
++arithmetic({name: 'ch07_sample5', expression: '$1 + $2 === $3'})
+  +pickone(1, [1, 2, 3], {name: 'ch07_sample5_1'})
+  | +
+  +pickone(1, ['3-2', 2, 3], {name: 'ch07_sample5_2'})
+  | =
+  +pickone(2, [1, 2], {name: 'ch07_sample5_3'})
+  .score-box
+  .is-done-box

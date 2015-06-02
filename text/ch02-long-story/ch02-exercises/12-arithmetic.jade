@@ -1,106 +1,105 @@
-+article('Arithmetic', '')
-  +section('Arithmetic')
-    .text
-      :markdown
-        # Arithmetic Exercises
++title('Arithmetic')
+.text
+  :markdown
+    # Arithmetic Exercises
 
-        This kind of exercise is found in two forms: number boxes (for computations) and text line groups where the result needs to be validated.
+    This kind of exercise is found in two forms: number boxes (for computations) and text line groups where the result needs to be validated.
 
-        Number boxes are used very similar with the crosswords, except that the up / down arrows, instead of moving from one box to another, increase / decrease the number value in the box.
+    Number boxes are used very similar with the crosswords, except that the up / down arrows, instead of moving from one box to another, increase / decrease the number value in the box.
 
-        Here are some samples:
+    Here are some samples:
 
-    :markdown
-      **Write a number or an aritmetic expression whose result is greater than 63:**
+:markdown
+  **Write a number or an aritmetic expression whose result is greater than 63:**
 
-    +arithmetic({name: 'help12-1', expression: '$1 > 63'})
-      +textline({name: "help12-1_1", type: 'numeric', max: 10, pattern: '[0-9]+'})
-      .is-done-box
++arithmetic({name: 'help12-1', expression: '$1 > 63'})
+  +textline({name: "help12-1_1", type: 'numeric', max: 10, pattern: '[0-9]+'})
+  .is-done-box
 
-    :markdown
-      **Write a number whose square is less than 64 (can be a negative or a non-integer, if you want)**
+:markdown
+  **Write a number whose square is less than 64 (can be a negative or a non-integer, if you want)**
 
-    +arithmetic({name: 'help12-2', expression: '$1 * $1 <= 64'})
-      +textline({name: "help12-2_1", type: 'numeric', max: 10, pattern: '[0-9\,]+'})
-      .is-done-box
++arithmetic({name: 'help12-2', expression: '$1 * $1 <= 64'})
+  +textline({name: "help12-2_1", type: 'numeric', max: 10, pattern: '[0-9\,]+'})
+  .is-done-box
 
-    :markdown
-      **Now write down three pytagorean numbers (the square of the first plus the square of the second equals to the square of the third: a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup>)**
+:markdown
+  **Now write down three pytagorean numbers (the square of the first plus the square of the second equals to the square of the third: a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup>)**
 
-    +arithmetic({name: 'help12-3', expression: '$1 * $1 + $2 * $2 === $3 * $3'})
-      +textline({name: "help12-3_1", type: 'numeric', max: 4, placeholder: 'a', pattern: '[0-9\.]+'})
-      +textline({name: "help12-3_2", type: 'numeric', max: 4, placeholder: 'b', pattern: '[0-9\.]+'})
-      +textline({name: "help12-3_3", type: 'numeric', max: 4, placeholder: 'c', pattern: '[0-9\.]+'})
-      .is-done-box
-      .score-box
++arithmetic({name: 'help12-3', expression: '$1 * $1 + $2 * $2 === $3 * $3'})
+  +textline({name: "help12-3_1", type: 'numeric', max: 4, placeholder: 'a', pattern: '[0-9\.]+'})
+  +textline({name: "help12-3_2", type: 'numeric', max: 4, placeholder: 'b', pattern: '[0-9\.]+'})
+  +textline({name: "help12-3_3", type: 'numeric', max: 4, placeholder: 'c', pattern: '[0-9\.]+'})
+  .is-done-box
+  .score-box
 
 
-    +arithmetic({name: 'help12-4', expression: '$1 === 8'})
-      strong.statement Write an expression as <code>(a+b)/c</code> who's final result is 8.
-      .is-done-box
-      .score-box
-      +textline({name: "help12-4_1", type: 'numeric', max: 20,
-        pattern: /^\s*\(\s*\d+\s*\+\s*\d+\s*\)\s*\/\s*\d\s*$/,
-        regexp:  /^\s*\(\s*\d+\s*\+\s*\d+\s*\)\s*\/\s*\d\s*$/,
-        title: 'Do not forget to write as: (a+b) / c'
++arithmetic({name: 'help12-4', expression: '$1 === 8'})
+  strong.statement Write an expression as <code>(a+b)/c</code> who's final result is 8.
+  .is-done-box
+  .score-box
+  +textline({name: "help12-4_1", type: 'numeric', max: 20,
+    pattern: /^\s*\(\s*\d+\s*\+\s*\d+\s*\)\s*\/\s*\d\s*$/,
+    regexp:  /^\s*\(\s*\d+\s*\+\s*\d+\s*\)\s*\/\s*\d\s*$/,
+    title: 'Do not forget to write as: (a+b) / c'
+    })
+    .input
+
+
+:markdown
+  **Digits exercises:**
+
++exercise({
+  name: 'help12-10',
+  description: 'Addition exercises!'
+  })
+  .row
+    .progress-box
+    .col-md-6.col.col-xs-12.well
+      +calcuwords({
+          name: 'help12-10-plain-addition',
+          words: [
+            ['1', '2', '+'],
+            ['', '9', ''],
+            ['2?', '1?', ''],
+          ],
+          linesAt: [2]
         })
-        .input
-
-
-    :markdown
-      **Digits exercises:**
-
-    +exercise({
-      name: 'help12-10',
-      description: 'Addition exercises!'
-      })
-      .row
-        .progress-box
-        .col-md-6.col.col-xs-12.well
-          +calcuwords({
-              name: 'help12-10-plain-addition',
-              words: [
-                ['1', '2', '+'],
-                ['', '9', ''],
-                ['2?', '1?', ''],
-              ],
-              linesAt: [2]
-            })
-            .inline-block
-              .is-done-box
-              .calcugrid.sans
-        .col-md-6.col.col-xs-12.well
-          +calcuwords({
-              name: 'help12-10-morerows',
-              words: [
-                ['3', '2', '7', '+'],
-                [' ', '8', '8', ''],
-                ['2', '9', '7', ''],
-                ['7?', '1?', '2?', ''],
-              ],
-              linesAt: [3]
-            })
-            .inline-block
-              .is-done-box
-              .calcugrid.sans
-        .col-md-6.col.col-xs-12.well
-          +calcuwords({
-              name: 'help12-10-pe-lung',
-              words: [
-                ['There are', '1?', '2?', 'stars on the European Union flag.']
-              ]
-            })
-            .inline-block
-              .is-done-box
-              .calcugrid.sans
-        .col-md-6.col.col-xs-12.well
-          +calcuwords({
-            name: 'help12-10-operators-exercise',
-            words: [
-              ['2', '*?', '(?', '2 + 2', ')?', '= 8']
-            ]
-            })
-            .inline-block
-              .is-done-box
-              .calcugrid.sans
+        .inline-block
+          .is-done-box
+          .calcugrid.sans
+    .col-md-6.col.col-xs-12.well
+      +calcuwords({
+          name: 'help12-10-morerows',
+          words: [
+            ['3', '2', '7', '+'],
+            [' ', '8', '8', ''],
+            ['2', '9', '7', ''],
+            ['7?', '1?', '2?', ''],
+          ],
+          linesAt: [3]
+        })
+        .inline-block
+          .is-done-box
+          .calcugrid.sans
+    .col-md-6.col.col-xs-12.well
+      +calcuwords({
+          name: 'help12-10-pe-lung',
+          words: [
+            ['There are', '1?', '2?', 'stars on the European Union flag.']
+          ]
+        })
+        .inline-block
+          .is-done-box
+          .calcugrid.sans
+    .col-md-6.col.col-xs-12.well
+      +calcuwords({
+        name: 'help12-10-operators-exercise',
+        words: [
+          ['2', '*?', '(?', '2 + 2', ')?', '= 8']
+        ]
+        })
+        .inline-block
+          .is-done-box
+          .calcugrid.sans
 

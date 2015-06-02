@@ -1,39 +1,39 @@
-+article('Sorting', 'Sorting Exercises')
-  +section('Sorting')
-    .text
-      :markdown
-        # Sorting Exercises
++title('Sorting')
++subtitle('Sorting Exercises')
+.text
+  :markdown
+    # Sorting Exercises
 
-        This is an exercise type which requires the user to sort some elements in a sequence according to requested criteria (alphabetical, size, age, number of letters, etc.). The sort is done either horizontally or vertically and is done by dragging and dropping the elements. The feedback is available immediately, except the cases where the authors decided to disable the feedback on purpose.
+    This is an exercise type which requires the user to sort some elements in a sequence according to requested criteria (alphabetical, size, age, number of letters, etc.). The sort is done either horizontally or vertically and is done by dragging and dropping the elements. The feedback is available immediately, except the cases where the authors decided to disable the feedback on purpose.
 
-        Elements can be images, letters, words or text fragments.
+    Elements can be images, letters, words or text fragments.
 
-        Try it for yourself here:
+    Try it for yourself here:
 
-    +exercise({name: 'help06-1'})
-      .progress-box
-      .score-box
-      .is-done-box
++exercise({name: 'help06-1'})
+  .progress-box
+  .score-box
+  .is-done-box
 
-      b Order the numbers from the lowest to the highest:
-      +drag-and-sort({name: 'help06-1-1', scoreByRelativeOrder: true})
+  b Order the numbers from the lowest to the highest:
+  +drag-and-sort({name: 'help06-1-1', scoreByRelativeOrder: true})
 
-        span.item(data-index=50) 50
-        span.item(data-index=40) 40
-        span.item(data-index=30) 30
-        span.item(data-index=20) 20
-        span.item(data-index=10) 10
-        .score-box
+    span.item(data-index=50) 50
+    span.item(data-index=40) 40
+    span.item(data-index=30) 30
+    span.item(data-index=20) 20
+    span.item(data-index=10) 10
+    .score-box
 
-      .clearfix
-      br
-      b Sort the planets from nearest to furthest from the Sun:
-      +drag-and-sort({name: 'help06-1-2'})
-        ul.items
-          li.item(data-index='7') Saturn
-          li.item(data-index='2') Venus
-          li.item(data-index='8') Uranus
-          li.item(data-index='4') Mars
-          li.item(data-index='9') Neptune
-          li.item(data-index='3') Earth
-          li.item(data-index='1') Mercury
+  .clearfix
+  br
+  b Sort the planets from nearest to furthest from the Sun:
+  +drag-and-sort({name: 'help06-1-2'})
+    ul.items
+      li.item(data-index='7') Saturn
+      li.item(data-index='2') Venus
+      li.item(data-index='8') Uranus
+      li.item(data-index='4') Mars
+      li.item(data-index='9') Neptune
+      li.item(data-index='3') Earth
+      li.item(data-index='1') Mercury

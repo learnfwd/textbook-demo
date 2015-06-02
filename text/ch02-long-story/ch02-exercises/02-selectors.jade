@@ -1,74 +1,74 @@
-+article("Selector Exercises","Pick One, Yes/No")
-  +section("Selector Exercises")
-    :markdown
-      # Selector Exercises
++title('Selector Exercises')
++subtitle('Pick One, Yes/No')
+:markdown
+  # Selector Exercises
 
-      ## Pick One
+  ## Pick One
 
-      This is a simple exercise type where there are more answer choices are presented and only one is correct. Press the button to open the list of possible answers, then select the answer that you think is the correct one.
+  This is a simple exercise type where there are more answer choices are presented and only one is correct. Press the button to open the list of possible answers, then select the answer that you think is the correct one.
 
-      Except special occasions, the convention used for all the exercises is: *green* for correct answers, *red* for wrong answers.
+  Except special occasions, the convention used for all the exercises is: *green* for correct answers, *red* for wrong answers.
 
-      Sample:
+  Sample:
 
-    +pickone(3, ['Bulgakov', 'Creangă', 'Shakespeare', 'Shaw', 'Goldoni', 'Molière'], {
-      name: 'help1-1',
-      ignoreAvatar: false,
-      description: 'Who wrote Hamlet?',
-      hints: {
-        4: 'He is an English author',
-        6: 'His name contains the letter K'
-      }})
-      p Who wrote Hamlet? 
-        span.btn.btn-default.trigger
++pickone(3, ['Bulgakov', 'Creangă', 'Shakespeare', 'Shaw', 'Goldoni', 'Molière'], {
+  name: 'help1-1',
+  ignoreAvatar: false,
+  description: 'Who wrote Hamlet?',
+  hints: {
+    4: 'He is an English author',
+    6: 'His name contains the letter K'
+  }})
+  p Who wrote Hamlet? 
+    span.btn.btn-default.trigger
 
-    :markdown
-      ## Push to select
+:markdown
+  ## Push to select
 
-      This exercise type shows more texts, buttons or images and the student must push (click or touch) the correct ones (and not to push the wrong ones). The score is proportional with the selected correct options. If some wrong answer is selected, the score decreases proportionally.
+  This exercise type shows more texts, buttons or images and the student must push (click or touch) the correct ones (and not to push the wrong ones). The score is proportional with the selected correct options. If some wrong answer is selected, the score decreases proportionally.
 
-    .aside-box
-      +select-to-highlight({
-          name: 'help02-1',
-          irritationLevel: 5,
-          ignoreAvatar: false
-        })
-        p Select the odd numbers and the vowels below. Avoid consonants and even numbers!
-        .progress-box
+.aside-box
+  +select-to-highlight({
+      name: 'help02-1',
+      irritationLevel: 5,
+      ignoreAvatar: false
+    })
+    p Select the odd numbers and the vowels below. Avoid consonants and even numbers!
+    .progress-box
 
-        .btn.btn-lg.bad 2
-        .btn.btn-lg.good A
-        .btn.btn-lg.bad H
-        .btn.btn-lg.good 7
-        .btn.btn-lg.good 3
-        .btn.btn-lg.bad C
-        .btn.btn-lg.bad 8
-        .btn.btn-lg.good E
+    .btn.btn-lg.bad 2
+    .btn.btn-lg.good A
+    .btn.btn-lg.bad H
+    .btn.btn-lg.good 7
+    .btn.btn-lg.good 3
+    .btn.btn-lg.bad C
+    .btn.btn-lg.bad 8
+    .btn.btn-lg.good E
 
-    :markdown
-      ## True/False Exercises (or True/False)
+:markdown
+  ## True/False Exercises (or True/False)
 
-      This exercise type presents a binary option -- an alernative, one answer being correct, the other wrong.
+  This exercise type presents a binary option -- an alernative, one answer being correct, the other wrong.
 
-    center
-      .row
-        .col-md-3.hidden-xs
-        .aside-box.col-md-6.col-xs-12
-          +exercise({name: 'help03-1'})
+center
+  .row
+    .col-md-3.hidden-xs
+    .aside-box.col-md-6.col-xs-12
+      +exercise({name: 'help03-1'})
 
-            .row
-              .col-xs-1
-                .is-done-box
-              .col-xs-1
-                .score-box
-              .col-xs-10
-                .progress-box
+        .row
+          .col-xs-1
+            .is-done-box
+          .col-xs-1
+            .score-box
+          .col-xs-10
+            .progress-box
 
-            +yesno({answer: false, name:'help03-1-1', yes: 'Yes', no: 'No'})
-              p Has man landed on Mars, yet? (year is 2014 :) )
+        +yesno({answer: false, name:'help03-1-1', yes: 'Yes', no: 'No'})
+          p Has man landed on Mars, yet? (year is 2014 :) )
 
-            +yesno({answer: true, name:'help03-1-1', yes: 'True', no: 'False'})
-              p Tomatoes are actually fruits.
+        +yesno({answer: true, name:'help03-1-1', yes: 'True', no: 'False'})
+          p Tomatoes are actually fruits.
 
-            +yesno({answer: false, name:'help03-1-1', yes: 'recieve', no: 'receive'})
-              p How is this word written?
+        +yesno({answer: false, name:'help03-1-1', yes: 'recieve', no: 'receive'})
+          p How is this word written?

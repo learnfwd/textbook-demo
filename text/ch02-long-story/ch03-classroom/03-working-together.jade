@@ -1,50 +1,50 @@
-+article("Working Together","Collaborating on exercises")
-  +section("")
-    :markdown
-      # Working Together
++title('Working Together')
++subtitle('Collaborating on exercises')
+:markdown
+  # Working Together
 
-    .bordered.pull-right.percent-50.margin-for-right
-      +lightbox('img/classroom2.jpg')
+.bordered.pull-right.percent-50.margin-for-right
+  +lightbox('img/classroom2.jpg')
 
-    :markdown
-      Learning is more fun when it is interactive, ideas can be shared and exercises can be done in groups.
+:markdown
+  Learning is more fun when it is interactive, ideas can be shared and exercises can be done in groups.
 
-      The context-aware textbooks know how to communicate with one another out of the box. So, when a group of students want to work together on the same set of exercises, they need join the same classroom and select the same group (A, B, C, D or E).
-
-
-      Try it yourself:
-
-      1. On this computer select a group from the *Work group* button bar (A, B, C, D or E).
-      2. On your device, select the same group.
-
-      Note that you need to have joined the same classroom on all the devices.
-
-      Now scroll to the exercises below and try to solve them on one device. Watch the other devices atomatically changing the exercise state based on what you press.
+  The context-aware textbooks know how to communicate with one another out of the box. So, when a group of students want to work together on the same set of exercises, they need join the same classroom and select the same group (A, B, C, D or E).
 
 
-    +pickone(4, ['Bulgakov', 'Creangă', 'Shakespeare', 'Shaw', 'Goldoni', 'Molière'], {
-      name: 'working-1',
-      ignoreAvatar: false,
-      hints: {
-        4: 'He is an English author',
-        6: 'His name contains the letter W'
-      }})
-      p Who wrote the play Pygmalion? 
-        span.btn.btn-default.trigger
+  Try it yourself:
 
-    .clearfix
+  1. On this computer select a group from the *Work group* button bar (A, B, C, D or E).
+  2. On your device, select the same group.
 
-    +yesno({nama: 'working-2', answer:true})
-      p Is this fun?
+  Note that you need to have joined the same classroom on all the devices.
 
-    .clearfix
+  Now scroll to the exercises below and try to solve them on one device. Watch the other devices atomatically changing the exercise state based on what you press.
 
-    div
-      +drag-and-sort({name: 'working3', })
-        p Sort the following composers cronologically in history:
-        .progress-box
-        span.item(data-index=50) Philip Glass
-        span.item(data-index=40) Stravinsky
-        span.item(data-index=30) Verdi
-        span.item(data-index=20) Mozart
-        span.item(data-index=10) Bach
+
++pickone(4, ['Bulgakov', 'Creangă', 'Shakespeare', 'Shaw', 'Goldoni', 'Molière'], {
+  name: 'working-1',
+  ignoreAvatar: false,
+  hints: {
+    4: 'He is an English author',
+    6: 'His name contains the letter W'
+  }})
+  p Who wrote the play Pygmalion? 
+    span.btn.btn-default.trigger
+
+.clearfix
+
++yesno({nama: 'working-2', answer:true})
+  p Is this fun?
+
+.clearfix
+
+div
+  +drag-and-sort({name: 'working3', })
+    p Sort the following composers cronologically in history:
+    .progress-box
+    span.item(data-index=50) Philip Glass
+    span.item(data-index=40) Stravinsky
+    span.item(data-index=30) Verdi
+    span.item(data-index=20) Mozart
+    span.item(data-index=10) Bach

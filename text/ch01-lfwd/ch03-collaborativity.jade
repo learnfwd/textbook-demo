@@ -1,46 +1,46 @@
-+article("The Classroom", "Zero-setup LMS")
-  +section("The Classroom")
-    h1 The Classroom
++title('The Classroom')
++subtitle('Zero-setup LMS')
+h1 The Classroom
 
-    :markdown
-      Go on, be a teacher!
+:markdown
+  Go on, be a teacher!
 
-      1. Click on the little cat in the top corner and then click on *Create Classroom* (say yes when asked about positioning).
-      2. Then on another computer, or tablet or phone open the browser and navigate to the same address
-      3. Pick the same group on several devices
-      4. Have fun solving the exercises below
-      3. Observe the two extra buttons (at the bottom of the page). Play with them.
+  1. Click on the little cat in the top corner and then click on *Create Classroom* (say yes when asked about positioning).
+  2. Then on another computer, or tablet or phone open the browser and navigate to the same address
+  3. Pick the same group on several devices
+  4. Have fun solving the exercises below
+  3. Observe the two extra buttons (at the bottom of the page). Play with them.
 
-    +pickone(4, ['Bulgakov', 'Creangă', 'Shakespeare', 'Shaw', 'Goldoni', 'Molière'], {
-      name: 'working-1',
-      ignoreAvatar: false,
-      hints: {
-        4: 'He is an English author',
-        6: 'His name contains the letter W'
-      }})
-      p Who wrote the play Pygmalion? 
-        span.btn.btn-default.trigger
++pickone(4, ['Bulgakov', 'Creangă', 'Shakespeare', 'Shaw', 'Goldoni', 'Molière'], {
+  name: 'working-1',
+  ignoreAvatar: false,
+  hints: {
+    4: 'He is an English author',
+    6: 'His name contains the letter W'
+  }})
+  p Who wrote the play Pygmalion? 
+    span.btn.btn-default.trigger
 
-    .clearfix
+.clearfix
 
-    +yesno({nama: 'working-2', answer:true})
-      p Is this fun?
++yesno({nama: 'working-2', answer:true})
+  p Is this fun?
 
-    .clearfix
+.clearfix
 
-    div
-      +drag-and-sort({name: 'working3', })
-        p Sort the following composers cronologically in history:
-        .progress-box
-        span.item(data-index=50) Philip Glass
-        span.item(data-index=40) Stravinsky
-        span.item(data-index=30) Verdi
-        span.item(data-index=20) Mozart
-        span.item(data-index=10) Bach
+div
+  +drag-and-sort({name: 'working3', })
+    p Sort the following composers cronologically in history:
+    .progress-box
+    span.item(data-index=50) Philip Glass
+    span.item(data-index=40) Stravinsky
+    span.item(data-index=30) Verdi
+    span.item(data-index=20) Mozart
+    span.item(data-index=10) Bach
 
-    .clearfix
+.clearfix
 
-    h3 Don't forget to try our synchronized navigation
+h3 Don't forget to try our synchronized navigation
 
-    p As a teacher click on the 'lock' button and see what happens on the student screens whan you change pages.
+p As a teacher click on the 'lock' button and see what happens on the student screens whan you change pages.
 

@@ -1,0 +1,14 @@
+{
+  "name": "lfdemo",
+  "version": "1.0.0",
+  "keywords": [
+    "lfa-book"
+  ],
+  "book": {
+    "title": "LearnFwd Demo Textbook 2",
+    "language": "en"
+  },
+  "engines": {
+    "lfa": "~0.7.0"
+  }
+}

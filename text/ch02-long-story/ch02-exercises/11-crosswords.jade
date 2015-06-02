@@ -1,63 +1,62 @@
-+article('Crosswords', '')
-  +section('Crosswords')
-    .text
-      :markdown
-        # Crosswords
++title('Crosswords')
+.text
+  :markdown
+    # Crosswords
 
-        This is one complex widget. The cursor can be moved by clicking, tapping or keyboard arrows. Virtual or real keyboards can be used to enter the letters. Entering a letter makes the cursor move to the next box in the word.
+    This is one complex widget. The cursor can be moved by clicking, tapping or keyboard arrows. Virtual or real keyboards can be used to enter the letters. Entering a letter makes the cursor move to the next box in the word.
 
-        The score is calculated as the ratio between correct (found) words and the total number of correct words across and down.
+    The score is calculated as the ratio between correct (found) words and the total number of correct words across and down.
 
-        Try your writer's *first name to last name* knowledge by solving the crosswords below.
+    Try your writer's *first name to last name* knowledge by solving the crosswords below.
 
-    +crosswords({
-        name: 'help11-1',
-        hideNumbers: false,
-        ignoreAvatar: false,
-        words: //  1  2  3  4  5  6  7  8  9  0  1  2
-               ['  _  _  _  _  _ 1N  _2>K  _  _  _  _',  //  1
-                '  _  _  _  _ 3P >A  M  U  K  _  _  _',  //  2
-                '  _  _  _  _  _  U  _  N  _  _  _  _',  //  3
-                '  _  _  _  _  _  M  _  D  _  _  _  _',  //  4
-                '  _  _  _  _  _  _  _  E  _  _  _  _',  //  5
-                '  _  _  _  _  _  _  _  R  _  _  _  _',  //  6
-                '  _  _  _  _4>M  U  R  A  K  A  M  I',  //  7
-                '  _  _  _  _  E  _  _  _  _  _  _  _',  //  8
-                '  _  _ 5S  A >L  I  N  G  E  R  _  _',  //  9
-                '  _  _  _  _  V  _  _  _  _  _  _  _',  //  10
-                '  _  _ 6A  S  I  M  O  V  _ 7C  _  _',  //  11
-                '  _  _  _  _  L  _  _  _  _  L  _  _',  //  12
-                ' 8G  O  G  O  L  _  _  _  _  A  _  _',  //  13
-                '  _  _  _  _9>E  X  U  P  E  R  Y  _',  //  14
-                '  _  _  _  _  _  _  _  _  _  K  _  _',  //  15
-                '  _  _  _  _  _  _  _  _  _  E  _  _']  //  16
-      })
-      .progress-box
-      .score-box
++crosswords({
+    name: 'help11-1',
+    hideNumbers: false,
+    ignoreAvatar: false,
+    words: //  1  2  3  4  5  6  7  8  9  0  1  2
+           ['  _  _  _  _  _ 1N  _2>K  _  _  _  _',  //  1
+            '  _  _  _  _ 3P >A  M  U  K  _  _  _',  //  2
+            '  _  _  _  _  _  U  _  N  _  _  _  _',  //  3
+            '  _  _  _  _  _  M  _  D  _  _  _  _',  //  4
+            '  _  _  _  _  _  _  _  E  _  _  _  _',  //  5
+            '  _  _  _  _  _  _  _  R  _  _  _  _',  //  6
+            '  _  _  _  _4>M  U  R  A  K  A  M  I',  //  7
+            '  _  _  _  _  E  _  _  _  _  _  _  _',  //  8
+            '  _  _ 5S  A >L  I  N  G  E  R  _  _',  //  9
+            '  _  _  _  _  V  _  _  _  _  _  _  _',  //  10
+            '  _  _ 6A  S  I  M  O  V  _ 7C  _  _',  //  11
+            '  _  _  _  _  L  _  _  _  _  L  _  _',  //  12
+            ' 8G  O  G  O  L  _  _  _  _  A  _  _',  //  13
+            '  _  _  _  _9>E  X  U  P  E  R  Y  _',  //  14
+            '  _  _  _  _  _  _  _  _  _  K  _  _',  //  15
+            '  _  _  _  _  _  _  _  _  _  E  _  _']  //  16
+  })
+  .progress-box
+  .score-box
+  .row
+    .col-md-8
+      .xwordscontent
+      .clearfix
+    .col-md-4.well.sans
+      strong Writer Names Puzzle
+      br
+      span Definitions
+
       .row
-        .col-md-8
-          .xwordscontent
-          .clearfix
-        .col-md-4.well.sans
-          strong Writer Names Puzzle
-          br
-          span Definitions
+        .col-xs-12
+          pre.
+            Across:
 
-          .row
-            .col-xs-12
-              pre.
-                Across:
-
-                3. Orhan ...
-                4. Haruki ...
-                5. J.D. ...
-                6. Isac ...
-                8. N.V. ...
-                9. Antoine de Saint-....
-            .col-xs-12
-              pre.
-                Down:
-                1. Gellu ...
-                2. Milan ...
-                4. Herman ...
-                7. Arthur C. ....
+            3. Orhan ...
+            4. Haruki ...
+            5. J.D. ...
+            6. Isac ...
+            8. N.V. ...
+            9. Antoine de Saint-....
+        .col-xs-12
+          pre.
+            Down:
+            1. Gellu ...
+            2. Milan ...
+            4. Herman ...
+            7. Arthur C. ....

@@ -1,12 +1,37 @@
-+article("Tooltip Mixin")
-  +section("Tooltip")
-    :markdown
-      #The Tooltip
-      
-      Now, you can place customizable tooltips, separated by commas, over images by calling `+tooltip(tooltip1, tooltip2, ..., tooltipN)` in any `.jade` file.
-      
-      The `tooltip{1..N}` argument actually a series of `JSONs` that **must** have at *content*, *positionings* (top, bottom, left, bottom) and a font-awesome *symbol*.
-      
++title('Tooltip Mixin')
+:markdown
+  #The Tooltip
+  
+  Now, you can place customizable tooltips, separated by commas, over images by calling `+tooltip(tooltip1, tooltip2, ..., tooltipN)` in any `.jade` file.
+  
+  The `tooltip{1..N}` argument actually a series of `JSONs` that **must** have at *content*, *positionings* (top, bottom, left, bottom) and a font-awesome *symbol*.
+  
+.row: .col-sm-4.col-sm-offset-4
+  +tooltip(
+    {
+      'title':'titlul',
+      'content': "<iframe width='100%' height='auto' src='//www.youtube.com/embed/cAmvhNdDrk8' frameborder='0' allowfullscreen></iframe>",
+      'top': '100%',
+      'left': '100%',
+      'symbol': 'circle-o',
+      'large': true,
+      'placement': 'top'
+    },
+    {
+      'title':'titlul',
+      'content': 'continut',
+      'top': '50%',
+      'left': '50%',
+      'symbol': 'times',
+      'large': true
+    }
+  )
+    img(src='http://placekitten.com/g/300/300')
+
+
+:markdown
+  The code for the above tooltips is:
+  ```javascript
     .row: .col-sm-4.col-sm-offset-4
       +tooltip(
         {
@@ -28,46 +53,20 @@
         }
       )
         img(src='http://placekitten.com/g/300/300')
-    
-    
-    :markdown
-      The code for the above tooltips is:
-      ```javascript
-        .row: .col-sm-4.col-sm-offset-4
-          +tooltip(
-            {
-              'title':'titlul',
-              'content': "<iframe width='100%' height='auto' src='//www.youtube.com/embed/cAmvhNdDrk8' frameborder='0' allowfullscreen></iframe>",
-              'top': '100%',
-              'left': '100%',
-              'symbol': 'circle-o',
-              'large': true,
-              'placement': 'top'
-            },
-            {
-              'title':'titlul',
-              'content': 'continut',
-              'top': '50%',
-              'left': '50%',
-              'symbol': 'times',
-              'large': true
-            }
-          )
-            img(src='http://placekitten.com/g/300/300')
-      ```
-      
-      The idea is that in the body of the `+tooltip()` mixin you place the background image that you place the tooltips on.
-      
-      The `content` cand be either `text` or `HTML`.
-      
-      For responsive positionings it is best that you use `percentages` and not pixels.
-      
-      The `symbol` is mandatory and **must** be a [font awesome](http://fortawesome.github.io) icon, but if you forget it is defaulted to the `circle-o` icon.
-      
-      The `placement` is the place where the tooltip is shown, it is defaulted to auto.
-      
-      If the `large` option is set to `true`, default is `false`, it add the `fa-2x` class to the `symbol`, making it bigger.
-      
-      If you want a different template for the tooltip, simply add a `template` parameter in which you add `html` for your desired template.
-      
-      You can also modify the way the user interacts with the `trigger` by adding a `trigger` option with `hover`. It is defaulted to `click`.
+  ```
+  
+  The idea is that in the body of the `+tooltip()` mixin you place the background image that you place the tooltips on.
+  
+  The `content` cand be either `text` or `HTML`.
+  
+  For responsive positionings it is best that you use `percentages` and not pixels.
+  
+  The `symbol` is mandatory and **must** be a [font awesome](http://fortawesome.github.io) icon, but if you forget it is defaulted to the `circle-o` icon.
+  
+  The `placement` is the place where the tooltip is shown, it is defaulted to auto.
+  
+  If the `large` option is set to `true`, default is `false`, it add the `fa-2x` class to the `symbol`, making it bigger.
+  
+  If you want a different template for the tooltip, simply add a `template` parameter in which you add `html` for your desired template.
+  
+  You can also modify the way the user interacts with the `trigger` by adding a `trigger` option with `hover`. It is defaulted to `click`.

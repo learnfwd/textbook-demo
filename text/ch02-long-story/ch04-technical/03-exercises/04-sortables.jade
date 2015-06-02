@@ -1,113 +1,64 @@
 //- Drag and drop elements to bucket
-+article("Sortable","+drag-and-sort, +drag-to-bucket")
-  +section("Drag-and-Sort")
-  :markdown
-    ## Drag and sort
++title('Sortable')
++subtitle('+drag-and-sort, +drag-to-bucket')
+:markdown
+  ## Drag and sort
 
-    ### Description
+  ### Description
 
-    **Drag-and-Sort** (`+drag-and-sort`) is a type of exercise where the user is asked
-    to drag and drop items until a specific order is reached.
-    
-    An `+drag-and-sort` exercise has one or more `.item` elements.
-    
-    If .item-s cannot be in the exercise root, place them in a `.items` div.
-    
-    ### Parameters
-    
-    Options object, with the following overiddable fields:
-    
-    * `group`
-    * `handle` - Restricts sort start click/touch to the specified element
-    * `draggable` - Specifies which items inside the element should be sortable
-    * `scoreByRelativeOrder` - set to true to get the score computed in relation
-        to elements' relative order, not target position in row
-    
-    For more information on how these are used, see documentation for
-    [Sortable](https://github.com/RubaXa/Sortable)
-    
-    
-    ### Scoring
-    
-    Default scoring:
-    
-    'scoreByRelativeOrder' scoring
-    * If there are N *good* elements. each elements each selected one adds +100/N score
-    * Each selected *bad* element substracts 100/N from the score
-    * Score cannot be lower than 0
-    * The score is 100 when all good elements are selected and no bad element is selected
-    
-    ### Example (source)
-    
-    ```
-    +exercise({name: 'Ch04Ex01A'})
-      .row
-        +statement
-          p Order the following numbers in ascending order
-        .progress-box
-        .score-box
-        .is-done-box
-        +drag-and-sort
-          span.item(data-index=50) 50
-          span.item(data-index=40) 40
-          span.item(data-index=30) 30
-          span.item(data-index=20) 20
-          span.item(data-index=10) 10
+  **Drag-and-Sort** (`+drag-and-sort`) is a type of exercise where the user is asked
+  to drag and drop items until a specific order is reached.
 
-      .row
-        +statement
-          p Make a wish for the Education Ministry.
+  An `+drag-and-sort` exercise has one or more `.item` elements.
 
-        +drag-and-sort({scoreBox: true})
-          i.fa.fa-exclamation.item(data-index=3)
-            | &nbsp;three
-          i.fa.fa-coffee.item(data-index=2)
-            | &nbsp;two
-          i.fa.fa-asterisk.item(data-index=1)
-            | &nbsp;one
+  If .item-s cannot be in the exercise root, place them in a `.items` div.
 
-      .row
-        +statement
-          | Drag and drop planets below to order them according to distance from the Sun.
-    ```
-    **Rendered Example**
+  ### Parameters
 
-  +exercise({name: 'Ch04Ex01A', scoreBox: true, isDoneBox:true, progressBox: true})
+  Options object, with the following overiddable fields:
+
+  * `group`
+  * `handle` - Restricts sort start click/touch to the specified element
+  * `draggable` - Specifies which items inside the element should be sortable
+  * `scoreByRelativeOrder` - set to true to get the score computed in relation
+    to elements' relative order, not target position in row
+
+  For more information on how these are used, see documentation for
+  [Sortable](https://github.com/RubaXa/Sortable)
+
+
+  ### Scoring
+
+  Default scoring:
+
+  'scoreByRelativeOrder' scoring
+  * If there are N *good* elements. each elements each selected one adds +100/N score
+  * Each selected *bad* element substracts 100/N from the score
+  * Score cannot be lower than 0
+  * The score is 100 when all good elements are selected and no bad element is selected
+
+  ### Example (source)
+
+  ```
+  +exercise({name: 'Ch04Ex01A'})
     .row
       +statement
         p Order the following numbers in ascending order
-
       .progress-box
       .score-box
       .is-done-box
-
-      .row
-        +drag-and-sort({name: 'sortScoreSampleExercise-1', })
-          b Score decided by absolute position
-          span.item(data-index=50) 50
-          span.item(data-index=40) 40
-          span.item(data-index=30) 30
-          span.item(data-index=20) 20
-          span.item(data-index=10) 10
-          .score-box
-      
-      .row
-
-        +drag-and-sort({name: 'sortScoreSampleExercise-2', scoreByRelativeOrder: true})
-          b Score decided by relative order:
-          span.item(data-index=50) 50
-          span.item(data-index=40) 40
-          span.item(data-index=30) 30
-          span.item(data-index=20) 20
-          span.item(data-index=10) 10
-          .score-box
-
+      +drag-and-sort
+        span.item(data-index=50) 50
+        span.item(data-index=40) 40
+        span.item(data-index=30) 30
+        span.item(data-index=20) 20
+        span.item(data-index=10) 10
 
     .row
       +statement
         p Make a wish for the Education Ministry.
 
-      +drag-and-sort
+      +drag-and-sort({scoreBox: true})
         i.fa.fa-exclamation.item(data-index=3)
           | &nbsp;three
         i.fa.fa-coffee.item(data-index=2)
@@ -115,80 +66,97 @@
         i.fa.fa-asterisk.item(data-index=1)
           | &nbsp;one
 
-  :markdown
-    #### Another example (source)
-    ```
-      +exercise({name:'ch04-highlighters-e3'})
-        +statement
-          h4 Exercise:  Planets and satellites
-          | Sort the following celestial bodies by their size:
-        .progress-box
-        +drag-and-sort
-          .row.items
-            .item.bad.col-md-3(data-index=3) Mercury
-              +img('http://upload.wikimedia.org/wikipedia/commons/8/88/Reprocessed_Mariner_10_image_of_Mercury.jpg')
-            .item.good.col-md-3(data-index=2) Io
-              +img('http://upload.wikimedia.org/wikipedia/commons/7/7b/Io_highest_resolution_true_color.jpg')
-            .item.bad.col-md-3(data-index=4) Mars
-              +img('http://upload.wikimedia.org/wikipedia/commons/8/82/Mars_and_Syrtis_Major_-_GPN-2000-000923.jpg')
-            .item.good.col-md-3(data-index=1) Phobos
-              +img('http://upload.wikimedia.org/wikipedia/commons/5/5c/Phobos_colour_2008.jpg')
-    ```
-    #### Another example (rendered)
+    .row
+      +statement
+        | Drag and drop planets below to order them according to distance from the Sun.
+  ```
+  **Rendered Example**
 
-  +exercise({name:'ch04-highlighters-e3'})
++exercise({name: 'Ch04Ex01A', scoreBox: true, isDoneBox:true, progressBox: true})
+  .row
     +statement
-      h4 Exercise:  Planets and satellites
-      | Sort the following celestial bodies by their size:
+      p Order the following numbers in ascending order
+
     .progress-box
+    .score-box
+    .is-done-box
+
+    .row
+      +drag-and-sort({name: 'sortScoreSampleExercise-1', })
+        b Score decided by absolute position
+        span.item(data-index=50) 50
+        span.item(data-index=40) 40
+        span.item(data-index=30) 30
+        span.item(data-index=20) 20
+        span.item(data-index=10) 10
+        .score-box
+    
+    .row
+
+      +drag-and-sort({name: 'sortScoreSampleExercise-2', scoreByRelativeOrder: true})
+        b Score decided by relative order:
+        span.item(data-index=50) 50
+        span.item(data-index=40) 40
+        span.item(data-index=30) 30
+        span.item(data-index=20) 20
+        span.item(data-index=10) 10
+        .score-box
+
+
+  .row
+    +statement
+      p Make a wish for the Education Ministry.
+
     +drag-and-sort
-      .row.items
-        .item.bad.col-md-3(data-index=3) Mercury
-          +img('http://upload.wikimedia.org/wikipedia/commons/8/88/Reprocessed_Mariner_10_image_of_Mercury.jpg')
-        .item.good.col-md-3(data-index=2) Io
-          +img('http://upload.wikimedia.org/wikipedia/commons/7/7b/Io_highest_resolution_true_color.jpg')
-        .item.bad.col-md-3(data-index=4) Mars
-          +img('http://upload.wikimedia.org/wikipedia/commons/8/82/Mars_and_Syrtis_Major_-_GPN-2000-000923.jpg')
-        .item.good.col-md-3(data-index=1) Phobos
-          +img('http://upload.wikimedia.org/wikipedia/commons/5/5c/Phobos_colour_2008.jpg')
+      i.fa.fa-exclamation.item(data-index=3)
+        | &nbsp;three
+      i.fa.fa-coffee.item(data-index=2)
+        | &nbsp;two
+      i.fa.fa-asterisk.item(data-index=1)
+        | &nbsp;one
 
-
-  :markdown
-    Sort can be done vertically or horizontally, dependind on how the emements are laid in the page.
-
-    ```
-    +exercise({name: 'Ch04Ex02'})
-      .row
-        +statement
-          | Drag and drop planets below to order them according to distance from the Sun.
-
-      .progress-box
-      .score-box
-      .is-done-box
-      +drag-and-sort({name: 'Ch04Ex02a'})
-        ul.items
-          li.item(data-index='7') Saturn
-          li.item(data-index='2') Venus
-          li.item(data-index='8') Uranus
-          li.item(data-index='4') Mars
-          li.item(data-index='9') Neptune
-          li.item(data-index='3') Earth
-          li.item(data-index='5') Asteroid Belt
-          li.item(data-index='1') Mercury
-
-    +exercise({name: 'Ch04Ex02'})
-      .score-box
+:markdown
+  #### Another example (source)
+  ```
+    +exercise({name:'ch04-highlighters-e3'})
+      +statement
+        h4 Exercise:  Planets and satellites
+        | Sort the following celestial bodies by their size:
       .progress-box
       +drag-and-sort
         .row.items
-          .x.col-md-6.item(data-index='1')
-            svg(width='200px', height='200px', viewbox='0 0 200 200', xmlns='http://www.w3.org/2000/svg', version='1.1')
-              polygon(style='fill: none; stroke: #000000; stroke-width: 2.5px;', points='183.138438763306,172 16.8615612366939,172 100,28')
-          .col-md-6.item(data-index='3')
-            svg(width='200px', height='200px', viewbox='0 0 200 200', xmlns='http://www.w3.org/2000/svg', version='1.1')
-              polygon(style='fill: none; stroke: #000000; stroke-width: 2.5px;', points='183.138438763306,172 16.8615612366939,172 16.8615612366939,28 183.138438763306,28')
-    ```
+          .item.bad.col-md-3(data-index=3) Mercury
+            +img('http://upload.wikimedia.org/wikipedia/commons/8/88/Reprocessed_Mariner_10_image_of_Mercury.jpg')
+          .item.good.col-md-3(data-index=2) Io
+            +img('http://upload.wikimedia.org/wikipedia/commons/7/7b/Io_highest_resolution_true_color.jpg')
+          .item.bad.col-md-3(data-index=4) Mars
+            +img('http://upload.wikimedia.org/wikipedia/commons/8/82/Mars_and_Syrtis_Major_-_GPN-2000-000923.jpg')
+          .item.good.col-md-3(data-index=1) Phobos
+            +img('http://upload.wikimedia.org/wikipedia/commons/5/5c/Phobos_colour_2008.jpg')
+  ```
+  #### Another example (rendered)
 
++exercise({name:'ch04-highlighters-e3'})
+  +statement
+    h4 Exercise:  Planets and satellites
+    | Sort the following celestial bodies by their size:
+  .progress-box
+  +drag-and-sort
+    .row.items
+      .item.bad.col-md-3(data-index=3) Mercury
+        +img('http://upload.wikimedia.org/wikipedia/commons/8/88/Reprocessed_Mariner_10_image_of_Mercury.jpg')
+      .item.good.col-md-3(data-index=2) Io
+        +img('http://upload.wikimedia.org/wikipedia/commons/7/7b/Io_highest_resolution_true_color.jpg')
+      .item.bad.col-md-3(data-index=4) Mars
+        +img('http://upload.wikimedia.org/wikipedia/commons/8/82/Mars_and_Syrtis_Major_-_GPN-2000-000923.jpg')
+      .item.good.col-md-3(data-index=1) Phobos
+        +img('http://upload.wikimedia.org/wikipedia/commons/5/5c/Phobos_colour_2008.jpg')
+
+
+:markdown
+  Sort can be done vertically or horizontally, dependind on how the emements are laid in the page.
+
+  ```
   +exercise({name: 'Ch04Ex02'})
     .row
       +statement
@@ -209,8 +177,8 @@
         li.item(data-index='1') Mercury
 
   +exercise({name: 'Ch04Ex02'})
-    .progress-box
     .score-box
+    .progress-box
     +drag-and-sort
       .row.items
         .x.col-md-6.item(data-index='1')
@@ -219,116 +187,144 @@
         .col-md-6.item(data-index='3')
           svg(width='200px', height='200px', viewbox='0 0 200 200', xmlns='http://www.w3.org/2000/svg', version='1.1')
             polygon(style='fill: none; stroke: #000000; stroke-width: 2.5px;', points='183.138438763306,172 16.8615612366939,172 16.8615612366939,28 183.138438763306,28')
+  ```
 
-
-  +section("Drag-to-Bucket")
-
-
-  :markdown
-    ## Drag to Bucket
-
-    ### Description
-
-    **Drag-to-Bucket** (`+drag-to-bucket`) is a type of exercise where the user is asked
-    to drag and drop items into various containers, i.e. '.bucket'-s.
-
-    A `+drag-to-bucket` exercise has one or more `.bucket` .
-
-    If .buckets-s cannot be in the exercise root, place them in a `.buckets` element.
-    If .item-s inside a bucket cannot be inside the .bucket element, place them in an
-    `.items` element.
-
-    A bucket is defined  like this `.bucket(data-name='a_name_for_the_bucket')`
-    Items that should go inside the bucket are defined like this:
-       `.item(data-index=<number>, data-target='a_name_for_the_bucket') <item's jade content>`
-
-
-    ### Parameters
-
-    Options object, with the usual overiddable fields. Extra options:
-
-    * **orderInBuckets**: if truthy elements inside the bucket must be sorted in order
-        to get the highest score
-    * **bucketsSortable**: if truthy, buckets themselves can be dragged and dropped
-
-    ### Scoring
-
-    The score is computed using the following algorithm:
-
-    1. We verify that items are inside the bucket. For each bucket we look at the ements:
-        * +1 if the element belongs to the bucket
-        * -1 if the element does not belong
-        * at the end score is scaled from 0-100 for each bucket
-        * resulting score is averaged
-
-    2. If 'orderInBuckets' option is on, then this score is averaged with the score for
-       each buckets, computed in the same way as drag-to-sort is computed
-        * If there are N *good* elements. each elements each selected one adds +100/N score
-        * Each selected *bad* element substracts 100/N from the score
-        * Score cannot be lower than 0
-        * The score is 100 when all good elements are selected and no bad element is selected
-
-    ### Example (source)
-      ```
-        +exercise({name:'ch04-highlighters-e10'})
-          .progress-box
-          +statement
-            h4 Exercise: Drag to bucket
-            | Put the odd numbers in the odd bucket and the even
-            | numbers to the even bucket. Order them inside the bucket
-            | in ascending order.
-
-          +drag-to-bucket({orderInBuckets: true, bucketsSortable: true})
-            //- Container for bucket
-            .row.buckets
-              .bucket(data-name='unassigned').col-md-12
-                strong Source
-                .items.well.well-lg
-                  span.item(data-index=55, data-target='odd') 55
-                  span.item(data-index=22, data-target='even') 22
-                  span.item(data-index=17, data-target='odd') 17
-                  span.item(data-index=31, data-target='odd') 31
-                  span.item(data-index=10, data-target='even') 10
-              .bucket(data-name='odd').col-md-6
-                strong Odd
-                .items.well.well-lg
-                  span.item(data-index=27, data-target='odd') 27
-                  span.item(data-index=28, data-target='even') 28
-              .bucket(data-name='even').col-md-6
-                strong Even
-                .items.well.well-lg
-                  span.item(data-index=9, data-target='odd') 9
-                  span.item(data-index=72, data-target='even') 72
-        ```
-
-      ### Rendered exercise:
-
-  //- FIXME: Make .bucket.items larger and autoresizable
-  +exercise({name:'ch04-highlighters-e10'})
-    .progress-box
++exercise({name: 'Ch04Ex02'})
+  .row
     +statement
-      h4 Exercise: Drag to bucket
-      | Put the odd numbers in the odd bucket and the even
-      | numbers to the even bucket. Order them inside the bucket
-      | in ascending order.
+      | Drag and drop planets below to order them according to distance from the Sun.
 
-    +drag-to-bucket({orderInBuckets: true, bucketsSortable: true})
-      .row.buckets
-        .bucket(data-name='unassigned').col-md-12
-          strong Source
-          .items.well.well-lg
-            span.item(data-index=55, data-target='odd') 55
-            span.item(data-index=22, data-target='even') 22
-            span.item(data-index=17, data-target='odd') 17
-            span.item(data-index=31, data-target='odd') 31
-            span.item(data-index=10, data-target='even') 10
-        .bucket(data-name='odd').col-md-6
-          strong Odd
-          .items.well.well-lg
-            span.item(data-index=27, data-target='odd') 27
-            span.item(data-index=28, data-target='even') 28
-        .bucket(data-name='even').col-md-6
-          strong Even
-          .items.well.well-lg
-            span.item(data-index=9, data-target='odd') 9
-            span.item(data-index=72, data-target='even') 72
+  .progress-box
+  .score-box
+  .is-done-box
+  +drag-and-sort({name: 'Ch04Ex02a'})
+    ul.items
+      li.item(data-index='7') Saturn
+      li.item(data-index='2') Venus
+      li.item(data-index='8') Uranus
+      li.item(data-index='4') Mars
+      li.item(data-index='9') Neptune
+      li.item(data-index='3') Earth
+      li.item(data-index='5') Asteroid Belt
+      li.item(data-index='1') Mercury
+
++exercise({name: 'Ch04Ex03'})
+  .progress-box
+  .score-box
+  +drag-and-sort({name: 'Ch04Ex03a'})
+    .row.items
+      .x.col-md-6.item(data-index='1')
+        svg(width='200px', height='200px', viewbox='0 0 200 200', xmlns='http://www.w3.org/2000/svg', version='1.1')
+          polygon(style='fill: none; stroke: #000000; stroke-width: 2.5px;', points='183.138438763306,172 16.8615612366939,172 100,28')
+      .col-md-6.item(data-index='3')
+        svg(width='200px', height='200px', viewbox='0 0 200 200', xmlns='http://www.w3.org/2000/svg', version='1.1')
+          polygon(style='fill: none; stroke: #000000; stroke-width: 2.5px;', points='183.138438763306,172 16.8615612366939,172 16.8615612366939,28 183.138438763306,28')
+
+
+:markdown
+  ## Drag to Bucket
+
+  ### Description
+
+  **Drag-to-Bucket** (`+drag-to-bucket`) is a type of exercise where the user is asked
+  to drag and drop items into various containers, i.e. '.bucket'-s.
+
+  A `+drag-to-bucket` exercise has one or more `.bucket` .
+
+  If .buckets-s cannot be in the exercise root, place them in a `.buckets` element.
+  If .item-s inside a bucket cannot be inside the .bucket element, place them in an
+  `.items` element.
+
+  A bucket is defined  like this `.bucket(data-name='a_name_for_the_bucket')`
+  Items that should go inside the bucket are defined like this:
+     `.item(data-index=<number>, data-target='a_name_for_the_bucket') <item's jade content>`
+
+
+  ### Parameters
+
+  Options object, with the usual overiddable fields. Extra options:
+
+  * **orderInBuckets**: if truthy elements inside the bucket must be sorted in order
+      to get the highest score
+  * **bucketsSortable**: if truthy, buckets themselves can be dragged and dropped
+
+  ### Scoring
+
+  The score is computed using the following algorithm:
+
+  1. We verify that items are inside the bucket. For each bucket we look at the ements:
+      * +1 if the element belongs to the bucket
+      * -1 if the element does not belong
+      * at the end score is scaled from 0-100 for each bucket
+      * resulting score is averaged
+
+  2. If 'orderInBuckets' option is on, then this score is averaged with the score for
+     each buckets, computed in the same way as drag-to-sort is computed
+      * If there are N *good* elements. each elements each selected one adds +100/N score
+      * Each selected *bad* element substracts 100/N from the score
+      * Score cannot be lower than 0
+      * The score is 100 when all good elements are selected and no bad element is selected
+
+  ### Example (source)
+  ```
+    +exercise({name:'ch04-highlighters-e10'})
+      .progress-box
+      +statement
+        h4 Exercise: Drag to bucket
+        | Put the odd numbers in the odd bucket and the even
+        | numbers to the even bucket. Order them inside the bucket
+        | in ascending order.
+
+      +drag-to-bucket({orderInBuckets: true, bucketsSortable: true})
+        //- Container for bucket
+        .row.buckets
+          .bucket(data-name='unassigned').col-md-12
+            strong Source
+            .items.well.well-lg
+              span.item(data-index=55, data-target='odd') 55
+              span.item(data-index=22, data-target='even') 22
+              span.item(data-index=17, data-target='odd') 17
+              span.item(data-index=31, data-target='odd') 31
+              span.item(data-index=10, data-target='even') 10
+          .bucket(data-name='odd').col-md-6
+            strong Odd
+            .items.well.well-lg
+              span.item(data-index=27, data-target='odd') 27
+              span.item(data-index=28, data-target='even') 28
+          .bucket(data-name='even').col-md-6
+            strong Even
+            .items.well.well-lg
+              span.item(data-index=9, data-target='odd') 9
+              span.item(data-index=72, data-target='even') 72
+    ```
+
+  ### Rendered exercise:
+
++exercise({name:'ch04-highlighters-e10'})
+  .progress-box
+  +statement
+    h4 Exercise: Drag to bucket
+    | Put the odd numbers in the odd bucket and the even
+    | numbers to the even bucket. Order them inside the bucket
+    | in ascending order.
+
+  +drag-to-bucket({orderInBuckets: true, bucketsSortable: true})
+    .row.buckets
+      .bucket(data-name='unassigned').col-md-12
+        strong Source
+        .items.well.well-lg
+          span.item(data-index=55, data-target='odd') 55
+          span.item(data-index=22, data-target='even') 22
+          span.item(data-index=17, data-target='odd') 17
+          span.item(data-index=31, data-target='odd') 31
+          span.item(data-index=10, data-target='even') 10
+      .bucket(data-name='odd').col-md-6
+        strong Odd
+        .items.well.well-lg
+          span.item(data-index=27, data-target='odd') 27
+          span.item(data-index=28, data-target='even') 28
+      .bucket(data-name='even').col-md-6
+        strong Even
+        .items.well.well-lg
+          span.item(data-index=9, data-target='odd') 9
+          span.item(data-index=72, data-target='even') 72
