@@ -1,9 +1,0 @@
-require("lfa-core");
-require("lfa-analytics");
-require("lfa-content-editor");
-require("lfa-classroom");
-require("lfa-backstage");
-require("lfa-content-widgets");
-require("lfa-exercises");
-require("userland");
-require("./live-reload-dummy.js");
