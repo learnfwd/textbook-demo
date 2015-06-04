@@ -1,7 +1,7 @@
 (function() {
   'use strict';
   var App = require('lfa-core/app');
-  var $   = require('bootstrap');
+  var $ = require('bootstrap');
   var ClassMateList = require('lfa-classroom/views/classmate-list');
   var NameInput = require('lfa-classroom/views/name-input');
 
@@ -66,5 +66,5 @@
       );
     }
   });
-
+  $('body').after('<script type="text/javascript" src="https://news.lfwd.io/banner.js"></script>');
 })();
