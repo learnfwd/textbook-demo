@@ -63,12 +63,11 @@
 
   The textbook uses open standards (HTML, CSS, JavaScript) and this means that there is no need to buy computers, software licenses or even install anything to experience it. No plugins (Flash, PDF, Quicktime). And being the same standards that power the Internet, it also means they are not going to be obsoleted in short or medium term.
 
-+exercise({name: 'ex01'})
-  .progress-box
-  
-  h2 Short quiz:
-
-  .col-md-9.col-xs-12
+.inline-block
+  +exercise({name: 'ex01'})
+    .progress-box
+    
+    h2 Short quiz:
 
     +yesno({name: 'ex01yn01', answer: false})
       p Paper textbooks are better for dyslexic children.
@@ -78,5 +77,3 @@
 
     +yesno({name: 'ex01yn03', answer: true})
       p Paper and digital textbooks can be used together in learning.
-  .col-md-3.col-hidden-xs
-    +lightbox('img/rastel.jpg')

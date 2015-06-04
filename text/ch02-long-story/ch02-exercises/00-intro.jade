@@ -19,12 +19,13 @@
   .progress-box
 
   +pickone(3, ['two or three', '+/- 5 or so', 'around 15'], {name: 'ex02po01', placement: 'top'})
-    .block
-      p How many exercise types are there in Learn Forward?
+    .inline-block
+      p How many exercise types are there in Learn Forward? 
+        | 
+        span.btn.btn-default.trigger
 
   +yesno({name: 'ex02yn01', answer: false})
     p After the student solves an exercise, the result needs to be manually saved
 
   +yesno({name: 'ex02yn02', answer: true})
-    p Usually exercises offer instant feedback that shows if you make progress or not
-
+    p Usually exercises offer instant feedback that shows if you make progress or not.

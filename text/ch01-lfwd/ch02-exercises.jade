@@ -64,7 +64,7 @@ p Connect the arab numerals with their Roman version:
         .connector(data-name='r1').pin-left
         | I
 
-  +crosswords({
++crosswords({
   name: 'help11-1',
   hideNumbers: false,
   ignoreAvatar: false,
@@ -86,85 +86,85 @@ p Connect the arab numerals with their Roman version:
           '  _  _  _  _  _  _  _  _  _  K  _  _',  //  15
           '  _  _  _  _  _  _  _  _  _  E  _  _']  //  16
 })
-.progress-box
-.score-box
-.row
-  .col-md-8
-    .xwordscontent
-    .clearfix
-  .col-md-4.well.sans
-    strong Writer Names Puzzle
-    br
-    span Definitions
-
-    .row
-      .col-xs-12
-        pre.
-          Across:
-
-          3. Orhan ...
-          4. Haruki ...
-          5. J.D. ...
-          6. Isac ...
-          8. N.V. ...
-          9. Antoine de Saint-....
-      .col-xs-12
-        pre.
-          Down:
-          1. Gellu ...
-          2. Milan ...
-          4. Herman ...
-          7. Arthur C. ....
-
-  +exercise({name: 'ex7splitter'})
-+split-in-syllables({
-  name: 'split-in-syllables-1',
-  separator: '·', // or any html code. Undefined or falsy for '-'
-  word: 'sy||l^^l||a^^b||le',
-})
-  .score-box
   .progress-box
-  .is-done-box
-  .preview
-    | Your result, sir:
-    span.result
-
-  +combine-syllables({
-  words: ['zebra', 'jaguar', 'cobra', 'crocodile'],
-  wordCount: 4,
-  recall: true,
-  name: 'help09-1',
-  ignoreAvatar: false
-})
+  .score-box
   .row
+    .col-md-8
+      .xwordscontent
+      .clearfix
+    .col-md-4.well.sans
+      strong Writer Names Puzzle
+      br
+      span Definitions
+
+      .row
+        .col-xs-12
+          pre.
+            Across:
+
+            3. Orhan ...
+            4. Haruki ...
+            5. J.D. ...
+            6. Isac ...
+            8. N.V. ...
+            9. Antoine de Saint-....
+        .col-xs-12
+          pre.
+            Down:
+            1. Gellu ...
+            2. Milan ...
+            4. Herman ...
+            7. Arthur C. ....
+
++exercise({name: 'ex7splitter'})
+  +split-in-syllables({
+    name: 'split-in-syllables-1',
+    separator: '·', // or any html code. Undefined or falsy for '-'
+    word: 'sy||l^^l||a^^b||le',
+  })
+    .score-box
     .progress-box
     .is-done-box
-    .score-box
-  .row.items
-    .col-xs-12
-      .row
-        .col-xs-3: .item(data-syl='ze') ze
-        .col-xs-3: .item(data-syl='gu') gu
-        .col-xs-3: .item(data-syl='co') co
-        .col-xs-3: .item(data-syl='cro') cro
-    .col-xs-12
-      .row
-        .col-xs-3: .item(data-syl='bra') bra
-        .col-xs-3: .item(data-syl='ja') ja
-        .col-xs-3: .item(data-syl='dile') dile
-        .col-xs-3: .item(data-syl='ar') ar
-  .row
-    .col-sm-8
-      .well.well-sm.dropspot
-        button.btn.btn-default.pull-right.hidden-xs(data-target='combine-syllables.validate') Try
-        span.hint Drop syllables here.
-    .col-sm-4
-      button.btn.btn-default.visible-xs(data-target='combine-syllables.validate') Try
-      p.visible-xs Already found:
-      .well.well-sm.wordwell
-        .wordlist
-        button.btn.btn-default(data-target='combine-syllables.clearlist') Clear list
+    .preview
+      | Your result, sir:
+      span.result
 
-  br
-  br
++combine-syllables({
+    words: ['zebra', 'jaguar', 'cobra', 'crocodile'],
+    wordCount: 4,
+    recall: true,
+    name: 'help09-1',
+    ignoreAvatar: false
+  })
+    .row
+      .progress-box
+      .is-done-box
+      .score-box
+    .row.items
+      .col-xs-12
+        .row
+          .col-xs-3: .item(data-syl='ze') ze
+          .col-xs-3: .item(data-syl='gu') gu
+          .col-xs-3: .item(data-syl='co') co
+          .col-xs-3: .item(data-syl='cro') cro
+      .col-xs-12
+        .row
+          .col-xs-3: .item(data-syl='bra') bra
+          .col-xs-3: .item(data-syl='ja') ja
+          .col-xs-3: .item(data-syl='dile') dile
+          .col-xs-3: .item(data-syl='ar') ar
+    .row
+      .col-sm-8
+        .well.well-sm.dropspot
+          button.btn.btn-default.pull-right.hidden-xs(data-target='combine-syllables.validate') Try
+          span.hint Drop syllables here.
+      .col-sm-4
+        button.btn.btn-default.visible-xs(data-target='combine-syllables.validate') Try
+        p.visible-xs Already found:
+        .well.well-sm.wordwell
+          .wordlist
+          button.btn.btn-default(data-target='combine-syllables.clearlist') Clear list
+
+br
+br
 
