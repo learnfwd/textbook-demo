@@ -13,3 +13,6 @@
 [submodule "plugins/content-editor"]
 	path = plugins/content-editor
 	url = git@bitbucket.org:readfwd/content-editor-prototype.git
+[submodule "plugins/lfa-annotations"]
+	path = plugins/lfa-annotations
+	url = https://github.com/learnfwd/lfa-annotations.git
