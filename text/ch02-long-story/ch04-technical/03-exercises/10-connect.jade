@@ -222,7 +222,7 @@
 
 +connect-points({
   name: 'planets-to-labels',
-  orientation: 'vertical',
+  orientation: 'horizontal',
   correctLineStyle: { 'stroke': '#069e06' },
   connections: [
     ['mars-img', 'mars-label'],
@@ -253,7 +253,7 @@
       .connector(data-name='phobos-img').pin-bottom
 
   .spacer
-
+  br
   .row(data-group='labels')
     .col-xs-2
       .planet-label.pin-to Mars

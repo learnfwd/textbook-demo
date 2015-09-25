@@ -82,32 +82,35 @@
     .is-done-box
 
     .row
-      +drag-and-sort({name: 'sortScoreSampleExercise-1', })
-        b Score decided by absolute position
-        span.item(data-index=50) 50
-        span.item(data-index=40) 40
-        span.item(data-index=30) 30
-        span.item(data-index=20) 20
-        span.item(data-index=10) 10
-        .score-box
+      .col-xs-12
+        +drag-and-sort({name: 'sortScoreSampleExercise-1' })
+          b Score decided by absolute position:
+          .score-box
+          span.item(data-index=50) 50
+          span.item(data-index=40) 40
+          span.item(data-index=30) 30
+          span.item(data-index=20) 20
+          span.item(data-index=10) 10
+        
     
     .row
-
-      +drag-and-sort({name: 'sortScoreSampleExercise-2', scoreByRelativeOrder: true})
-        b Score decided by relative order:
-        span.item(data-index=50) 50
-        span.item(data-index=40) 40
-        span.item(data-index=30) 30
-        span.item(data-index=20) 20
-        span.item(data-index=10) 10
-        .score-box
+      .col-xs-12
+        +drag-and-sort({name: 'sortScoreSampleExercise-2', scoreByRelativeOrder: true})
+          b Score decided by relative order:
+          .score-box
+          span.item(data-index=50) 50
+          span.item(data-index=40) 40
+          span.item(data-index=30) 30
+          span.item(data-index=20) 20
+          span.item(data-index=10) 10
+        
 
 
   .row
     +statement
       p Make a wish for the Education Ministry.
 
-    +drag-and-sort
+    +drag-and-sort({name: 'sortSampleExercise-3'})
       i.fa.fa-exclamation.item(data-index=3)
         | &nbsp;three
       i.fa.fa-coffee.item(data-index=2)
@@ -143,13 +146,13 @@
   .progress-box
   +drag-and-sort
     .row.items
-      .item.bad.col-md-3(data-index=3) Mercury
+      .item.bad.col-sm-3.col-xs-6.col-sm-offset-0.col-xs-offset-3(data-index=3) Mercury
         +img('http://upload.wikimedia.org/wikipedia/commons/8/88/Reprocessed_Mariner_10_image_of_Mercury.jpg')
-      .item.good.col-md-3(data-index=2) Io
+      .item.good.col-sm-3.col-xs-6.col-sm-offset-0.col-xs-offset-3(data-index=2) Io
         +img('http://upload.wikimedia.org/wikipedia/commons/7/7b/Io_highest_resolution_true_color.jpg')
-      .item.bad.col-md-3(data-index=4) Mars
+      .item.bad.col-sm-3.col-xs-6.col-sm-offset-0.col-xs-offset-3(data-index=4) Mars
         +img('http://upload.wikimedia.org/wikipedia/commons/8/82/Mars_and_Syrtis_Major_-_GPN-2000-000923.jpg')
-      .item.good.col-md-3(data-index=1) Phobos
+      .item.good.col-sm-3.col-xs-6.col-sm-offset-0.col-xs-offset-3(data-index=1) Phobos
         +img('http://upload.wikimedia.org/wikipedia/commons/5/5c/Phobos_colour_2008.jpg')
 
 

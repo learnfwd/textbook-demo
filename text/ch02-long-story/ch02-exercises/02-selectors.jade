@@ -15,6 +15,7 @@
   name: 'help1-1',
   ignoreAvatar: false,
   description: 'Who wrote Hamlet?',
+  placement: 'bottom',
   hints: {
     4: 'He is an English author',
     6: 'His name contains the letter K'
@@ -48,12 +49,12 @@
 :markdown
   ## True/False Exercises (or True/False)
 
-  This exercise type presents a binary option -- an alernative, one answer being correct, the other wrong.
+  This exercise type presents a binary option -- an alternative, one answer being correct, the other wrong.
 
-center
+center.aside-box
   .row
     .col-md-3.hidden-xs
-    .aside-box.col-md-6.col-xs-12
+    .col-md-6.col-xs-12
       +exercise({name: 'help03-1'})
 
         .row

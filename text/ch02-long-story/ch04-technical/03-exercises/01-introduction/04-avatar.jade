@@ -41,12 +41,12 @@
 .row
   .col-xs-6.well
     +exercise({name: 'with-avatar'})
-      +pickone(2, ['First', 'Second', 'Third'])
-        p Chose the second answer and watch the avatar being happy
+      +pickone(2, ['First', 'Second', 'Third'],{placement: 'bottom'})
+        p Choose the second answer and watch the avatar being happy
   .col-xs-6.well
     +exercise({name: 'without-avatar', ignoreAvatar: true})
-      +pickone(2, ['First', 'Second', 'Third'])
-        p Chose the second answer and watch the avatar remaining indifferent
+      +pickone(2, ['First', 'Second', 'Third'],{placement: 'bottom'})
+        p Choose the second answer and watch the avatar remaining indifferent
 
 :markdown
   ## Avatar messages
@@ -54,28 +54,28 @@
   If there is a `description` field in the exercise this description will be used
   as the 'more information' (or 'info' field in the notification).
 
-  Don't be upset about their verbosity. It makes your non-developer colleagues life easier.
-  Too see how you can customize the avatar looks and behaviour, go to 'Backstage / Avatar'
+  Don't be upset about their verbosity. It makes your non-developer colleagues' life easier.
+  To see how you can customize the avatar looks and behaviour, go to 'Backstage / Avatar'
   documentation in this handbook.
 
   You can show messages and change moods on the following events:
 
-  * the exercise is done for the first time
+  #### 1. The exercise is done for the first time
     * **firstTimeDoneMessage** - what message should be displayed
     * **firstTimeDoneMood** - what mood
     * **firstTimeDoneInterval** - how much time (in seconds) the mood lasts
 
-  * the exercise is done (but not the first time in the session)
+  #### 2. The exercise is done (but not the first time in the session)
     * **doneMessage** - what message should be displayed
     * **doneMood** - what mood
     * **doneInterval** - how much time (in seconds) the mood lasts
 
-  * the exercise score decreases (but not the first time in the session)
+  #### 3. The exercise score decreases (but not the first time in the session)
     * **scoreDecreaseMessage** - what message should be displayed
     * **scoreDecreaseMood** - what mood
     * **scoreDecreaseInterval** - how much time (in seconds) the mood lasts
 
-  * the exercise score increases (but not the first time in the session)
+  #### 4. The exercise score increases (but not the first time in the session)
     * **scoreIncreaseMessage** - what message should be displayed
     * **scoreIncreaseMood** - what mood
     * **scoreIncreaseInterval** - how much time (in seconds) the mood lasts
@@ -132,8 +132,8 @@
     })
 
     .col-xs-6
-      +pickone(2, ['First', 'Second', 'Third'])
+      +pickone(2, ['First', 'Second', 'Third'],{placement: 'bottom'})
         p Chose the second answer and watch the avatar saying stuff
     .col-xs-6
-      +pickone(2, ['First', 'Second', 'Third'])
+      +pickone(2, ['First', 'Second', 'Third'],{placement: 'bottom'})
         p Chose the second answer again, to make the score 100%!!

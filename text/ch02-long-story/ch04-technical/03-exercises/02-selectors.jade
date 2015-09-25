@@ -50,7 +50,7 @@ h1 Selectors
 h4 Example (rendered)
   +exercise
     +statement
-      h3 Important questions
+      h3 Important questions 
         span.score-box
     .row
       .col-md-12
@@ -259,7 +259,7 @@ h4 Example (rendered)
   ```
   ### Example (rendered)
 
-+numpad(172, { placement: 'bottom', placeholder: '?', displayDecimalSeparator: false, numDigits: 3})
++numpad(172, {placement: 'bottom',placeholder: '?', displayDecimalSeparator: false, numDigits: 3})
   +statement
     | 150 + 22 = ???
   button.btn.btn-lg.btn-success.trigger Push me
@@ -267,11 +267,19 @@ h4 Example (rendered)
   span.is-done-box
   span.score-box
 
-  p.result.trigger result
+  span.result.trigger result
+  br
   p.trigger Last digit:
     i.result0 (??)
     | , Second to last digit:
     i.result1 (??)
     | , 100's digit:
     i.result2 (??)
+  //- p.result.trigger result
+  //- p.trigger Last digit:
+  //-   i.result0 (??)
+  //-   | , Second to last digit:
+  //-   i.result1 (??)
+  //-   | , 100's digit:
+  //-   i.result2 (??)
 
