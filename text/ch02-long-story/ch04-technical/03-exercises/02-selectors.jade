@@ -48,7 +48,7 @@ h1 Selectors
   ```
 
 h4 Example (rendered)
-  +exercise
+  +exercise({name: 'yesno-ex'})
     +statement
       h3 Important questions 
         span.score-box
@@ -60,13 +60,19 @@ h4 Example (rendered)
       .col-md-6
         +yesno(false)
           | Can you open the pod bay doors? (no)
+      .col-md-6
+        //- Without a block, name parameter is mandatory
+        br
+        +yesno({answer: false, name:'ex123unic', yes: 'True', no: 'False'})
         
+    .row
+      .col-md-6        
         +yesno(true)
           | Will I dream? (yes, Hal)
       .col-md-6
         //- Without a block, name parameter is mandatory
-        +yesno({answer: true, name:'ex123unic', yes: 'True', no: 'False'})
-        +yesno({answer: false, name:'ex234unic', yes: 'Da', no: 'Nu'})
+        br
+        +yesno({answer: true, name:'ex234unic', yes: 'Da', no: 'Nu'})
 
 :markdown
   ## Pick One
