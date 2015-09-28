@@ -1,7 +1,7 @@
 +title('+exercise mixin (cont.)')
 +subtitle('About +exercise mixin, continued')
 :markdown
-  ### **ignoreScore** test
+  ## **ignoreScore** test
 
 .row
   .col-md-6.success
@@ -16,7 +16,7 @@
     p:strong Same code, with ignoreScore:true
     p Enter a single digit to get 100%:
 
-      +textline({name: 'ch01ignoreScore02', regexp: /\d/, pattern: /\d/, ignoreScore: true})
+      +textline({name: 'ch01ignoreScore02', regexp: "^[0-9]{1}$", ignoreScore: true})
         .progress-box
         .score-box
         .is-done-box
