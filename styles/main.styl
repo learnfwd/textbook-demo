@@ -63,8 +63,10 @@ button:focus {
 
 article
   section
-    padding-top 3em
+    padding-top 2em
     padding-bottom 3em
+    @media(max-width 768px)
+      padding-top 3.5em
     p
       text-align: justify
 
@@ -75,8 +77,49 @@ article
       font-weight bold
       border-bottom: 5px solid
       margin-bottom: 0.8em
+      position relative
       @media (max-width 500px)
         font-size 1.7em
+      // &:not(.book-title)
+      //   &:before
+      //     content ''
+      //     position absolute
+      //     bottom -15px
+      //     left -7.5px
+      //     width 15px
+      //     height 15px
+      //     border-radius 50%
+      //     background-color #F09200
+      //     @media (max-width 500px)
+      //       display none
+      //   &:after
+      //     content ''
+      //     position absolute
+      //     bottom -5px
+      //     right -7.5px
+      //     width 15px
+      //     height 15px
+      //     border-radius 50%
+      //     background-color #F09200
+      //     @media (max-width 500px)
+      //       display none
+      //   border-bottom: none
+      //   &:before
+      //     content ''
+      //     position absolute
+      //     height 5px
+      //     width 100%
+      //     background-color: #F09200
+      //   &:after
+      //     content ''
+      //     position absolute
+      //     height 5px
+      //     width 100%
+      //     padding-right 1em
+      //     background-color: #F09200
+      //     bottom 0
+      //     left 0em  
+        // color white
         // border-bottom none
         // border-left .2em solid
         // margin-left -.3em !important
@@ -109,9 +152,27 @@ h1.book-title
   font-weight: 800
   margin: 0 0 1em 0
   color: #222
+  position relative
   @media (max-width 430px)
     font-size 2em
-
+  &:before
+    content ''
+    position absolute
+    bottom -15px
+    left -6px
+    width 15px
+    height 15px
+    border-radius 50%
+    background-color black
+  &:after
+    content ''
+    position absolute
+    bottom -15px
+    right -6px
+    width 15px
+    height 15px
+    border-radius 50%
+    background-color black
 .name-label
   background: #F09200
   border-radius: 10px
