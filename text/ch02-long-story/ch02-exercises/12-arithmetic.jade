@@ -53,59 +53,109 @@
   name: 'help12-10',
   description: 'Addition exercises!'
   })
-  .table-div
+  .row
     .progress-box
-    //- .col-md-6.col.col-xs-12
-    .table-row
-      .table-cell.well
-        +calcuwords({
-            name: 'help12-10-plain-addition',
-            words: [
-              ['1', '2', '+'],
-              ['', '9', ''],
-              ['2?', '1?', ''],
-            ],
-            linesAt: [2]
-          })
-          .inline-block
-            .is-done-box
-            .calcugrid.sans
-      //- .col-md-6.col.col-xs-12
-      .table-cell.well
-        +calcuwords({
-            name: 'help12-10-morerows',
-            words: [
-              ['3', '2', '7', '+'],
-              [' ', '8', '8', ''],
-              ['2', '9', '7', ''],
-              ['7?', '1?', '2?', ''],
-            ],
-            linesAt: [3]
-          })
-          .inline-block
-            .is-done-box
-            .calcugrid.sans
-    //- .col-md-6.col.col-xs-12
-    .table-row
-      .table-cell.well
-        +calcuwords({
-            name: 'help12-10-pe-lung',
-            words: [
-              ['There are', '1?', '2?', 'stars on the European Union flag.']
-            ]
-          })
-          .inline-block
-            .is-done-box
-            .calcugrid.sans
-      //- .col-md-6.col.col-xs-12
-      .table-cell.well
-        +calcuwords({
-          name: 'help12-10-operators-exercise',
+    .col-md-6.col.col-xs-12.well
+      +calcuwords({
+          name: 'plain-addition',
           words: [
-            ['2', '*?', '(?', '2 + 2', ')?', '= 8']
+            ['1', '2', '+'],
+            ['', '9', ''],
+            ['2?', '1?', ''],
+          ],
+          linesAt: [2]
+        })
+        .inline-block
+          .is-done-box
+          .calcugrid.sans
+    .col-md-6.col.col-xs-12.well
+      +calcuwords({
+          name: 'more rows',
+          words: [
+            ['3', '2', '7', '+'],
+            [' ', '8', '8', ''],
+            ['2', '9', '7', ''],
+            ['7?', '1?', '2?', ''],
+          ],
+          linesAt: [3]
+        })
+        .inline-block
+          .is-done-box
+          .calcugrid.sans
+    .col-md-6.col.col-xs-12.well
+      +calcuwords({
+          name: 'pe-lung',
+          words: [
+            ['There are ', '1?', '2?', 'stars on the EU flag']
           ]
-          })
-          .inline-block
-            .is-done-box
-            .calcugrid.sans
+        })
+        .inline-block
+          .is-done-box
+          .calcugrid.sans
+    .col-md-6.col.col-xs-12.well
+      +calcuwords({
+        name: 'operators-exercise',
+        words: [
+          ['2', '*?', '(?', '2 + 2', ')?', '= 8']
+        ]
+        })
+        .inline-block
+          .is-done-box
+          .calcugrid.sans
+  //code for pretty same-height boxes
+  //- .table-div
+  //-   .progress-box
+  //-   //- .col-md-6.col.col-xs-12
+  //-   .table-row
+  //-     .table-cell.well
+  //-       +calcuwords({
+  //-           name: 'help12-10-plain-addition',
+  //-           words: [
+  //-             ['1', '2', '+'],
+  //-             ['', '9', ''],
+  //-             ['2?', '1?', ''],
+  //-           ],
+  //-           linesAt: [2]
+  //-         })
+  //-         .inline-block
+  //-           .is-done-box
+  //-           .calcugrid.sans
+  //-     //- .col-md-6.col.col-xs-12
+  //-     .table-cell.well
+  //-       +calcuwords({
+  //-           name: 'help12-10-morerows',
+  //-           words: [
+  //-             ['3', '2', '7', '+'],
+  //-             [' ', '8', '8', ''],
+  //-             ['2', '9', '7', ''],
+  //-             ['7?', '1?', '2?', ''],
+  //-           ],
+  //-           linesAt: [3]
+  //-         })
+  //-         .inline-block
+  //-           .is-done-box
+  //-           .calcugrid.sans
+  //-   //- .col-md-6.col.col-xs-12
+  //-   .table-row
+  //-     .table-cell.well
+  //-       +calcuwords({
+  //-           name: 'help12-10-pe-lung',
+  //-           words: [
+  //-             ['There are', '1?', '2?', 'stars on the European Union flag.']
+  //-           ]
+  //-         })
+  //-         .inline-block
+  //-           .is-done-box
+  //-           .calcugrid.sans
+  //-     //- .col-md-6.col.col-xs-12
+  //-     .table-cell.well
+  //-       +calcuwords({
+  //-         name: 'help12-10-operators-exercise',
+  //-         words: [
+  //-           ['2', '*?', '(?', '2 + 2', ')?', '= 8']
+  //-         ]
+  //-         })
+  //-         .inline-block
+  //-           .is-done-box
+  //-           .calcugrid.sans
 
