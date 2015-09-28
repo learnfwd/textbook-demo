@@ -1,50 +1,50 @@
 +title('Splitting Exercise')
-.text
-  :markdown
-    # Split·ting Ex·er·cise
 
-    This type of exercise is used in two forms: to split words in syllables or to place dividers in sentences.
+:markdown
+  # Split·ting Ex·er·cise
 
-    It shows a list of elements (e.g. syllables) and on top the separators are interleaved (e.g. ). Pressing (click or touch) a separator makes the separator to be placed or removed between nearby elements.
+  This type of exercise is used in two forms: to split words in syllables or to place dividers in sentences.
 
-    The score is computed as a function of correctly placed separators vs. total number of separators. The wrong placements are subtracted from the score.
+  It shows a list of elements (e.g. syllables) and on top the separators are interleaved (e.g. ). Pressing (click or touch) a separator makes the separator to be placed or removed between nearby elements.
 
-    Here are some examples:
+  The score is computed as a function of correctly placed separators vs. total number of separators. The wrong placements are subtracted from the score.
 
-  +exercise({name: 'ex7splitter'})
-    +split-in-syllables({
-      name: 'split-in-syllables-1',
-      separator: '·', // or any html code. Undefined or falsy for '-'
-      word: 'sy||l^^l||a^^b||le',
+  Here are some examples:
+
++exercise({name: 'ex7splitter'})
+  +split-in-syllables({
+    name: 'split-in-syllables-1',
+    separator: '·', // or any html code. Undefined or falsy for '-'
+    word: 'sy||l^^l||a^^b||le',
+  })
+    .score-box
+    .progress-box
+    .is-done-box
+    .preview
+      | Your result, mylord:
+      span.result
+
+  +split-in-syllables({
+      name: 'split-in-syllables-2',
+      separator: ',',
+      word: 'Anna^^come|| outside^^ please!'
     })
-      .score-box
+    .is-done-box
+    .score-box
+
+  +split-in-syllables({
+      name: 'split-in-syllables-3',
+      separator: ',',
+      word: 'I|| do not|| have|| time^^ Dan^^ I|| really|| do not.',
+      isModal: true
+    })
+    .is-done-box
+    .full-screen-header
+      .is-done-box.inline-block
+      span Place the commas
+      span.small.result.sans
       .progress-box
-      .is-done-box
-      .preview
-        | Your result, mylord:
-        span.result
-
-    +split-in-syllables({
-        name: 'split-in-syllables-2',
-        separator: ',',
-        word: 'Anna^^come|| outside^^ please!'
-      })
-      .is-done-box
+    .preview
       .score-box
-
-    +split-in-syllables({
-        name: 'split-in-syllables-3',
-        separator: ',',
-        word: 'I|| do not|| have|| time^^ Dan^^ I|| really|| do not.',
-        isModal: true
-      })
-      .is-done-box
-      .full-screen-header
-        .is-done-box.inline-block
-        span Place the commas
-        span.small.result.sans
-        .progress-box
-      .preview
-        .score-box
-        | Your result, sir:
-        span.result
+      | Your result, sir:
+      span.result

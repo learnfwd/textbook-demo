@@ -63,10 +63,8 @@ button:focus {
 
 article
   section
-    padding-top 2em
+    padding-top 3em
     padding-bottom 3em
-    @media(max-width 768px)
-      padding-top 3.5em
     p
       text-align: justify
 
@@ -80,7 +78,25 @@ article
       position relative
       @media (max-width 500px)
         font-size 1.7em
-      // &:not(.book-title)
+      &:not(.book-title)
+        background-color #F09200
+        border none
+        font-family Roboto
+        color white
+        padding-top 1em
+        padding-left 2em
+        padding-bottom .1em
+        margin-top -1.5em
+        margin-left -1.5em !important
+        margin-right -1.5em !important
+        @media (max-width 768px)
+          padding-top 2em
+          padding-left 1em
+          margin-left -.5em !important
+          margin-right -.5em !important
+        //   padding-top 0.25em
+        //   margin-top 0
+        
       //   &:before
       //     content ''
       //     position absolute
@@ -163,7 +179,7 @@ h1.book-title
     width 15px
     height 15px
     border-radius 50%
-    background-color black
+    background-color #222
   &:after
     content ''
     position absolute
@@ -172,7 +188,7 @@ h1.book-title
     width 15px
     height 15px
     border-radius 50%
-    background-color black
+    background-color #222
 .name-label
   background: #F09200
   border-radius: 10px
