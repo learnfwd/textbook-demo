@@ -72,6 +72,7 @@ article
       color: #F09200
       font-family: "Futura"
       text-transform: uppercase
+      font-weight bold
       border-bottom: 5px solid
       margin-bottom: 0.8em
       @media (max-width 500px)
@@ -92,7 +93,7 @@ article
       margin: 0 1em
       quote
         font-style: oblique
-        font-size: 130%
+        font-size: 110%
 
 
 //
@@ -221,7 +222,7 @@ p.ch01s02sample, p.ch01s03sample
 
 .help02-1
   width: 100%;
-  border: 1px solid #bbb;
+  border: 2.5px dashed white;
   padding: 0 1em
 
   .btn
@@ -233,7 +234,7 @@ p.ch01s02sample, p.ch01s03sample
 
 .help03-1, .help05-1
   width: 100%;
-  border: 1px solid #bbb;
+  border: 2.5px dashed white;
   padding: 1em
   .yesno
     display: block;
@@ -260,8 +261,17 @@ p.ch01s02sample, p.ch01s03sample
   .done .item
     background-color: #88DF88
 
-.help06-1-2 .item
-  margin-left: 3em
+.help06-1-2 
+  ul
+    list-style none
+  .item 
+    margin-top .5em !important
+    span
+      color: #fff
+      background-color: #5F9EDF
+      padding .25em .5em
+    
+  // margin-left: 3em
 
 .help07-1
   .item

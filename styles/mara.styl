@@ -36,11 +36,14 @@
 .help10-1  
   .choice
     text-align center
-    border .2em solid rgb(30, 107, 186)
+    background-color rgb(30, 107, 186)
     border-radius 5px
+    padding-top .2em
+    padding-bottom .2em 
     margin 5px auto
+    color white
     &:hover
-      background-color rgba(black,.1)
+      background-color rgba(30, 107, 186,.8)
       cursor move
 .planets-to-labels
   .planet-label
@@ -99,3 +102,30 @@ img[src='img/first_proj.png']
   .panel-body
     padding-left 0 !important
     padding-right 0 !important
+#ex_776946074
+#ex_1793039016
+  .items
+    margin-bottom .5em
+
+.table-div
+  display table
+  .progress-box
+    margin-bottom 1em
+  .calcugrid
+    text-align center
+  @media (max-width 768px)
+    display block
+  .table-row
+    display table-row
+    @media (max-width 768px)
+      display table
+      width 100%
+      // margin-bottom .5em !important
+    .table-cell
+      width 50%
+      display table-cell
+      margin .5em 0 0 0 !important
+      
+      @media (max-width 768px)
+        display block
+        width 100%
