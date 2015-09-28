@@ -265,16 +265,16 @@ h4 Example (rendered)
   ```
   ### Example (rendered)
 
-+numpad(172, {placement: 'bottom',placeholder: '?', displayDecimalSeparator: false, numDigits: 3})
++numpad(172, {placement: 'top',placeholder: '?', displayDecimalSeparator: false, numDigits: 3})
   +statement
-    | 150 + 22 = ???
+    | 150 + 22 = 
+    span.result.trigger result
   button.btn.btn-lg.btn-success.trigger Push me
   span &nbsp;
   span.is-done-box
-  span.score-box
-
-  span.result.trigger result
-  br
+  span.score-box 
+  span &nbsp;&nbsp;&nbsp;
+  
   p.trigger Last digit:
     i.result0 (??)
     | , Second to last digit:
