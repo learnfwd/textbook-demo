@@ -2,21 +2,33 @@
 +subtitle('Pick One, Yes/No')
 
 script(src='jquery-2.1.4.min.js')
-script(src='bootstrap-tour-standalone.min.js')
-script(src='test.js')
+script(src='pageguide.min.js')
+//- script(src='bootstrap-tour-standalone.min.js')
+//- script(src='test.js')
+script(type="text/javascript").
+  $(document).ready(function() {
+    tl.pg.init();
+  })
 
+h1#selector-exercises Selector Exercises
+h2#pick-one Pick One 
+p  This is a simple exercise type where there are more answer choices are presented and only one is correct. Press the button to open the list of possible answers, then select the answer that you think is the correct one.
+p Except special occasions, the convention used for all the exercises is: 
+  em green 
+  |for correct answers, 
+  em red 
+  |for wrong answers.
+p Sample
+//- :markdown
+//-   # Selector Exercises
 
+//-   ## Pick One
 
-:markdown
-  # Selector Exercises
+//-   This is a simple exercise type where there are more answer choices are presented and only one is correct. Press the button to open the list of possible answers, then select the answer that you think is the correct one.
 
-  ## Pick One
+//-   Except special occasions, the convention used for all the exercises is: *green* for correct answers, *red* for wrong answers.
 
-  This is a simple exercise type where there are more answer choices are presented and only one is correct. Press the button to open the list of possible answers, then select the answer that you think is the correct one.
-
-  Except special occasions, the convention used for all the exercises is: *green* for correct answers, *red* for wrong answers.
-
-  Sample:
+//-   Sample:
 +pickone(3, ['Bulgakov', 'Creangă', 'Shakespeare', 'Shaw', 'Goldoni', 'Molière'], {
   name: 'help1-1',
   ignoreAvatar: false,
@@ -78,3 +90,24 @@ center.aside-box
 
         +yesno({answer: false, name:'help03-1-1', yes: 'recieve', no: 'receive'})
           p How is this word written?
+//- .tlyPageGuideWelcome
+//-   p
+//-     | Here's a snappy modal to welcome you to my new page! pageguide is here to help you learn more.
+//-   p
+//-     | This button will launch pageguide:
+//-     button.tlypageguide_start let's go
+//-   p
+//-     | This button will close the modal without doing anything:
+//-     button.tlypageguide_ignore not now
+//-   p
+//-     | This button will close the modal and prevent it from being opened again:
+//-     button.tlypageguide_dismiss got it, thanks
+ul(data-tourtitle="click here to take a tour")#tlyPageGuide
+  li(data-tourtarget="#selector-exercises").tlypageguide_left 
+    div Here is the first item description. The number will appear to the left of the element.
+  li(data-tourtarget="#pick-one").tlypageguide_right
+    div Here is the second item description. The number will appear to the right of the element.
+  li(data-tourtarget="#push-to-select").tlypageguide_left
+    div Here is the third item description. The number will appear above the element.
+  li(data-tourtarget="#true-false-exercises-or-true-false-").tlypageguide_top
+    div Here is the fourth item description. The number will appear below the element.
