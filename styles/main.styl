@@ -78,7 +78,18 @@ article
       position relative
       @media (max-width 500px)
         font-size 1.7em
-      &:not(.book-title)
+      &.inner
+        background-color #F09200
+        border none
+        font-family Roboto
+        color white
+        // padding-top 1em
+        padding-left 2em
+        // padding-bottom .1em
+        // margin-top -1.5em
+        margin-left -1.5em !important
+        margin-right -1.5em !important
+      &:not(.book-title):not(.inner)
         background-color #F09200
         border none
         font-family Roboto
@@ -89,8 +100,11 @@ article
         margin-top -1.5em
         margin-left -1.5em !important
         margin-right -1.5em !important
-        @media (max-width 768px)
+        
+        @media (min-width 900px)
           padding-top 2em
+        @media (max-width 768px)
+          padding-top 2.5em
           padding-left 1em
           margin-left -.5em !important
           margin-right -.5em !important
@@ -171,6 +185,8 @@ h1.book-title
   position relative
   @media (max-width 430px)
     font-size 2em
+    margin-left .5em
+    margin-right .5em
   &:before
     content ''
     position absolute
