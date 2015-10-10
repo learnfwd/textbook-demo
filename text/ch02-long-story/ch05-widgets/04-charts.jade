@@ -1,25 +1,27 @@
 +title('Charts')
+h1
+  p Charts
+
 :markdown
-  # Charts
-    The `charts` module has 2 components: `horizontal charts` and `vertical charts`, you cand use either / both of them according to your needs.
+  The `charts` module has 2 components: `horizontal charts` and `vertical charts`, you cand use either / both of them according to your needs.
 
-    ## Horizontal Charts
-    ---
+  ## Horizontal Charts
+  ---
 
-    This chart type can be implemented by calling `+hchart(options)` mixin with a series of options like:
-    * `bars` - this is an __Array__ that tells the chart how many horizontal bars will be. Inside we have `JSON`s describing each bar by:
-      * `name` - simple __String__
-      * `data` - __Array__ containing both the `value` of the current bar and the `color` of the bar / segment for the previous value.
-        * `value` - __Number__
-        * `color` - __String__ that is inserted as is in the `background` CSS property of the previous value segment.
-      * `stacked` - __Boolean__ that tells the chart to show the bars described above on a single stacked bar, not individually.
-    * `legend` - __Array__. If you want to show a nice centered legend below the chart, use this property that accepts `JSON`s having:
-      * `name` - __String__. The name of the legent item.
-      * `color` - __String__, If you want to show a color box near the name stated above, complete this field. The value will go as is if the `backgound` CSS property of the current item.
-    * `step` - __Number__. Use this if you want to show the scale of the current chart and tell the mixin the step value.
-    * `maxSteps` - __Number__. If the scale of the given chart is different than `100`, use this field to specify the desired scale. The `bars` will be scaled accordingly.
-    * `height` - __String__. The height of the chart. Defaulted to `200px`.
-    * `width` - __String__. The width of chart bars. Defaulted to `40px`.
+  This chart type can be implemented by calling `+hchart(options)` mixin with a series of options like:
+  * `bars` - this is an __Array__ that tells the chart how many horizontal bars will be. Inside we have `JSON`s describing each bar by:
+    * `name` - simple __String__
+    * `data` - __Array__ containing both the `value` of the current bar and the `color` of the bar / segment for the previous value.
+      * `value` - __Number__
+      * `color` - __String__ that is inserted as is in the `background` CSS property of the previous value segment.
+    * `stacked` - __Boolean__ that tells the chart to show the bars described above on a single stacked bar, not individually.
+  * `legend` - __Array__. If you want to show a nice centered legend below the chart, use this property that accepts `JSON`s having:
+    * `name` - __String__. The name of the legent item.
+    * `color` - __String__, If you want to show a color box near the name stated above, complete this field. The value will go as is if the `backgound` CSS property of the current item.
+  * `step` - __Number__. Use this if you want to show the scale of the current chart and tell the mixin the step value.
+  * `maxSteps` - __Number__. If the scale of the given chart is different than `100`, use this field to specify the desired scale. The `bars` will be scaled accordingly.
+  * `height` - __String__. The height of the chart. Defaulted to `200px`.
+  * `width` - __String__. The width of chart bars. Defaulted to `40px`.
 
   ### **Example**
   ```    

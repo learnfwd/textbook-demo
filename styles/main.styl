@@ -56,6 +56,7 @@ button:focus {
 
 
 #scrollview #textbook
+  overflow hidden
   padding: 0 3em 3em 3em
   @media (max-width 768px)
     padding 0 .5em .5em .5em
@@ -64,6 +65,7 @@ article
   section
     padding-top 3em
     padding-bottom 3em
+    
     p
       text-align: justify
 
@@ -85,28 +87,92 @@ article
         // padding-top 1em
         padding-left 2em
         // padding-bottom .1em
-        // margin-top -1.5em
+        margin-top 2em
         margin-left -1.5em !important
         margin-right -1.5em !important
+        &:before
+          content ''
+          position absolute
+          top -50px
+          left 0
+          height 0px
+          width 0px
+          border-style: solid;
+          border-width: 50px 0 0 990px;
+          border-color: transparent transparent transparent #F09200
+        // &:after
+        //   content ''
+        //   position absolute
+        //   top 60px
+        //   left 0
+        //   height 0px
+        //   width 0px
+        //   border-style: solid;
+        //   border-width: 50px 990px 0 0;
+        //   border-color: #F09200 transparent transparent transparent;
       &:not(.book-title):not(.inner)
         background-color #F09200
         border none
         font-family Roboto
         color white
-        padding-top 1em
-        padding-left 2em
+        padding-top 3em
+        padding-left 2.4em
         padding-bottom .1em
-        margin-top -1.5em
-        margin-left -1.5em !important
-        margin-right -1.5em !important
-        
-        @media (min-width 900px)
-          padding-top 2em
+        margin-top -3em
+        margin-left -2em !important
+        margin-right -1.6em !important
+        margin-bottom 2em
+        transform rotate(-5deg)
+        -ms-transform rotate(-5deg)
+        -moz-transform rotate(-5deg)
+        -o-transform rotate(-5deg)
+        position relative
+        p
+          margin 0 !important
+          text-align left !important
+          transform rotate(5deg) !important
+          -ms-transform rotate(5deg) !important
+          -moz-transform rotate(5deg) !important
+          -o-transform rotate(5deg) !important
+        &:after
+          content ''
+          position absolute
+          top 3.25em
+          right 1em
+          width 2.5em
+          height 2.5em
+          transform rotate(5deg)
+          // background-color white
+          background-image url('img/logo-bordered.png')
+          background-size cover
+          @media (max-width 768px)
+            top 5em
+            right 1em
+            width 2.5em
+            height 2.5em
+          @media (max-width 500px)
+            display none
+          // top 0
+          // left 0
+          // width 0
+          // height 0
+          // border-top: 100px solid red;
+          // border-right: 100px solid transparent;
+        // @media (min-width 900px)
+        //   padding-top 3em
         @media (max-width 768px)
-          padding-top 2.5em
+          padding-top 4.5em
           padding-left 1em
-          margin-left -.5em !important
+          // margin-top 3e
+          margin-left -.8em !important
           margin-right -.5em !important
+          padding-bottom .3em
+        &.long-header:after
+          top 4.8em
+          @media (max-width 768px)
+            top 6.5em
+          @media (max-width 500px)
+            display none
         
     h2
       color: #68A700

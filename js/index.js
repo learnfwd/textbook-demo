@@ -1,6 +1,7 @@
 // var App = require('lfa-core').App;
 // var $ = require('jquery');
 // App.book.on('render', function() {
+// });
 //   if($('li.active').parent(0).is('li'))
 //     {
 //       console.log('yes');
