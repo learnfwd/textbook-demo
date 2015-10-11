@@ -1,6 +1,11 @@
-// var App = require('lfa-core').App;
-// var $ = require('jquery');
+var App = require('lfa-core').App;
+var $ = require('jquery');
 // App.book.on('render', function() {
+//   if(window.location.href.substr(-12) == 'ch99-contact')
+//     {
+//       $('#textbook').css('padding','0');
+//       $('section').css('padding','0');
+//     }
 // });
 //   if($('li.active').parent(0).is('li'))
 //     {

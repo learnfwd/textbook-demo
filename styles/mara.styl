@@ -151,5 +151,108 @@ pre.stars
   display inline !important
   
 #cover-image
-  margin -60px !important
-  width calc(100% + 120px)
+  margin 0px !important
+  // img
+  //   vertical-align top !important
+  // width 100%
+  // height 100vh
+  // background-image url('img/demo--textbook.jpg')
+  // background-size cover
+  // background-repeat no-repeat
+  
+
+
+.contact-page
+  margin 0 !important
+  position relative
+  height 100vh
+  // height 800px
+  @media (max-width 500px)
+    // height 100vh
+    background-color #339796
+  .slanted-bg
+    width 100%
+    position absolute
+    left 48%
+    height 100%
+    background-color #339796
+    transform skewX(-10deg)
+    @media (max-width 500px)
+      background-color transparent
+      transform none
+    //   display none
+    .logo 
+      position absolute
+      top 47%
+      margin-top: -3.5em;
+      left -3.5em
+      transform skewX(10deg) 
+      @media (max-width 500px)
+        margin-top 1em
+        top 30%
+        left -3em
+        transform none 
+      img
+        height 7em
+        width 7em
+      #mail
+        font-family 'Roboto', sans-serif
+        // text-decoration none
+        width 100%
+        font-weight bold
+        color white
+        left 8em
+        top .5em
+        position absolute
+        &:hover
+          color #fbb03b
+        @media (max-width 500px)
+          color white
+          position relative
+          margin 0 auto
+          left -.7em
+      #site
+        font-family 'Roboto', sans-serif
+        // text-decoration none
+        font-weight bold
+        color black
+        top .5em
+        right 7em
+        position absolute
+        &:hover
+          color #8cc63f
+        @media (max-width 500px)
+          position relative
+          margin 0 auto
+          left .7em
+          color white
+          
+  // .visible-xs img
+  //   height 5em
+  //   width 5em
+  //   margin 0 auto
+  //   margin-top 25%
+    // margin-top -50%
+  span.contact-us
+    color #339796 
+    font-family 'Roboto',sans-serif
+    font-weight bold
+    font-size 2.5em
+    position absolute
+    top 1em
+    left 1em
+    text-transform uppercase
+    &.visible-xs
+      text-align center
+      font-size 2em
+      top 2em
+    @media (max-width 500px)
+      color white
+      text-align center
+      
+body.ch99-contact
+body.ch00-cover-00-cover
+  #textbook
+    padding 0 !important
+  section 
+    padding 0 !important        
