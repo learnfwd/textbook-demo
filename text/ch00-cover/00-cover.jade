@@ -1,29 +1,31 @@
 +title('Cover')
+
+div(style="width: 100%; height: 80vh; background: url(img/demo--textbook.jpg) no-repeat center/cover; padding: 0; margin: 0;")
+
+
+center(style="background-color:#363636; color: #fff; font-family: Arial,Sans-Serif")
+ br
+
 #cover-image
-  img(src='img/demo--textbook.jpg')
+ center
+   .contact Contact us at:&nbsp;
+     br/
+     a(href="mailto:hello@learnfwd.com") hello@learnfwd.com
+     span &nbsp; | &nbsp;
+     a(href="http://learnfwd.com", target="_blank") learnfwd.com
 
-//- center
-//-   img(src='img/logo-learnfwd.png', alt='Learn Forward').percent-30
-//-   h1.book-title Demo Textbook
-  
-//-   #name-input
-//-   #student-list
+   #name-input
+   #student-list
 
-//-   .name-label
-//-     h3 This copy belongs to:
-//-     #cover-name-input
-//-     span.instructions (type above to change your name)
+   .name-label
+     h3
+      | Enter your name below
+     #cover-name-input
+     span.instructions (type above to change your name)
 
-//-   .contact Contact us at: 
-//-     a(href="mailto:hello@learnfwd.com") hello@learnfwd.com
-//-     span | 
-//-     a(href="http://learnfwd.com", target="_blank") learnfwd.com
-
-//-   span (Use the navigation buttons to go to the next page)
-
-//-   br
-
-//-   .row
-//-     .col-md-4.hidden-xs
-//-     .col-md-4.col-xs-12
-//-       a(href='http://demo.learnfwd.com') demo.lfwd.io
+center(style="background-color:#363636; color: #fff; font-family: Arial,Sans-Serif")
+ br
+ small (Use the navigation buttons to go to the next page)
+ br
+ small
+   a(href='http://demo.learnfwd.com', style='color: #fff;') demo.lfwd.io
