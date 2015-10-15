@@ -1,7 +1,4 @@
 Thumbs.db
 .DS_Store
 .*.sw*
-plugins/lfa-backstage
-plugins/lfa-classroom
-plugins/lfa-exercises
 .lfa/build
